@@ -52,4 +52,5 @@ if [ -d /7dtd-auto-reveal-map ]; then
   cp -rp /7dtd-auto-reveal-map $INSTALL_DIR
 fi
 
+chmod a+x $INSTALL_DIR/7dtd-servermod/7dtd-APPLY-CONFIG.sh
 echo "Applying CUSTOM CONFIGS against application default files" && $INSTALL_DIR/7dtd-servermod/7dtd-APPLY-CONFIG.sh
