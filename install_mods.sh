@@ -20,9 +20,9 @@ rm -rf 7dtd-ServerTools-12.7.zip; cd $INSTALL_DIR && \
 wget https://github.com/dmustanger/7dtd-ServerTools/releases/download/12.7/7dtd-ServerTools-12.7.zip && \
 unzip 7dtd-ServerTools-12.7.zip
 # Sqllite3 Manual Compile/Fix for ServerTools 12.7
-cd $INSTALL_DIR && git clone https://github.com/moneymanagerex/System.Data.SQLite && cd System.Data.SQLite/Setup && \
-chmod a+x compile-interop-assembly-release.sh && ./compile-interop-assembly-release.sh
-cp ../bin/2013/Release/bin/*.so $INSTALL_DIR/7DaysToDieServer_Data/Mono/x86_64
+# This one-liner is compatible with Ubuntu & CentOS
+cd $INSTALL_DIR
+([[ -f /etc/redhat-release ]] && yum install gcc-c++ git -y || apt-get install g++ git -y) && rm -rf System.Data.SQLite && git clone https://github.com/moneymanagerex/System.Data.SQLite && cd System.Data.SQLite/Setup && /bin/bash ./compile-interop-assembly-release.sh && yes | cp -f ../SQLite.Interop/src/generic/libSQLite.Interop.so ../../7DaysToDieServer_Data/Mono/x86_64 && cd ../.. && echo "yes" && echo "libSQLite.Interop.so successfully copied into ../../7DaysToDieServer_Data/Mono/x86_64";
 
 # Just Survive + Better RWG
 # Getting Warnings regarding trader wilderness settings in rwgmixer, when combined with COMPOPACK
