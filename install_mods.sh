@@ -26,6 +26,10 @@ function git_clone () {
 
 echo "Please note that it is intended you run this script as the user that your 7dtd game server runs under. Sleeping 5 seconds.." && sleep 5
 
+# Install the Server & Mod-Management PHP Portal
+[[ ! -d $INSTALL_DIR/html ]] && mkdir $INSTALL_DIR/html
+cp index.php $INSTALL_DIR/html/
+
 # Creating "Mods-Available" folder
 echo "Creating the Mods-Available folder to install the mods into" && (rm -rf $MODS_DIR; mkdir $MODS_DIR)
 
@@ -69,6 +73,8 @@ git_clone https://github.com/Jayick/Farming.git
 
 # stasis8 Modlets (FarmLifeMod)
 git_clone https://github.com/stasis78/7dtd-mods.git
+
+# A ton of other Modlets
 git_clone https://github.com/stedman420/S420s_Other_Modlets.git
 git_clone https://github.com/stedman420/Simple_UI_Modlets.git
 git_clone https://github.com/manux32/7d2d_A17_modlets.git
