@@ -40,6 +40,7 @@ function dropbox_download () {
   mkdir $MODS_DIR/$MODCOUNT && cd $MODS_DIR/$MODCOUNT
   echo "Using CURL to download $1 and save as $2"
   curl -L "$1" > $2
+  echo "$1" > $MODS_DIR/$MODCOUNT/ModURL.txt
   [[ "$3" == "extract_file" ]] && extract_file $2
   cd $MODS_DIR
 }
@@ -48,6 +49,7 @@ function wget_download () {
   mkdir $MODS_DIR/$MODCOUNT && cd $MODS_DIR/$MODCOUNT
   echo "Using WGET to download $1 and save as $2"
   wget -O $2 "$1" 
+  echo "$1" > $MODS_DIR/$MODCOUNT/ModURL.txt
   [[ "$3" == "extract_file" ]] && extract_file $2
   cd $MODS_DIR 
 }
@@ -189,10 +191,12 @@ wget_download "http://cdgroup.org/files/7dtd/TerrainBasedMovementSpeed.zip" Terr
 wget_download "https://github.com/dmustanger/7dtd-ServerTools/releases/download/12.7/7dtd-ServerTools-12.7.zip" ServerTools.zip extract_file
 # Sqlite support is broke in ServerTools at the moment, so we have to manually compile the Sqlite 
 # Interop Assembly package. Below is a one-liner compatible with Ubuntu & CentOS to accomplish this.
-rm -rf System.Data.SQLite && git clone https://github.com/moneymanagerex/System.Data.SQLite && \
-cd System.Data.SQLite/Setup && \
-/bin/bash ./compile-interop-assembly-release.sh && ln -s ../SQLite.Interop/src/generic/libSQLite.Interop.so $INSTALL_DIR/7DaysToDieServer_Data/Mono/x86_64/libSQLite.Interop.so && \
-echo "yes" && cd ../.. && echo "./7DaysToDieServer_Data/Mono/x86_64/libSQLite.Interop.so Sym-Linked to this custom compiled file";
+if [[ ! -f /data/7DTD/7DaysToDieServer_Data/Mono/x86_64/libSQLite.Interop.so ]]; then
+  rm -rf System.Data.SQLite && git clone https://github.com/moneymanagerex/System.Data.SQLite && \
+  cd System.Data.SQLite/Setup && \
+  /bin/bash ./compile-interop-assembly-release.sh && ln -s ../SQLite.Interop/src/generic/libSQLite.Interop.so $INSTALL_DIR/7DaysToDieServer_Data/Mono/x86_64/libSQLite.Interop.so && \
+  echo "yes" && cd ../.. && echo "./7DaysToDieServer_Data/Mono/x86_64/libSQLite.Interop.so Sym-Linked to this custom compiled file";
+fi
 
 echo "Applying CUSTOM CONFIGS against application default files" && chmod a+x *.sh && ./7dtd-APPLY-CONFIG.sh
 
