@@ -2,6 +2,7 @@
 
 export INSTALL_DIR=$1
 export MODS_DIR=$INSTALL_DIR/Mods-Available
+export USER=steam
 
 [[ -z $1 ]] && echo "Please provide your 7DTD game server installation directory as an argument to this script."
 
@@ -30,9 +31,9 @@ function wget_download () {
   wget -O $2 "$1"  
 }
 
-export USER=`whoami`
-echo "You are running this script under user $USER"
-echo "Please note that it is intended you run this script as the user that your 7dtd game server runs under. Sleeping 5 seconds.." && sleep 5
+#export USER=`whoami`
+#echo "You are running this script under user $USER"
+#echo "Please note that it is intended you run this script as the user that your 7dtd game server runs under. Sleeping 5 seconds.." && sleep 5
 [[ -f /etc/redhat-release ]] && yum install gcc-c++ git curl -y || apt-get install g++ git curl -y
 
 # Install the Server & Mod-Management PHP Portal
@@ -164,3 +165,5 @@ cd $INSTALL_DIR
 rm -rf System.Data.SQLite && git_clone https://github.com/moneymanagerex/System.Data.SQLite && cd System.Data.SQLite/Setup && /bin/bash ./compile-interop-assembly-release.sh && yes | cp -f ../SQLite.Interop/src/generic/libSQLite.Interop.so ../../7DaysToDieServer_Data/Mono/x86_64 && cd ../.. && echo "yes" && echo "libSQLite.Interop.so successfully copied into ../../7DaysToDieServer_Data/Mono/x86_64";
 
 echo "Applying CUSTOM CONFIGS against application default files" && chmod a+x 7dtd-APPLY-CONFIG.sh && ./7dtd-APPLY-CONFIG.sh
+
+chown $USER $INSTALL_DIR -R
