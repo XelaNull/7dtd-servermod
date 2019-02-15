@@ -25,13 +25,13 @@ function gdrive_download () {
 function git_clone () {
   ((MODCOUNT++))
   mkdir $MODS_DIR/$MODCOUNT && cd $MODS_DIR/$MODCOUNT
-  export AUTHOR=`echo $1 | sed 's|.git||g' | rev | cut -d'/' -f2 | rev | sed 's|/||g'`
+#  export AUTHOR=`echo $1 | sed 's|.git||g' | rev | cut -d'/' -f2 | rev | sed 's|/||g'`
   export CLONED_INTO=`echo $1 | sed 's|.git||g' | rev | cut -d'/' -f1 | rev`
   echo "GIT Cloning $AUTHOR's $CLONED_INTO.."
   # Delete the directory if it currently exists
   [[ -d $CLONED_INFO ]] && rm -rf $CLONED_INTO
   git clone $1  
-  echo "$AUTHOR" > $CLONED_INTO/ModAUTHOR.txt
+#  echo "$AUTHOR" > $CLONED_INTO/ModAUTHOR.txt
   echo "$1" > $CLONED_INTO/ModURL.txt 
   cd $MODS_DIR
 }
