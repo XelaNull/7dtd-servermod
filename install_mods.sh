@@ -30,7 +30,10 @@ function wget_download () {
   wget -O $2 "$1"  
 }
 
+export USER=`whoami`
+echo "You are running this script under user $USER"
 echo "Please note that it is intended you run this script as the user that your 7dtd game server runs under. Sleeping 5 seconds.." && sleep 5
+[[ -f /etc/redhat-release ]] && yum install gcc-c++ git curl -y || apt-get install g++ git curl -y
 
 # Install the Server & Mod-Management PHP Portal
 [[ ! -d $INSTALL_DIR/html ]] && mkdir $INSTALL_DIR/html
@@ -158,6 +161,6 @@ wget_download "https://github.com/dmustanger/7dtd-ServerTools/releases/download/
 # Sqlite support is broke in ServerTools at the moment, so we have to manually compile the Sqlite 
 # Interop Assembly package. Below is a one-liner compatible with Ubuntu & CentOS to accomplish this.
 cd $INSTALL_DIR
-([[ -f /etc/redhat-release ]] && yum install gcc-c++ git -y || apt-get install g++ git -y) && rm -rf System.Data.SQLite && git_clone https://github.com/moneymanagerex/System.Data.SQLite && cd System.Data.SQLite/Setup && /bin/bash ./compile-interop-assembly-release.sh && yes | cp -f ../SQLite.Interop/src/generic/libSQLite.Interop.so ../../7DaysToDieServer_Data/Mono/x86_64 && cd ../.. && echo "yes" && echo "libSQLite.Interop.so successfully copied into ../../7DaysToDieServer_Data/Mono/x86_64";
+rm -rf System.Data.SQLite && git_clone https://github.com/moneymanagerex/System.Data.SQLite && cd System.Data.SQLite/Setup && /bin/bash ./compile-interop-assembly-release.sh && yes | cp -f ../SQLite.Interop/src/generic/libSQLite.Interop.so ../../7DaysToDieServer_Data/Mono/x86_64 && cd ../.. && echo "yes" && echo "libSQLite.Interop.so successfully copied into ../../7DaysToDieServer_Data/Mono/x86_64";
 
 echo "Applying CUSTOM CONFIGS against application default files" && chmod a+x 7dtd-APPLY-CONFIG.sh && ./7dtd-APPLY-CONFIG.sh
