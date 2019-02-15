@@ -4,6 +4,10 @@ export INSTALL_DIR=$1
 export MODS_DIR=$INSTALL_DIR/Mods-Available
 export USER=steam
 
+if [[ `whoami` != 'root ' ]]; then
+  echo "This script should be run as the root user.";
+  exit;
+fi
 [[ -z $1 ]] && echo "Please provide your 7DTD game server installation directory as an argument to this script."
 
 # Create Bash Function to handle the different downloads
