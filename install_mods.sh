@@ -86,7 +86,7 @@ git_clone https://github.com/djkrose/7DTD-ScriptingMod
 dropbox_download "https://www.dropbox.com/s/bzn1pozsg9qae9l/COMPOPACK_35%28for%20Alpha17exp_b233%29.zip?dl=0" COMPOPACK.zip extract_file && \
 cp $MODS_DIR/$MODCOUNT/COMPOPACK*/data/Prefabs/* $INSTALL_DIR/Data/Prefabs/ && \
 yes | cp -f $MODS_DIR/$MODCOUNT/COMPOPACK*/data/Config/rwgmixer.xml $INSTALL_DIR/Data/Config/
-cp: cannot stat '/5/COMPOPACK*/data/Prefabs/*': No such file or directory
+
 # ACP Fishing
 # https://7daystodie.com/forums/showthread.php?68123-ACP-Fishing
 dropbox_download "https://www.dropbox.com/s/azdarhfitn91p2e/ACP%20Fishing-A17.rar?dl=0" ACP_Fishing.rar extract_file
@@ -111,7 +111,8 @@ gdrive_download 1ZH9YtemlSBsXEAfMUz5F0nKZJ7E2CLQU VanillaPlus.rar extract_file
 find . -name modinfo.xml -exec bash -c 'mv "$0" "${0/modinfo/ModInfo}"' {} \;
 
 # Auto-Reveal Map
-git_clone https://github.com/XelaNull/7dtd-auto-reveal-map.git && yes | cp -f 7dtd-auto-reveal-map/loop_start_autoreveal.sh / && chmod a+x /*.sh
+git_clone https://github.com/XelaNull/7dtd-auto-reveal-map.git && \
+yes | cp -f $MODCOUNT/7dtd-auto-reveal-map/loop_start_autoreveal.sh / && chmod a+x /*.sh
 (/usr/bin/crontab -l 2>/dev/null; echo '* * * * * /loop_start_autoreveal.sh') | /usr/bin/crontab -
 
 # Firearms Modlet
