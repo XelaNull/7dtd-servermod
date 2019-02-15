@@ -3,7 +3,10 @@
 export INSTALL_DIR=$1
 export MODS_DIR=$INSTALL_DIR/Mods-Available
 export USER=steam
+
+
 export MODCOUNT=0
+export MYDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 if [[ `whoami` != 'root' ]]; then
   echo "This script should be run as the root user.";
@@ -198,6 +201,6 @@ if [[ ! -f /data/7DTD/7DaysToDieServer_Data/Mono/x86_64/libSQLite.Interop.so ]];
   echo "yes" && cd ../.. && echo "./7DaysToDieServer_Data/Mono/x86_64/libSQLite.Interop.so Sym-Linked to this custom compiled file";
 fi
 
-echo "Applying CUSTOM CONFIGS against application default files" && echo "PDW: `pwd`" && chmod a+x *.sh && ./7dtd-APPLY-CONFIG.sh
+echo "Applying CUSTOM CONFIGS against application default files ${MYDIR}" && cd $MYDIR && chmod a+x *.sh && ./7dtd-APPLY-CONFIG.sh
 
 chown $USER $INSTALL_DIR -R
