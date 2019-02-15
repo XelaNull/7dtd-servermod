@@ -73,12 +73,11 @@ echo "Creating the Mods-Available folder to install the mods into" && (rm -rf $M
 # Botman
 echo "Installing Botman_Mods_A17 (Allocs Mod + Bad Company Mod)"
 wget_download "http://botman.nz/Botman_Mods_A17.zip" Allocs_Bad_Company.zip extract_file
-
 # CSMM Patrons
 wget_download "https://confluence.catalysm.net/download/attachments/1114182/CSMM_Patrons_9.1.1.zip?api=v2" CSMM_Patrons.zip extract_file
 # CSMM Map Addon for Allocs WebAndMapRendering
 wget_download "https://confluence.catalysm.net/download/attachments/1114446/map.js?version=1&modificationDate=1548000113141&api=v2&download=true" map.js && \
-mv $MODCOUNT/map.js $MODS_DIR/$MODCOUNT/Allocs_WebAndMapRendering/webserver/js
+mv $MODCOUNT/map.js $MODS_DIR/1/Allocs_WebAndMapRendering/webserver/js
 
 # djkrose ScriptingMod
 git_clone https://github.com/djkrose/7DTD-ScriptingMod
