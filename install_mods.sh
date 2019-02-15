@@ -17,7 +17,7 @@ function git_clone () {
   echo "GIT Cloning $AUTHOR's $CLONED_INTO.."
   # Delete the directory if it currently exists
   [[ -d $CLONED_INFO ]] && rm -rf $CLONED_INTO
-  git_clone $1  
+  git clone $1  
   echo "$AUTHOR" > $CLONED_INTO/ModAUTHOR.txt
   echo "$1" > $CLONED_INTO/ModURL.txt 
 }
