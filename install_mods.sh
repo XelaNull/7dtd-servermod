@@ -66,7 +66,7 @@ cp COMPOPACK*/data/Prefabs/* $INSTALL_DIR/Data/Prefabs/ && yes | cp -f COMPOPACK
 
 # ACP Fishing
 # https://7daystodie.com/forums/showthread.php?68123-ACP-Fishing
-dropbox_download "https://www.dropbox.com/s/azdarhfitn91p2e/ACP%20Fishing-A17.rar?dl=0" ACP_Fishing.zip && unzip -o ACP_Fishing.zip
+dropbox_download "https://www.dropbox.com/s/azdarhfitn91p2e/ACP%20Fishing-A17.rar?dl=0" ACP_Fishing.rar && unrar x -o+ ACP_Fishing.rar
 
 # Just Survive + Better RWG
 git_clone https://github.com/mjrice/7DaysModlets.git
