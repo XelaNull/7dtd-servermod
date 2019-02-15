@@ -5,14 +5,12 @@ export MODS_DIR=$INSTALL_DIR/Mods-Available
 
 [[ -z $1 ]] && echo "Please provide your 7DTD game server installation directory as an argument to this script."
 
-# Create Bash Function to handle any Google Drive Links
+# Create Bash Function to handle the different downloads
 function gdrive_download () {
   CONFIRM=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate "https://docs.google.com/uc?export=download&id=$1" -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')
   wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$CONFIRM&id=$1" -O $2
   rm -rf /tmp/cookies.txt
 }
-
-# Create git_clone function
 function git_clone () {
   export AUTHOR=`echo $1 | sed 's|.git||g' | rev | cut -d'/' -f2 | rev | sed 's|/||g'`
   export CLONED_INTO=`echo $1 | sed 's|.git||g' | rev | cut -d'/' -f1 | rev`
@@ -22,6 +20,14 @@ function git_clone () {
   git_clone $1  
   echo "$AUTHOR" > $CLONED_INTO/ModAUTHOR.txt
   echo "$1" > $CLONED_INTO/ModURL.txt 
+}
+function dropbox_download () {
+  echo "Using CURL to download $1 and save as $2"
+  curl -L "$1" > $2
+}
+function wget_download () {
+  echo "Using WGET to download $1 and save as $2"
+  wget -O $2 "$1"  
 }
 
 echo "Please note that it is intended you run this script as the user that your 7dtd game server runs under. Sleeping 5 seconds.." && sleep 5
@@ -38,24 +44,35 @@ echo "Installing Botman_Mods_A17 (Allocs Mod + Bad Company Mod)"
 cd $MODS_DIR; wget -O Allocs_Bad_Company.zip http://botman.nz/Botman_Mods_A17.zip && unzip -o Allocs_Bad_Company.zip
 
 # CSMM Patrons
-wget -O CSMM_Patrons.zip https://confluence.catalysm.net/download/attachments/1114182/CSMM_Patrons_9.1.1.zip?api=v2 && unzip -o CSMM_Patrons.zip
+wget_download "https://confluence.catalysm.net/download/attachments/1114182/CSMM_Patrons_9.1.1.zip?api=v2" CSMM_Patrons.zip && unzip -o CSMM_Patrons.zip
 # CSMM Map Addon for Allocs WebAndMapRendering
-wget -O map.js "https://confluence.catalysm.net/download/attachments/1114446/map.js?version=1&modificationDate=1548000113141&api=v2&download=true" && \
+wget_download "https://confluence.catalysm.net/download/attachments/1114446/map.js?version=1&modificationDate=1548000113141&api=v2&download=true" map.js && \
 mv map.js $MODS_DIR/Allocs_WebAndMapRendering/webserver/js
 
 # djkrose ScriptingMod
 git_clone https://github.com/djkrose/7DTD-ScriptingMod
 
 # COMPOPACK
-curl -L "https://www.dropbox.com/s/bzn1pozsg9qae9l/COMPOPACK_35%28for%20Alpha17exp_b233%29.zip?dl=0" > COMPOPACK.zip && unzip -o COMPOPACK.zip && \
+dropbox_download "https://www.dropbox.com/s/bzn1pozsg9qae9l/COMPOPACK_35%28for%20Alpha17exp_b233%29.zip?dl=0" COMPOPACK.zip && unzip -o COMPOPACK.zip && \
 cp COMPOPACK*/data/Prefabs/* $INSTALL_DIR/Data/Prefabs/ && yes | cp -f COMPOPACK*/data/Config/rwgmixer.xml $INSTALL_DIR/Data/Config/
+
+# ACP Fishing
+# https://7daystodie.com/forums/showthread.php?68123-ACP-Fishing
+dropbox_download "https://www.dropbox.com/s/azdarhfitn91p2e/ACP%20Fishing-A17.rar?dl=0" ACP_Fishing.zip && unzip -o ACP_Fishing.zip
 
 # Just Survive + Better RWG
 git_clone https://github.com/mjrice/7DaysModlets.git
 
 # Red Eagle's Modlet Collection
 # https://7daystodie.com/forums/showthread.php?94219-Red-Eagle-LXIX-s-A17-Modlet-Collection-(UI-Blocks-Quests)
-curl -L "https://www.dropbox.com/s/v1eyx3qnrmr7f2p/Red%20Eagle%20LXIX%27s%20A17%20Modlet%20Collection.zip?dl=1" > Red_Eagle_Modlets.zip && unzip -o Red_Eagle_Modlets.zip && \
+dropbox_download "https://www.dropbox.com/s/v1eyx3qnrmr7f2p/Red%20Eagle%20LXIX%27s%20A17%20Modlet%20Collection.zip?dl=1" Red_Eagle_Modlets.zip && unzip -o Red_Eagle_Modlets.zip
+
+# Xajar's Mod Collection
+# https://7daystodie.com/forums/showthread.php?100868-Xajar-s-Mod-Collection
+dropbox_download "https://www.dropbox.com/s/3wdpql2hfwo05ee/xModlets%20A17.1%20B9.zip?dl=0" Xajar.zip && unzip -o Xajar.zip
+
+# https://7daystodie.com/forums/showthread.php?104228-Alpha-17-More-Lights-(Craftable-and-Working)
+gdrive_download 1pZdwB7Hu3zshTmHR2tstlObzmKW-xqWD More_Lights.zip && unzip -o More_Lights.zip
 
 # Vanilla+
 gdrive_download 1ZH9YtemlSBsXEAfMUz5F0nKZJ7E2CLQU VanillaPlus.rar && unrar x -o+ VanillaPlus.rar
@@ -99,9 +116,45 @@ git_clone https://github.com/weelillad/7D2D-CloneModSchematics.git
 git_clone https://github.com/Sirillion/7DXMLfix.git
 git_clone https://github.com/Sixxgunz/7d2d_Modlets.git
 git_clone https://github.com/Sixxgunz/7D2D-QualityOfDeath-All-In-One-Modlet-Pack.git
+git_clone https://github.com/JaxTeller718/JaxModlets.git
+git_clone https://github.com/GlobalGamer2015/7D2D_A17.git
+git_clone https://github.com/digital-play/7dtd-a17-mods-sol.git
+git_clone https://github.com/DelStryker/Delmod-7D2D-A17-Mods.git
+git_clone https://github.com/guppycur/GuppyMods
+# https://7daystodie.com/forums/showthread.php?86145-HDHQ-Textures-Lighting-Environment
+git_clone https://gitlab.com/DUST2DEATH/hdhqmodlets.git
+
+# Origin UI
+# https://7daystodie.com/forums/showthread.php?40023-Origin-UI-MOD
+# wget_download "http://cryados.net/7dtd/A17/7DTD_origin_A17.1b9_v102.rar" Origin_UI.rar && unrar x -o+ Origin_UI.rar
+
+# https://7daystodie.com/forums/showthread.php?109893-Highope-s-Modlets
+wget_download "https://7d2dservers.com/7D/A17/1.0/HH_Nude_Players.zip" HH_Nude_Players.zip && unzip -o HH_Nude_Players.zip
+wget_download "https://7d2dservers.com/7D/A17/2.0/HH_35_New_Dyes_Workstation.zip" HH_35_New_Dyes_Workstation.zip && unzip -o HH_35_New_Dyes_Workstation.zip
+wget_download "https://7d2dservers.com/7D/A17/1.0/HH_Starter_Items.zip" HH_Starter_Items.zip && unzip -o HH_Starter_Items.zip
+wget_download "https://7d2dservers.com/7D/A17/1.0/HH_All_Types_Of_Trees_Respawn.zip" HH_All_Types_Of_Trees_Respawn.zip && unzip -o HH_All_Types_Of_Trees_Respawn.zip
+
+# Telrics Archaeology
+dropbox_download "https://www.dropbox.com/s/ey5ebmy3dhsku9q/Telric%20Archaeology.zip?dl=0" Telric_Archaeology.zip && unzip -o Telric_Archaeology.zip
+dropbox_download "https://www.dropbox.com/s/a90inl25zwvftdf/Telrics%20Decorations.zip?dl=0" Telric_Decorations.zip && unzip -o Telric_Decorations.zip
+dropbox_download "https://7daystodie.com/forums/showthread.php?99228-Thumper-System&highlight=thumper"
+
+# https://7daystodie.com/forums/showthread.php?102559-DK-KS-Doors-blocks-and-others-A17
+dropbox_download "https://www.dropbox.com/s/cz0kf7go3sx72xs/EN_Doors%20And%20Blocks%20AMK.rar?dl=1" Doors_and_Blocks.rar && unrar x -o+ Doors_and_Blocks.rar
+dropbox_download "https://www.dropbox.com/s/056y5vmt2zkpnki/Barrels%20and%20Alcohol.rar?dl=1" Barrels_and_Alcohol.rar && unrar x -o+ Barrels_and_Alcohol.rar
+dropbox_download "https://www.dropbox.com/s/2o5b7i5vqkco88a/Colors%20Everywhere.rar?dl=1" Colors_Everywhere.rar && unrar x -o+ Colors_Everywhere.rar
+dropbox_download "https://www.dropbox.com/s/tw6ykjv0isl55go/Climate%20change.rar?dl=0" Climate_Change.rar && unrar x -o+ Climate_Change.rar
+
+# Luc's
+# https://7daystodie.com/forums/showthread.php?96954-Luc-s-Modlet-Collection-(Quality-Bonuses-better-stamina-terrain-mv-spd-etc-)
+wget_download "http://cdgroup.org/files/7dtd/Arrow-XbowConversion.zip" Arrow-XbowConversion.zip && unzip -o Arrow-XbowConversion.zip
+wget_download "http://cdgroup.org/files/7dtd/QualityDamageBonuses.zip" QualityDamageBonuses.zip && unzip -o QualityDamageBonuses.zip
+wget_download "http://cdgroup.org/files/7dtd/QualityEffectivenessBonuses.zip" QualityEffectivenessBonuses.zip && unzip -o QualityEffectivenessBonuses.zip
+wget_download "http://cdgroup.org/files/7dtd/ReducedStaminaUsagebyQualityLevel.zip" ReducedStaminaUsagebyQualityLevel.zip && unzip -o ReducedStaminaUsagebyQualityLevel.zip
+wget_download "http://cdgroup.org/files/7dtd/TerrainBasedMovementSpeed.zip" TerrainBasedMovementSpeed.zip && unzip -o TerrainBasedMovementSpeed.zip
 
 #ServerTools
-wget -O ServerTools.zip https://github.com/dmustanger/7dtd-ServerTools/releases/download/12.7/7dtd-ServerTools-12.7.zip && unzip ServerTools.zip
+wget_download "https://github.com/dmustanger/7dtd-ServerTools/releases/download/12.7/7dtd-ServerTools-12.7.zip" ServerTools.zip && unzip -o ServerTools.zip
 # Sqlite support is broke in ServerTools at the moment, so we have to manually compile the Sqlite 
 # Interop Assembly package. Below is a one-liner compatible with Ubuntu & CentOS to accomplish this.
 cd $INSTALL_DIR
