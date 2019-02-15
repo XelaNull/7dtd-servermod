@@ -4,7 +4,7 @@ export INSTALL_DIR=$1
 export MODS_DIR=$INSTALL_DIR/Mods-Available
 export USER=steam
 
-if [[ `whoami` != 'root ' ]]; then
+if [[ `whoami` != 'root' ]]; then
   echo "This script should be run as the root user.";
   exit;
 fi
