@@ -1,7 +1,6 @@
 <?php 
 
-
-
+if(@$_POST['editFile']) { $_GET['do']='editFile'; @$_GET['editFile']=$_POST['editFile']; }
 switch(@$_GET['do'])
 {
   default:
@@ -10,22 +9,17 @@ switch(@$_GET['do'])
   break;
   
   case "editFile":
-  if($_GET['editFile']=='') $_GET['editFile']='serverconfig.xml';
-  if($_GET['editFile']=='serverconfig.xml') $fullPath='/data/7DTD/serverconfig.xml';
-  if($_GET['editFile']=='rwgmixer.xml') $fullPath='/data/7DTD/Data/Config/rwgmixer.xml';
-
+  if($_GET['editFile']!='../serverconfig.xml' && $_GET['editFile']!='../7dtd.log') $_GET['editFile']="../Data/Config/".$_GET['editFile'];
   $main="<form method=post action=\"?editFile=".$_GET['editFile']."\">
    <textarea style=\"width:100%;height:90%\" name=fileContents>";
-  if($_POST['Submit'] && $_POST['fileContents']!='')
+  if(@$_POST['Submit'] && $_POST['fileContents']!='')
           {
           $fp=fopen($fullPath,"w");
           fputs($fp,$_POST['fileContents']);
           fclose($fp);
           }
-  $fp=fopen($fullPath,"r");
-  while(!feof($fp)) $main.=fgets($fp, 2048);
-  fclose($fp);
-  $main.="</textarea><br><input type=submit name=Submit value=\"SAVE FILE\" style=\"height: 30px;\"> <b>$fullPath</b>
+  $main.=file_get_contents($_GET['editFile']);
+  $main.="</textarea><br><input type=submit name=Submit value=\"SAVE FILE\" style=\"height: 30px;\"> <b>$_GET[editFile]</b>
   </form>";
   break;
   
@@ -96,6 +90,7 @@ function SDD_ModMgr()
 
   <tr><th>Enabled?</th><th>PkgNum</th><th>Name</th><th>Description</th><th>Author</th></tr>
   ";
+  sort($MOD_ARRAY);
   
   $modcnt=0;
   // Loop through all the mods
@@ -122,15 +117,15 @@ function SDD_ModMgr()
     else $Author="$modInfo_Array[Author]";
     
     // Collect the URL that we downloaded this mod from
-    @$URL=file_get_contents($MODS_DIR.$modcnt.'/ModURL.txt');
+    @$URL=file_get_contents($MODS_DIR.$modPath_Pieces[0].'/ModURL.txt');
     if($URL!='')$PkgNum="<a href=$URL>$modPath_Pieces[0]</a>";
     else $PkgNum=$modPath_Pieces[0];
     
     $rtn.="<tr><form method=post><input type=hidden name=ModIDNum value=$modcnt>
     <td align=center><input $checkTXT name=modID$modcnt type=checkbox onChange=\"this.form.submit();\"></td>
     <td align=center>$PkgNum</td>
-    <td>$modInfo_Array[Name] $modInfo_Array[Version]</td>
-    <td>$modInfo_Array[Description]</td>
+    <td><font size=2><b>$modInfo_Array[Name]</b> $modInfo_Array[Version]</font></td>
+    <td><font size=2>$modInfo_Array[Description]</font></td>
     <td align=center>$Author</td>
     </form></tr>";
   }
@@ -187,18 +182,27 @@ function left_side()
 {
 $left="<center>
 <p><a href=index.php?do=modmgr><b>Enable/Disable Modlets</b></a></p>
-<hr>
+<hr><!--
 <b>Click a file to edit:</b>
 <p><a href=index.php?editFile=serverconfig.xml>serverconfig.xml</a></p>
-<p><a href=index.php?editFile=rwgmixer.xml>rwgmixer.xml</a></p>";
+<p><a href=index.php?editFile=rwgmixer.xml>rwgmixer.xml</a></p>-->";
 
 $it = new RecursiveDirectoryIterator('../Data/Config');
 foreach(new RecursiveIteratorIterator($it) as $file) if(basename($file)!='.' && basename($file)!='..') $XML_ARRAY[]=$file;
 
 
-$left.="<b>Data/Config XML Files:</b> <br><select size=10>";
-foreach($XML_ARRAY as $file) $left.="<option value=$file>".str_replace('../Data/Config/','',$file)."</option>";
-$left.="</select>";
+$left.="
+<b>serverconfig.xml & 7dtd.log:</b><br>
+<form method=post><select size=2 onChange=\"this.form.submit();\" name=editFile>
+<option value=\"../serverconfig.xml\">serverconfig.xml</option>
+<option value=\"../7dtd.log\">7dtd.log</option>
+</select>
+</form>
+<br>
+
+<b>Data/Config XML Files:</b> <br><form method=post><select size=10 onChange=\"this.form.submit();\" name=editFile>";
+foreach($XML_ARRAY as $file) $left.="<option value=".str_replace('../Data/Config/','',$file).">".str_replace('../Data/Config/','',$file)."</option>";
+$left.="</form></select>";
 
 $left.="
 <hr>
@@ -232,11 +236,16 @@ else
     }
   }
 
-$left.="<br><a href=?control=START_AUTOEXPLORE>START AUTOEXPLORE</a><br>
-<a href=?control=STOP_AUTOEXPLORE>STOP AUTOEXPLORE</a>
+$left.="<hr><b>Auto-Exploration</b><Br>
+This will make first player to login an admin and then teleport them repeatedly to discover the entire map.<br>
+<br>
+<b>Status: </b> Stopped<br>
+<br>
+<a href=?control=START_AUTOEXPLORE>Start Auto-Explore</a><br>
+<a href=?control=STOP_AUTOEXPLORE>Stop Auto-Explore</a>
 
 <br><br><Br>
-<a href=index.php>refresh</a>
+<a href=index.php>refresh page</a>
 </center>";
 return $left;
 }
