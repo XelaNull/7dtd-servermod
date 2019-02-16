@@ -111,7 +111,7 @@ gdrive_download 1ADm8EcJv942SOBjnvtX4EGoUE-gL6xbi SnappySolarPower.zip extract_f
 git_clone https://github.com/XelaNull/7dtd-auto-reveal-map.git && \
 yes | cp -f $MODCOUNT/7dtd-auto-reveal-map/loop_start_autoreveal.sh / && chmod a+x /*.sh
 (/usr/bin/crontab -l 2>/dev/null; echo '* * * * * /loop_start_autoreveal.sh') | /usr/bin/crontab -
-ln -s $MODS_DIR/12/7dtd-auto-reveal-map $INSTALL_DIR/7dtd-auto-reveal-map
+ln -s $MODS_DIR/17/7dtd-auto-reveal-map $INSTALL_DIR/7dtd-auto-reveal-map
 # All other git cloned projects
 git_clone https://github.com/djkrose/7DTD-ScriptingMod # ScriptingMod
 git_clone https://github.com/mjrice/7DaysModlets.git # Just Survive + Better RWG
