@@ -1,6 +1,7 @@
 <?php 
 
 if(@$_POST['editFile']) { $_GET['do']='editFile'; @$_GET['editFile']=$_POST['editFile']; }
+if(@$_GET['editFile']) { $_GET['do']='editFile'; }
 switch(@$_GET['do'])
 {
   default:
@@ -10,11 +11,11 @@ switch(@$_GET['do'])
   
   case "editFile":
   if($_GET['editFile']!='../serverconfig.xml' && $_GET['editFile']!='../7dtd.log') $_GET['editFile']="../Data/Config/".$_GET['editFile'];
-  $main="<form method=post action=\"?editFile=".$_GET['editFile']."\">
+  $main="<form method=post action=\"?do=editFile&editFile=".$_GET['editFile']."\">
    <textarea style=\"width:100%;height:90%\" name=fileContents>";
   if(@$_POST['Submit'] && $_POST['fileContents']!='')
           {
-          $fp=fopen($fullPath,"w");
+          $fp=fopen($_GET['editFile'],"w");
           fputs($fp,$_POST['fileContents']);
           fclose($fp);
           }
@@ -90,7 +91,7 @@ function SDD_ModMgr()
 
   <tr><th>Enabled?</th><th>PkgNum</th><th>Name</th><th>Description</th><th>Author</th></tr>
   ";
-  sort($MOD_ARRAY);
+  //sort($MOD_ARRAY);
   
   $modcnt=0;
   // Loop through all the mods
@@ -202,7 +203,7 @@ $left.="
 
 <b>Data/Config XML Files:</b> <br><form method=post><select size=10 onChange=\"this.form.submit();\" name=editFile>";
 foreach($XML_ARRAY as $file) $left.="<option value=".str_replace('../Data/Config/','',$file).">".str_replace('../Data/Config/','',$file)."</option>";
-$left.="</form></select>";
+$left.="</select></form>";
 
 $left.="
 <hr>
@@ -235,6 +236,8 @@ else
       break;
     }
   }
+  // Starting dedicated server
+  // GameServer.Init successful
 
 $left.="<hr><b>Auto-Exploration</b><Br>
 This will make first player to login an admin and then teleport them repeatedly to discover the entire map.<br>
