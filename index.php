@@ -210,7 +210,7 @@ $left.="
 <b>SERVER STATUS:</b><br>";
 $SERVER_PID=exec("ps awwux | grep 7DaysToDieServer | grep -v sudo | grep -v grep | awk '{print \$2}'");
 $PORT_DETAIL=exec("netstat -anptu | grep LISTEN | grep 26900");
-if($SERVER_PID!='' && $PORT_DETAIL!='') $status="UP"; else $status="DOWN";
+if($SERVER_PID!=''/* && $PORT_DETAIL!=''*/) $status="UP"; else $status="DOWN";
 if(@$_GET['control']!='')
   {
     if($_GET['control']=='STOP') { exec("/stop_7dtd.sh &"); $status="STOPPING"; }

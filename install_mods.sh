@@ -146,6 +146,7 @@ git_clone https://github.com/Elysium-81/A17Modlets.git
 #git_clone https://github.com/NerdScurvy/7DTD-Modlets.git
 git_clone https://github.com/KhaineGB/KhainesModlets.git
 git_clone https://github.com/banhmr/7DaysToDie-Modlets.git
+# For 17.1 b9
 git_clone https://github.com/n4bb12/7d2d-balance.git
 git_clone https://github.com/DukeW74/7DaysModlets.git
 git_clone https://github.com/totles/z4lab-7d2d-modlets.git
