@@ -15,7 +15,7 @@
 ./replace.sh $INSTALL_DIR/serverconfig.xml "A 7 Days to Die server" "An experimental heavily-modded 7DTD Server, using a custom RWG-tweaked map, and over 350 new buildings. ServerTools installed. Modlets: Vanilla+, Red Eagle, Just Survive. No client side installation needed." ServerDescription
 ./replace.sh $INSTALL_DIR/serverconfig.xml "Navezgane" "RWG" GameWorld
 ./replace.sh $INSTALL_DIR/serverconfig.xml "My Game" "Sanitys Edge" GameName
-./replace.sh $INSTALL_DIR/serverconfig.xml "asdf" "Fuss Butt" 'name="WorldGenSeed"'
+./replace.sh $INSTALL_DIR/serverconfig.xml "asdf" "serenity19" 'name="WorldGenSeed"'
 ./replace.sh $INSTALL_DIR/serverconfig.xml "4096" "8192" 'name="WorldGenSize"'
 ./replace.sh $INSTALL_DIR/serverconfig.xml "2" "3" GameDifficulty
 ./replace.sh $INSTALL_DIR/serverconfig.xml "3" "2" ZombieMoveNight
