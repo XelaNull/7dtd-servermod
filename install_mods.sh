@@ -21,7 +21,7 @@ function gdrive_download () {
   CONFIRM=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate "https://docs.google.com/uc?export=download&id=$1" -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')
   wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$CONFIRM&id=$1" -O $MODS_DIR/$MODCOUNT/$2
   rm -rf /tmp/cookies.txt
-  echo "$1" > $MODS_DIR/$MODCOUNT/ModURL.txt
+  echo "https://docs.google.com/uc?export=download&id=$1" > $MODS_DIR/$MODCOUNT/ModURL.txt
   [[ "$3" == "extract_file" ]] && extract_file $2
 
 }
@@ -35,7 +35,7 @@ function git_clone () {
   [[ -d $CLONED_INFO ]] && rm -rf $CLONED_INTO
   git clone $1  
 #  echo "$AUTHOR" > $CLONED_INTO/ModAUTHOR.txt
-  echo "$1" > $CLONED_INTO/ModURL.txt 
+  echo "$1" > $MODS_DIR/$MODCOUNT/ModURL.txt
   cd $MODS_DIR
 }
 function dropbox_download () {
@@ -133,13 +133,17 @@ git_clone https://github.com/stedman420/S420s_Other_Modlets.git
 git_clone https://github.com/stedman420/Simple_UI_Modlets.git
 git_clone https://github.com/manux32/7d2d_A17_modlets.git
 git_clone https://github.com/Khelldon/7d2dModlets.git
-git_clone https://github.com/SnappyYoungGuns/SnappysModlets.git
-git_clone https://github.com/dorensnow/DSServer-MOD.git
+
+#git_clone https://github.com/SnappyYoungGuns/SnappysModlets.git
+gdrive_download 1ADm8EcJv942SOBjnvtX4EGoUE-gL6xbi SnappySolarPower.zip extract_file
+# This seems to be a collection of modlets someone put together for a server and not original content
+#git_clone https://github.com/dorensnow/DSServer-MOD.git
 git_clone https://github.com/rewtgr/7D2D_A17_Modlets.git
 git_clone https://github.com/LatheosMod/Craftworx-Modlets.git
 git_clone https://github.com/Satissis/7D2D_Modlets.git
 git_clone https://github.com/Elysium-81/A17Modlets.git
-git_clone https://github.com/NerdScurvy/7DTD-Modlets.git
+# This seems to be a collection of modleys someone put together for a server and not original content
+#git_clone https://github.com/NerdScurvy/7DTD-Modlets.git
 git_clone https://github.com/KhaineGB/KhainesModlets.git
 git_clone https://github.com/banhmr/7DaysToDie-Modlets.git
 git_clone https://github.com/n4bb12/7d2d-balance.git
@@ -187,7 +191,7 @@ dropbox_download "https://www.dropbox.com/s/tw6ykjv0isl55go/Climate%20change.rar
 wget_download "http://cdgroup.org/files/7dtd/Arrow-XbowConversion.zip" Arrow-XbowConversion.zip extract_file
 wget_download "http://cdgroup.org/files/7dtd/QualityDamageBonuses.zip" QualityDamageBonuses.zip extract_file
 wget_download "http://cdgroup.org/files/7dtd/QualityEffectivenessBonuses.zip" QualityEffectivenessBonuses.zip extract_file
-wget_download "http://cdgroup.org/files/7dtd/ReducedStaminaUsagebyQualityLevel.zip" ReducedStaminaUsagebyQualityLevel.zi extract_file
+wget_download "http://cdgroup.org/files/7dtd/ReducedStaminaUsagebyQualityLevel.zip" ReducedStaminaUsagebyQualityLevel.zip extract_file
 wget_download "http://cdgroup.org/files/7dtd/TerrainBasedMovementSpeed.zip" TerrainBasedMovementSpeed.zip extract_file
 
 #ServerTools
