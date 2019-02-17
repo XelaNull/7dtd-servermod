@@ -84,7 +84,7 @@ wget_download "https://confluence.catalysm.net/download/attachments/1114446/map.
 mv $MODCOUNT/map.js $MODS_DIR/1/Mods/Allocs_WebAndMapRendering/webserver/js
 
 # COMPOPACK
-dropbox_download "https://www.dropbox.com/s/4438pbzcwm69n0f/COMPOPACK_38%28for%20Alpha17.1_stable_b9%29.7z?dl=0" COMPOPACK.zip extract_file && \
+dropbox_download "https://www.dropbox.com/s/4438pbzcwm69n0f/COMPOPACK_38%28for%20Alpha17.1_stable_b9%29.7z?dl=0" COMPOPACK.7z extract_file && \
 #cp $MODS_DIR/$MODCOUNT/COMPOPACK*/data/Prefabs/* $INSTALL_DIR/Data/Prefabs/ 
 #&& yes | cp -f $MODS_DIR/$MODCOUNT/COMPOPACK*/data/Config/rwgmixer.xml $INSTALL_DIR/Data/Config/
 # https://7daystodie.com/forums/showthread.php?68123-ACP-Fishing
