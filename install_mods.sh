@@ -92,9 +92,6 @@ dropbox_download "https://www.dropbox.com/s/azdarhfitn91p2e/ACP%20Fishing-A17.ra
 dropbox_download "https://www.dropbox.com/s/v1eyx3qnrmr7f2p/Red%20Eagle%20LXIX%27s%20A17%20Modlet%20Collection.zip?dl=1" Red_Eagle_Modlets.zip extract_file # Red Eagle's Modlet Collection
 # https://7daystodie.com/forums/showthread.php?100868-Xajar-s-Mod-Collection
 dropbox_download "https://www.dropbox.com/s/3wdpql2hfwo05ee/xModlets%20A17.1%20B9.zip?dl=0" Xajar.zip extract_file # Xajar's Mod Collection
-# Telrics Archaeology
-dropbox_download "https://www.dropbox.com/s/ey5ebmy3dhsku9q/Telric%20Archaeology.zip?dl=0" Telric_Archaeology.zip extract_file
-dropbox_download "https://www.dropbox.com/s/a90inl25zwvftdf/Telrics%20Decorations.zip?dl=0" Telric_Decorations.zip extract_file
 #dropbox_download "https://7daystodie.com/forums/showthread.php?99228-Thumper-System&highlight=thumper"
 # https://7daystodie.com/forums/showthread.php?102559-DK-KS-Doors-blocks-and-others-A17
 dropbox_download "https://www.dropbox.com/s/cz0kf7go3sx72xs/EN_Doors%20And%20Blocks%20AMK.rar?dl=1" Doors_and_Blocks.rar extract_file
@@ -136,8 +133,8 @@ git_clone https://github.com/DukeW74/7DaysModlets.git
 git_clone https://github.com/totles/z4lab-7d2d-modlets.git
 git_clone https://github.com/Donovan522/donovan-7d2d-modlets.git
 git_clone https://github.com/Russiandood/RussianDoods-Sweet-and-Juicy-Modlets.git
-git_clone https://github.com/Sirillion/SMXmenu.git
-git_clone https://github.com/Sirillion/SMXhud.git
+#git_clone https://github.com/Sirillion/SMXmenu.git
+#git_clone https://github.com/Sirillion/SMXhud.git
 git_clone https://github.com/weelillad/7D2D-CloneModSchematics.git
 git_clone https://github.com/Sirillion/7DXMLfix.git
 git_clone https://github.com/Sixxgunz/7d2d_Modlets.git
@@ -149,6 +146,7 @@ git_clone https://github.com/DelStryker/Delmod-7D2D-A17-Mods.git
 git_clone https://github.com/guppycur/GuppyMods
 # https://7daystodie.com/forums/showthread.php?86145-HDHQ-Textures-Lighting-Environment
 git_clone https://gitlab.com/DUST2DEATH/hdhqmodlets.git
+git_clone https://github.com/Ragsy2145/Ragsy-Get-Real
 
 # This seems to be a collection of modlets someone put together for a server and not original content
 #git_clone https://github.com/dorensnow/DSServer-MOD.git
@@ -159,7 +157,7 @@ git_clone https://gitlab.com/DUST2DEATH/hdhqmodlets.git
 # wget_download "http://cryados.net/7dtd/A17/7DTD_origin_A17.1b9_v102.rar" Origin_UI.rar && unrar x -o+ Origin_UI.rar
 
 # https://7daystodie.com/forums/showthread.php?109893-Highope-s-Modlets
-wget_download "https://7d2dservers.com/7D/A17/1.0/HH_Nude_Players.zip" HH_Nude_Players.zip extract_file
+#wget_download "https://7d2dservers.com/7D/A17/1.0/HH_Nude_Players.zip" HH_Nude_Players.zip extract_file
 wget_download "https://7d2dservers.com/7D/A17/2.0/HH_35_New_Dyes_Workstation.zip" HH_35_New_Dyes_Workstation.zip extract_file
 wget_download "https://7d2dservers.com/7D/A17/1.0/HH_Starter_Items.zip" HH_Starter_Items.zip extract_file
 wget_download "https://7d2dservers.com/7D/A17/1.0/HH_All_Types_Of_Trees_Respawn.zip" HH_All_Types_Of_Trees_Respawn.zip extract_file
