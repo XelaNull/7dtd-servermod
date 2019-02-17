@@ -63,11 +63,12 @@ function extract_file () {
   cd $MODS_DIR/$MODCOUNT
   if [[ "$extension" == "rar" ]]; then unrar x -o+ $1
   elif [[ "$extension" == "zip" ]]; then unzip -o $1
+  elif [[ "$extension" == "7z"]]; then 7z x $1
   fi
   cd $MODS_DIR
 }
 
-[[ -f /etc/redhat-release ]] && yum install gcc-c++ git curl -y || apt-get install g++ git curl -y
+[[ -f /etc/redhat-release ]] && yum install gcc-c++ git curl -y || apt-get install g++ git curl p7zip-full -y
 
 # Install the Server & Mod-Management PHP Portal
 [[ ! -d $INSTALL_DIR/html ]] && mkdir $INSTALL_DIR/html
