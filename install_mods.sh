@@ -83,8 +83,9 @@ wget_download "https://confluence.catalysm.net/download/attachments/1114446/map.
 mv $MODCOUNT/map.js $MODS_DIR/1/Mods/Allocs_WebAndMapRendering/webserver/js
 
 # COMPOPACK
-dropbox_download "https://www.dropbox.com/s/bzn1pozsg9qae9l/COMPOPACK_35%28for%20Alpha17exp_b233%29.zip?dl=0" COMPOPACK.zip extract_file && \
-cp $MODS_DIR/$MODCOUNT/COMPOPACK*/data/Prefabs/* $INSTALL_DIR/Data/Prefabs/ && yes | cp -f $MODS_DIR/$MODCOUNT/COMPOPACK*/data/Config/rwgmixer.xml $INSTALL_DIR/Data/Config/
+dropbox_download "https://www.dropbox.com/s/4438pbzcwm69n0f/COMPOPACK_38%28for%20Alpha17.1_stable_b9%29.7z?dl=0" COMPOPACK.zip extract_file && \
+#cp $MODS_DIR/$MODCOUNT/COMPOPACK*/data/Prefabs/* $INSTALL_DIR/Data/Prefabs/ 
+#&& yes | cp -f $MODS_DIR/$MODCOUNT/COMPOPACK*/data/Config/rwgmixer.xml $INSTALL_DIR/Data/Config/
 # https://7daystodie.com/forums/showthread.php?68123-ACP-Fishing
 dropbox_download "https://www.dropbox.com/s/azdarhfitn91p2e/ACP%20Fishing-A17.rar?dl=0" ACP_Fishing.rar extract_file # ACP Fishing
 # https://7daystodie.com/forums/showthread.php?94219-Red-Eagle-LXIX-s-A17-Modlet-Collection-(UI-Blocks-Quests)
