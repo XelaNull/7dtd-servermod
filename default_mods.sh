@@ -1,6 +1,6 @@
 function remap () {
 rm -rf "$1"
-ln -s "`find /data/7DTD/Mods-Available -name \"ModInfo.xml\" | sed 's|/ModInfo.xml||g' | grep "$1" | head -1`"
+ln -s "`find /data/7DTD/Mods-Available -name \"ModInfo.xml\" | sed 's|/ModInfo.xml||g' | grep "$1" | tail -1`"
 }
 
 cd $INSTALL_DIR/Mods
@@ -31,8 +31,7 @@ remap Elysium_81-RWGBuildingTweaker
 remap FarmLifeMod
 remap FarmLifeMod_Icons
 remap FarmLifeMod_Models
-#remap Farming
-remap Firearms-1.2
+remap Farming
 remap GG2015_SniperTurretAnd50CalAmmo
 remap HDHQBiomeAlpineBaseline
 remap HDHQBiomeAlpineRedux
@@ -47,7 +46,7 @@ remap HDHQBiomeWasteRedux
 remap HDHQGuns
 remap HDHQItems
 remap HDHQParticles
-#remap HDHQPlants
+remap HDHQPlants
 remap HDHQPlants-Wind
 #remap HDHQVehicles
 remap HH_35_New_Dyes_Workstation
@@ -67,7 +66,6 @@ remap JaxTeller718_MoreStorageOptions
 remap JaxTeller718_NicerVultures
 remap JaxTeller718_ReducedZombieBlockDamage
 remap JaxTeller718_SlowerGamestages
-remap JaxTeller718_SpecificZombieLoot
 remap KHLogSpikes
 remap Khelldon-BabyBears
 remap Khelldon-BadCompanyUMAZeds
@@ -99,7 +97,7 @@ remap S420_TransportTruck
 remap ScriptingMod
 remap ServerTools
 remap Sol_BioFuel
-remap Sol_BladeTrapUpgrades
+
 remap Sol_BrassMining
 remap Sol_DailyTraderRestocks
 remap Sol_RabbitTraps
@@ -129,7 +127,7 @@ remap n4bb12_HarvestNuggets
 remap n4bb12_HarvestRock
 remap n4bb12_LootGuns
 remap n4bb12_LootJunk
-remap n4bb12_LootWeaponMods
+#remap n4bb12_LootWeaponMods
 remap n4bb12_TradePricing
 remap n4bb12_TradeVehiclesAndMore
 remap n4bb12_UICraftingQueue
