@@ -83,4 +83,4 @@ wget_download "http://cdgroup.org/files/7dtd/ReducedStaminaUsagebyQualityLevel.z
 wget_download "http://cdgroup.org/files/7dtd/TerrainBasedMovementSpeed.zip" TerrainBasedMovementSpeed.zip extract_file
 
 git_clone https://github.com/stasis78/7dtd-mods.git # stasis8 Modlets (FarmLifeMod)
-ln -s $MODCNT/7dtd-mods/FarmLifeMod_Models/Resources $MODCNT/7dtd-mods/FarmLifeMod/Resources
+ln -s $MODCOUNT/7dtd-mods/FarmLifeMod_Models/Resources $MODCOUNT/7dtd-mods/FarmLifeMod/Resources
