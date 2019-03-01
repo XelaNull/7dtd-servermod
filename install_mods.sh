@@ -62,7 +62,7 @@ function extract_file () {
   cd $MODS_DIR/$MODCOUNT
   if [[ "$extension" == "rar" ]]; then unrar x -o+ $1
   elif [[ "$extension" == "zip" ]]; then unzip -o $1
-  elif [[ "$extension" == "7z"]]; then 7z x $1
+  elif [[ "$extension" == "7z" ]]; then 7z x $1
   fi
   cd $MODS_DIR
 }
