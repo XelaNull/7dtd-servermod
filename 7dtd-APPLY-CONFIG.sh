@@ -21,8 +21,8 @@
 ./replace.sh $INSTALL_DIR/serverconfig.xml "3" "2" ZombieMoveNight
 ./replace.sh $INSTALL_DIR/serverconfig.xml "false" "true" BuildCreate
 #./replace.sh $INSTALL_DIR/serverconfig.xml "false" "true" ControlPanelEnabled
-./replace.sh $INSTALL_DIR/serverconfig.xml "CHANGEME" "sanity" ControlPanelPassword
-./replace.sh $INSTALL_DIR/serverconfig.xml 'value=""' 'value="sanity"' TelnetPassword
+./replace.sh $INSTALL_DIR/serverconfig.xml "CHANGEME" \"$7DTD_TELNET_PW\" ControlPanelPassword
+./replace.sh $INSTALL_DIR/serverconfig.xml 'value=""' "value=\"$7DTD_TELNET_PW\" TelnetPassword
 #./replace.sh $INSTALL_DIR/serverconfig.xml "100" "120" LootAbundance
 ./replace.sh $INSTALL_DIR/serverconfig.xml "30" "3" LootRespawnDays
 ./replace.sh $INSTALL_DIR/serverconfig.xml "72" "36" AirDropFrequency
