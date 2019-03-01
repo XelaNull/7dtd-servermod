@@ -20,8 +20,8 @@
 ./replace.sh $INSTALL_DIR/serverconfig.xml "2" "3" GameDifficulty
 ./replace.sh $INSTALL_DIR/serverconfig.xml "3" "2" ZombieMoveNight
 ./replace.sh $INSTALL_DIR/serverconfig.xml "false" "true" BuildCreate
-./replace.sh $INSTALL_DIR/serverconfig.xml "CHANGEME" \"$7DTD_TELNET_PW\" ControlPanelPassword
-./replace.sh $INSTALL_DIR/serverconfig.xml 'value=""' "value=\"$7DTD_TELNET_PW\"" TelnetPassword
+./replace.sh $INSTALL_DIR/serverconfig.xml "CHANGEME" \"$TELNET_PW\" ControlPanelPassword
+./replace.sh $INSTALL_DIR/serverconfig.xml 'value=""' "value=\"$TELNET_PW\"" TelnetPassword
 ./replace.sh $INSTALL_DIR/serverconfig.xml "72" "36" AirDropFrequency
 #./replace.sh $INSTALL_DIR/serverconfig.xml "60" "90" MaxSpawnedZombies
 #./replace.sh $INSTALL_DIR/serverconfig.xml "50" "80" MaxSpawnedAnimals
