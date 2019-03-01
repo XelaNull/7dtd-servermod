@@ -3,8 +3,6 @@
 export INSTALL_DIR=$1
 export MODS_DIR=$INSTALL_DIR/Mods-Available
 export USER=steam
-
-
 export MODCOUNT=0
 export MYDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
@@ -23,9 +21,10 @@ fi
 cp index.php $INSTALL_DIR/html/
 
 # Creating "Mods-Available" folder
-echo "Creating the Mods-Available folder to install the mods into" && (rm -rf $MODS_DIR; mkdir $MODS_DIR)
-
+echo "Creating the Mods-Available folder to install the mods into"
+rm -rf $MODS_DIR && mkdir $MODS_DIR
 cd $MODS_DIR
+
 # Sqlite support is broke in ServerTools at the moment, so we have to manually compile the Sqlite 
 # Interop Assembly package. Below is a one-liner compatible with Ubuntu & CentOS to accomplish this.
 if [[ ! -f /data/7DTD/7DaysToDieServer_Data/Mono/x86_64/libSQLite.Interop.so ]]; then
@@ -43,9 +42,9 @@ yes | cp -f $MODCOUNT/7dtd-auto-reveal-map/loop_start_autoreveal.sh / && chmod a
 ln -s $MODS_DIR/1/7dtd-auto-reveal-map $INSTALL_DIR/7dtd-auto-reveal-map
 
 # All oher Mods we should gather from a URL-downloaded file
-rm -rf modlet_list.cmd
+cd $INSTALL_DIR/7dtd-servermod && rm -rf install_mods.list.cmd
 wget https://raw.githubusercontent.com/XelaNull/7dtd-servermod/master/install_mods.list.cmd
-chmod a+x modlet_list.cmd && ./modlet_list.cmd
+chmod a+x install_mods.list.cmd && ./install_mods.list.cmd
 
 echo "Applying CUSTOM CONFIGS against application default files ${MYDIR}" && cd $MYDIR && chmod a+x *.sh && ./7dtd-APPLY-CONFIG.sh
 
