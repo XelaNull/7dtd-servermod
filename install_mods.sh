@@ -10,7 +10,9 @@ if [[ `whoami` != 'root' ]]; then
   echo "This script should be run as the root user.";
   exit;
 fi
-[[ -z $1 ]] && echo "Please provide your 7DTD game server installation directory as an argument to this script."
+if [[ -z $1 ]]; then 
+  echo "Please provide your 7DTD game server installation directory as an argument to this script."; exit 1;
+fi
 
 . install_mods.func.sh
 
