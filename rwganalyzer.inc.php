@@ -120,13 +120,21 @@ The $PERC_HTML most commonly duplicated prefabs (that are not a member of crop_F
 <tr><th>Prefab</th><th>Occurrences</td></tr>
 $tablerows
 </table><br>
-<br>
-<b>Summary of placed Prefab groups:</b><br>
+<br>";
+
+$totalPlacedCount=0; $totalUniqueCount=0;
+$results = $memory_db->query('SELECT GroupName, count(*) as count FROM Prefabs GROUP by GroupName ORDER by count desc');
+//$Group_Count=sizeof($results);
+$Group_Count=0;
+foreach ($results as $result) 
+  { 
+  $Group_Count++;  
+  }
+$rtn.="
+<b>Summary of placed Prefab groups ($Group_Count):</b><br>
 <table cellpadding=2 cellspacing=0>
 <tr><th>Prefab Group</th><th>Placed Prefabs</td><th>Unique Prefabs</th></tr>
 ";
-
-$totalPlacedCount=0; $totalUniqueCount=0;
 $results = $memory_db->query('SELECT GroupName, count(*) as count FROM Prefabs GROUP by GroupName ORDER by count desc');
 foreach ($results as $result) 
   { 
