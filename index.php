@@ -110,9 +110,9 @@ $left.="
 <hr>
 <center>
 <b>SERVER STATUS:</b><br>";
-$SERVER_PID=exec("ps awwux | grep 7DaysToDieServer | grep -v sudo | grep -v grep | awk '{print \$2}'");
-$PORT_DETAIL=exec("netstat -anptu | grep LISTEN | grep 26900");
-if($SERVER_PID!=''/* && $PORT_DETAIL!=''*/) $status="UP"; else $status="DOWN";
+$SERVER_PID=exec("ps awwux | grep 7DaysToDieServer | grep -v sudo | grep -v grep");
+//$PORT_DETAIL=exec("netstat -anptu | grep LISTEN | grep 26900");
+if(strlen($SERVER_PID)>2) $status="UP"; else $status="DOWN";
 
 $AUTOEXPLORE_PID=exec("ps awwux | grep -e expect -e 7dtd-run-after-initial-start | grep -v grep");
 if($AUTOEXPLORE_PID!='' && $AUTOEXPLORE_STATUS=='') $AUTOEXPLORE_STATUS='STARTED';
