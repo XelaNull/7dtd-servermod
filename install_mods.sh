@@ -49,5 +49,4 @@ wget https://raw.githubusercontent.com/XelaNull/7dtd-servermod/master/install_mo
 chmod a+x install_mods.list.cmd && ./install_mods.list.cmd
 
 echo "Applying CUSTOM CONFIGS against application default files ${MYDIR}" && cd $MYDIR && chmod a+x *.sh && ./7dtd-APPLY-CONFIG.sh
-
 chown $USER $INSTALL_DIR -R
