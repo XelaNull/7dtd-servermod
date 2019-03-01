@@ -8,6 +8,8 @@ mv $MODCOUNT/map.js $MODS_DIR/2/Mods/Allocs_WebAndMapRendering/webserver/js
 wget_download "https://github.com/dmustanger/7dtd-ServerTools/releases/download/12.7/7dtd-ServerTools-12.7.zip" ServerTools.zip extract_file
 git_clone https://github.com/XelaNull/COMPOPACK_Modlet.git
 cp $MODS_DIR/$MODCOUNT/COMPOPACK*/Data/Prefabs/* $INSTALL_DIR/Data/Prefabs/ 
+git_clone https://github.com/mjrice/7DaysModlets.git # Just Survive + Better RWG
+sed -i 's|<!-- <prefab rule="COMPOPACK"/>  -->|<prefab rule="COMPOPACK"/>|g' $MODS_DIR/$MODCOUNT/7DaysModlets/TheWildLand/Config/rwgmixer.xml
 # https://7daystodie.com/forums/showthread.php?68123-ACP-Fishing
 dropbox_download "https://www.dropbox.com/s/azdarhfitn91p2e/ACP%20Fishing-A17.rar?dl=0" ACP_Fishing.rar extract_file # ACP Fishing
 # https://7daystodie.com/forums/showthread.php?94219-Red-Eagle-LXIX-s-A17-Modlet-Collection-(UI-Blocks-Quests)
@@ -31,7 +33,6 @@ gdrive_download 1ADm8EcJv942SOBjnvtX4EGoUE-gL6xbi SnappySolarPower.zip extract_f
 # All other git cloned projects
 git_clone https://github.com/XelaNull/XelaNull-7dtd-Modlets # Tools of Citizenship
 git_clone https://github.com/djkrose/7DTD-ScriptingMod # ScriptingMod
-git_clone https://github.com/mjrice/7DaysModlets.git # Just Survive + Better RWG
 # git_clone https://github.com/Jayick/Firearms-1.2.git
 git_clone https://github.com/Jayick/Modlets.git
 git_clone https://github.com/Jayick/Farming.git
