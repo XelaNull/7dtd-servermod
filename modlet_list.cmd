@@ -1,3 +1,10 @@
+wget_download "http://botman.nz/Botman_Mods_A17.zip" Allocs_Bad_Company.zip extract_file
+wget_download "https://confluence.catalysm.net/download/attachments/1114182/CSMM_Patrons_9.1.1.zip?api=v2" CSMM_Patrons.zip extract_file
+wget_download "https://confluence.catalysm.net/download/attachments/1114446/map.js?version=1&modificationDate=1548000113141&api=v2&download=true" map.js && \
+mv $MODCOUNT/map.js $MODS_DIR/2/Mods/Allocs_WebAndMapRendering/webserver/js
+wget_download "https://github.com/dmustanger/7dtd-ServerTools/releases/download/12.7/7dtd-ServerTools-12.7.zip" ServerTools.zip extract_file
+git_clone https://github.com/XelaNull/COMPOPACK_Modlet.git
+cp $MODS_DIR/$MODCOUNT/COMPOPACK*/Data/Prefabs/* $INSTALL_DIR/Data/Prefabs/ 
 # https://7daystodie.com/forums/showthread.php?68123-ACP-Fishing
 dropbox_download "https://www.dropbox.com/s/azdarhfitn91p2e/ACP%20Fishing-A17.rar?dl=0" ACP_Fishing.rar extract_file # ACP Fishing
 # https://7daystodie.com/forums/showthread.php?94219-Red-Eagle-LXIX-s-A17-Modlet-Collection-(UI-Blocks-Quests)
@@ -55,7 +62,6 @@ git_clone https://github.com/guppycur/GuppyMods
 # https://7daystodie.com/forums/showthread.php?86145-HDHQ-Textures-Lighting-Environment
 git_clone https://gitlab.com/DUST2DEATH/hdhqmodlets.git
 git_clone https://github.com/Ragsy2145/Ragsy-Get-Real
-
 
 # Origin UI
 # https://7daystodie.com/forums/showthread.php?40023-Origin-UI-MOD
