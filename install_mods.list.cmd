@@ -35,8 +35,7 @@ git_clone https://github.com/mjrice/7DaysModlets.git # Just Survive + Better RWG
 # git_clone https://github.com/Jayick/Firearms-1.2.git
 git_clone https://github.com/Jayick/Modlets.git
 git_clone https://github.com/Jayick/Farming.git
-git_clone https://github.com/stasis78/7dtd-mods.git # stasis8 Modlets (FarmLifeMod)
-ln -s $MODCNT/7dtd-mods/FarmLifeMod_Models/Resources $MODCNT/7dtd-mods/FarmLifeMod/Resources
+
 git_clone https://github.com/stedman420/S420s_Other_Modlets.git
 git_clone https://github.com/stedman420/Simple_UI_Modlets.git
 git_clone https://github.com/manux32/7d2d_A17_modlets.git
@@ -82,3 +81,6 @@ wget_download "http://cdgroup.org/files/7dtd/QualityDamageBonuses.zip" QualityDa
 wget_download "http://cdgroup.org/files/7dtd/QualityEffectivenessBonuses.zip" QualityEffectivenessBonuses.zip extract_file
 wget_download "http://cdgroup.org/files/7dtd/ReducedStaminaUsagebyQualityLevel.zip" ReducedStaminaUsagebyQualityLevel.zip extract_file
 wget_download "http://cdgroup.org/files/7dtd/TerrainBasedMovementSpeed.zip" TerrainBasedMovementSpeed.zip extract_file
+
+git_clone https://github.com/stasis78/7dtd-mods.git # stasis8 Modlets (FarmLifeMod)
+ln -s $MODCNT/7dtd-mods/FarmLifeMod_Models/Resources $MODCNT/7dtd-mods/FarmLifeMod/Resources
