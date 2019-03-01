@@ -3,6 +3,22 @@
 include "modmgr.inc.php";
 include "rwganalyzer.inc.php";
 
+session_start();
+
+// Pull the server's telnet password.
+$server_password=exec("grep -i TelnetPassword /data/7DTD/serverconfig.xml | cut -d= -f3 | cut -d'\"' -f2");
+if($_POST['Password']!='' && $_POST['Submit']!='' && $server_password==$_POST['Password']) $_SESSION['password']=$_POST['Password']; 
+if($_SESSION['password']!=$server_password)
+  {
+  $main="<form method=post>
+  Password:<br>
+  <input type=password name=Password><br><br>
+  <input type=Submit value=Login name=Submit>
+  </form>";
+  mainscreen("<center><h3><img src=7dtd_logo.png width=260><br><b>SERVERMOD MANAGER</b></h3>".$main, '');
+  exit;
+  }
+
 /* FORM PROCESSING CODE */
 if(@$_POST['editFile']) { $_GET['do']='editFile'; @$_GET['editFile']=$_POST['editFile']; }
 if(@$_GET['editFile']) { $_GET['do']='editFile'; }
@@ -10,14 +26,14 @@ switch(@$_GET['do'])
 {
   default:
   case "modmgr":
-  $main="<br>Select the Modlets that you would like to enable by simple checking the box next to it. You will need to stop and start your server for any changes to this list to activate.<br><br>".SDD_ModMgr();
+  $main="<h3>Activate/Deactivate Modlets</h3>Select the Modlets that you would like to enable by simple checking the box next to it. You will need to stop and start your server for any changes to this list to activate.<br><br>".SDD_ModMgr();
   break;
   
   case "rwgAnalyzer":
-  $main="<br>".rwganalyzer();
+  $main="<h3>Random World Generator World Analyzer</h3>This page show you statistics about Worlds that your server has generated. It can help you better understand how prefabs were placed into a map before you even play it. Carefully examining this can help you determine if you have a seed and world generated that is worth playing.".rwganalyzer();
   //phpinfo();
   break;
-  
+
   case "editFile":
   if($_GET['editFile']!='../serverconfig.xml' && $_GET['editFile']!='../7dtd.log') $_GET['editFile']="../Data/Config/".$_GET['editFile'];
   $main="<form method=post action=\"?do=editFile&editFile=".$_GET['editFile']."\">
@@ -158,6 +174,9 @@ This will make the first player to login, an admin, then will teleport them repe
 if($AUTOEXPLORE_STATUS=='STOPPED') $left.="<a href=?autoexplore_control=START_AUTOEXPLORE>Start Auto-Explore</a><br>";
 else $left.="<a href=?autoexplore_control=STOP_AUTOEXPLORE>Stop Auto-Explore</a>";
 }
+
+
+$left.="<br><a target=_new href=http://$_SERVER[HTTP_HOST]:8082>7 Days to Die Map</a>";
 
 $left.="
 <hr><br>
