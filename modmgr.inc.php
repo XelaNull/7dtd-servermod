@@ -58,15 +58,28 @@ function disable_mod($INSTALL_DIR, $MOD_DIR_PATH)
 function SDD_ModMgr()
 {
   $INSTALL_DIR="/data/7DTD";
-  $MODS_DIR="$INSTALL_DIR/Mods-Available/";
+  $MODS_DIR="$INSTALL_DIR/Mods-Available";
   
   // Build array of ModInfo.xml instances installed
   $it = new RecursiveDirectoryIterator($MODS_DIR);
   foreach(new RecursiveIteratorIterator($it) as $file)
     { if(basename($file)=='ModInfo.xml') $MOD_ARRAY[]=$file; }
   
+  // Perform any Modlet Updating, so that we can display the outcome right here on the page
+  if($_GET['update']!='')
+    {
+      $SUBDIRNAME=exec("cat $MODS_DIR/$_GET[update]/ModURL.txt | rev | cut -d/ -f1 | rev | sed 's|.git||g'");
+      $GITDIRNAME="$MODS_DIR/$_GET[update]/$SUBDIRNAME";
+      $command="cd $GITDIRNAME && /usr/bin/git pull";
+      $command_output=exec($command);
+      $rtn="<table cellspacing=0 border=1><tr><td><b>Update Command output:</b><br><font size=2><i>$command_output</i></font></td></tr></table><br>";
+      
+    }
+  
+  
+  
   // Show as a table
-  $rtn="<table width=100% border=1 cellspacing=0 cellpadding=2>
+  $rtn.="<table width=100% border=1 cellspacing=0 cellpadding=2>
   <tr bgcolor=\"#ffb8ab\"><th>Name</th><th>Description</th><th>Author</th></tr>
   ";
   
@@ -80,9 +93,9 @@ function SDD_ModMgr()
     $FullModPath_ModInfoXML=$ModPath; 
     $FullModDir=str_replace('/ModInfo.xml','',$ModPath);
     $modInfo_Array=readModInfo($FullModPath_ModInfoXML);
-    $ShortModPath=str_replace($MODS_DIR,'',$ModPath); // Strip off the MODS_DIR path prefix
+    $ShortModPath=str_replace($MODS_DIR.'/','',$ModPath); // Strip off the MODS_DIR path prefix
     $modPath_Pieces=explode('/',$ShortModPath);
-    $SymLinkString=$MODS_DIR.dirname($ShortModPath);
+    $SymLinkString=$MODS_DIR.'/'.dirname($ShortModPath);
     if(is_mod_enabled('/data/7DTD',$SymLinkString)) 
       {
         $checkTXT='checked';
@@ -97,10 +110,9 @@ function SDD_ModMgr()
     else $Author="$modInfo_Array[Author]";
     
     // Collect the URL that we downloaded this mod from
-    @$URL=file_get_contents($MODS_DIR.$modPath_Pieces[0].'/ModURL.txt');
+    @$URL=file_get_contents($MODS_DIR.'/'.$modPath_Pieces[0].'/ModURL.txt');
     
-    //if($URL!='')$PkgNum="<a href=$URL>$modPath_Pieces[0]</a>";
-    //else $PkgNum=$modPath_Pieces[0];
+    $PkgNum=$modPath_Pieces[0];
     if($URL!='') $download_Link="<a href=$URL><img align=top height=20 src=direct-download.png></a>";
     else $download_Link='';
     
