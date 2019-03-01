@@ -20,7 +20,7 @@ fi
 
 # Install the Server & Mod-Management PHP Portal
 [[ ! -d $INSTALL_DIR/html ]] && mkdir $INSTALL_DIR/html
-cp index.php modmgr.inc.php rwganalyzer.inc.php 7dtd_logo.png direct-download.png $INSTALL_DIR/html/
+cp index.php modmgr.inc.php rwganalyzer.inc.php rwganalyzer.php 7dtd_logo.png direct-download.png $INSTALL_DIR/html/
 
 # Creating "Mods-Available" folder
 echo "Creating the Mods-Available folder to install the mods into"
