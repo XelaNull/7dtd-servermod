@@ -32,7 +32,7 @@ gdrive_download 1ADm8EcJv942SOBjnvtX4EGoUE-gL6xbi SnappySolarPower.zip extract_f
 git_clone https://github.com/XelaNull/XelaNull-7dtd-Modlets # Tools of Citizenship
 git_clone https://github.com/djkrose/7DTD-ScriptingMod # ScriptingMod
 git_clone https://github.com/mjrice/7DaysModlets.git # Just Survive + Better RWG
-git_clone https://github.com/Jayick/Firearms-1.2.git
+# git_clone https://github.com/Jayick/Firearms-1.2.git
 git_clone https://github.com/Jayick/Modlets.git
 git_clone https://github.com/Jayick/Farming.git
 git_clone https://github.com/stasis78/7dtd-mods.git # stasis8 Modlets (FarmLifeMod)
