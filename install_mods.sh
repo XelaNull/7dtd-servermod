@@ -38,7 +38,7 @@ fi
 
 # STATIC INSTALLS: Auto-Reveal, ServerTools, Allocs Bad Company, CSMM Patrons, CSMM Patrons Allocs Map Addon, COMPOPack
 #1: Auto-Reveal
-git_clone https://github.com/XelaNull/7dtd-auto-reveal-map.git && \
+git_clone https://github.com/XelaNull/7dtd-auto-reveal-map.git && chmod a+x 7dtd-auto-reveal-map/*.sh && \
 yes | cp -f $MODCOUNT/7dtd-auto-reveal-map/loop_start_autoreveal.sh / && chmod a+x /*.sh
 (/usr/bin/crontab -l 2>/dev/null; echo '* * * * * /loop_start_autoreveal.sh') | /usr/bin/crontab -
 ln -s $MODS_DIR/1/7dtd-auto-reveal-map $INSTALL_DIR/7dtd-auto-reveal-map
