@@ -28,6 +28,10 @@ if($_GET['WorldName']) { if(is_dir("$INSTALL_DIR/Data/Worlds/$_GET[WorldName]"))
 if($_SESSION['WorldName']=='') $_SESSION['WorldName']='Navezgane';
 //if($_GET['WorldName']=='') $_GET['WorldName']='Navezgane';
 $WORLD_NAME=$_SESSION['WorldName'];
+if($_GET['type']=='biomes') $_SESSION['type']='biomes';
+if($_GET['type']=='splat3') $_SESSION['type']='splat3';
+if($_GET['type']=='radiation') $_SESSION['type']='radiation';
+if($_SESSION['type']=='') $_SESSION['type']='biomes';
 
 // Automatically determine the world name
 $WORLD_DIR="$INSTALL_DIR/Data/Worlds/$WORLD_NAME";
@@ -54,7 +58,9 @@ foreach($lineArray as $linePiece)
 if($Name!='') 
   {
     try {    
-      $Group_Name=findPrefabGroup("$INSTALL_DIR/Data/Config/rwgmixer.xml", $Name);
+      $Group_Name=findPrefabGroup("$INSTALL_DIR/Mods/TheWildLand/Config/rwgmixer.xml", $Name);
+      if($Group_Name=='') $Group_Name=findPrefabGroup("$INSTALL_DIR/Data/Config/rwgmixer.xml", $Name);
+
       $memory_db->exec("INSERT INTO Prefabs (Name,GroupName,Position) VALUES ('$Name','$Group_Name','$Position')");
     } catch(PDOException $e) { $rtn.=$e->getMessage(); }
   }
@@ -68,7 +74,7 @@ $spawn_points=shell_exec("grep position \"$WORLD_DIR/spawnpoints.xml\" | wc -l")
 $water_bodies=shell_exec("grep pos \"$WORLD_DIR/water_info.xml\" | awk '{print $2}' | sort | uniq | wc -l");
 
 $rtn.="<form method=GET action=\"index.php\"><input type=hidden name=do value=rwgAnalyzer>";
-$WORLDHTML="<select name=WorldName onChange=\"this.form.submit();\">";
+$WORLDHTML="<select name=WorldName style=\"font-size: 24px\" onChange=\"this.form.submit();\">";
 
 if (is_dir("$INSTALL_DIR/Data/Worlds")) {
     if ($dh = opendir("$INSTALL_DIR/Data/Worlds")) {
@@ -86,8 +92,8 @@ $WORLDHTML.="
 </select>
 ";
 
-$rtn.="World: $WORLDHTML, an $MAP_SIZE map, created: $WORLD_CREATION_DATE</form><br>";
-$rtn.="There are ".number_format($unique_prefabs)." unique prefabs placed into the world ".number_format($total_Prefabs)." times.<br>";
+$rtn.="<br><table><tr><Td width=50% valign=top><font size=6>World: $WORLDHTML ($MAP_SIZE map)</font><br><font size=4>Created: $WORLD_CREATION_DATE</font></form><br><br>";
+$rtn.="There are <font size=5>".number_format($total_Prefabs)." total</font> and <font size=5>".number_format($unique_prefabs)." unique prefabs</font> placed into the world <br>";
 $rtn.="There are $spawn_points player spawn points and $traders traders.<br>";
 $rtn.="There are ".number_format($water_bodies)." water bodies.<br>";
 $rtn.="<br><br>";
@@ -131,7 +137,7 @@ foreach ($results as $result)
   $Group_Count++;  
   }
 $rtn.="
-<b>Summary of placed Prefab groups ($Group_Count):</b><br>
+<b>Summary of placed Prefab groups ($Group_Count):</b><br><br>
 <table cellpadding=2 cellspacing=0>
 <tr><th>Prefab Group</th><th>Placed Prefabs</td><th>Unique Prefabs</th></tr>
 ";
@@ -153,7 +159,11 @@ foreach ($results as $result)
     $rtn.="<tr><td><font size=2>".$result['GroupName']."</td><td><font size=2>".$placedCount." ($calcPerc%)</td><td><font size=2>$uniqPrefabCount (".ratio($placedCount,$uniqPrefabCount).")</td></tr>"; 
   }
 
-$rtn.="<tr><td align=right><b>Sub-Totals:</b></td><td>".number_format($totalPlacedCount)."</td><td>".number_format($totalUniqueCount)."</td></table>";
+$rtn.="<tr><td align=right><b>Sub-Totals:</b></td><td>".number_format($totalPlacedCount)."</td><td>".number_format($totalUniqueCount)."</td></table>
+
+</td><td valign=top align=center><a href=\"index.php?do=rwgAnalyzer&WorldName=$_GET[WorldName]&type=biomes\">biomes</a> | <a href=\"index.php?do=rwgAnalyzer&WorldName=$_GET[WorldName]&type=splat3\">splat3</a> | <a href=\"index.php?do=rwgAnalyzer&WorldName=$_GET[WorldName]&type=radiation\">radiation</a>
+<img width=800 src=\"index.php?do=image&type=$_SESSION[type]&WorldName=".$_GET['WorldName']."\">
+</td></tr></table>";
 
 return($rtn);
 }
