@@ -28,6 +28,19 @@ switch(@$_GET['do'])
   case "modmgr":
   $main="<h3>Activate/Deactivate Modlets</h3>Select the Modlets that you would like to enable by simple checking the box next to it. You will need to stop and start your server for any changes to this list to activate.<br><br>".SDD_ModMgr();
   break;
+
+  case "image":
+  $WorldName=str_replace("%20",' ',$_GET['WorldName']);
+  switch($_GET['type'])
+  {
+    case "radiation": $name="radiation"; break;
+    case "splat3": $name="splat3"; break;
+    default: $name="biomes"; break;
+  }
+  $im = imagecreatefrompng("/data/7DTD/Data/Worlds/$WorldName/$name.png");
+  header('Content-Type: image/png'); imagepng($im); imagedestroy($im);
+  exit;
+  break;
   
   case "rwgAnalyzer":
   $main="<h3>Random World Generator World Analyzer</h3>This page show you statistics about Worlds that your server has generated. It can help you better understand how prefabs were placed into a map before you even play it. Carefully examining this can help you determine if you have a seed and world generated that is worth playing.".rwganalyzer();
