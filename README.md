@@ -17,9 +17,22 @@ This project seeks to provide a suite of software and automation scripts to simp
   - Random-World-Generation analysis to inform you on the placement of prefabs within your generated random seed
   - Authentication utilizes 7DTD Telnet password, to keep the configuration simple
 
-- COMPO-PACK Prefabs installed, providing over 250 new buildings. Suggest using Modlet 'The Wild Land' to implement the Prefabs for placement during RWG.
+- COMPO-PACK 38 Prefabs installed, providing over 250 new buildings.
+
+- Custom RWG Modlet set:
+
+  - Very large biomes, in a circular map, with prairie lands in the surrounding border.
+  - Highly-Customized Prefab placement
+
+    - Wide varying city sizes from small to mega-city
+    - Stylized cities such as Asia Town
+    - Maximized for best chance at maximum unique and total prefab counts
 
 - Over 450 Modlets pre-installed for easy activation, including Alloc's Server Fixes, ServerTools, Bad Company, CSMM Patrons, The Wild Land, and many more
+
+More modlets will be added in the near future.
+
+*****Please be patient with us as this project is still under development.*****
 
 **Future features:**
 
