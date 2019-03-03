@@ -12,7 +12,7 @@ $memory_db = new PDO('sqlite::memory:');
 try {    
   // Creating a table
   $memory_db->exec(
-  "CREATE TABLE IF NOT EXISTS Prefabs (
+  "CREATE TABLE IF PREFABS DO NOT EXIST (
     id INTEGER PRIMARY KEY, 
     Name TEXT, 
     GroupName TEXT,
