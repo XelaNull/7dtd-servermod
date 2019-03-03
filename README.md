@@ -1,13 +1,29 @@
-7DTD-ServerMod
+# 7 Days To Die - ServerMod Manager
 
-This project seeks to provide a PHP webpage that can be used to manage a 7DTD Server.
+This project seeks to provide a suite of software and automation scripts to simplify the creation and management of a 7 Days to Die dedicated game server. The configuration is handled through a webpage that is provided by the Docker 7DTD projects:
 
-The website should provide the ability to:
+- docker-ubuntu-7dtd: <https://github.com/XelaNull/docker-ubuntu-7dtd>
+- docker-centos-7dtd: <https://github.com/XelaNull/docker-c7-7dtd>
 
-- Start, Stop, and Force Stop the 7DTD Server (implemented through scripts provided by my docker-ubuntu-7dtd & docker-centos-7dtd projects)
-- View the 7DTD Server Log (implemented, but basic)
-- Easy Check/Uncheck applying of Modlets (implemented, with no configuration file required)
+**Current features of this project:**
 
-The index.php manages files within your 7dtd game server installation so your webserver should be configured to run as the same user that will run your gameserver. If you start your journey with either docker-c7-7dtd or docker-ubuntu-7dtd you will end up with a fully usable 7DTD game server with an easy website to manage your enabled modlets.
+- [7DTD-ServerMod Manager](https://github.com/XelaNull/7dtd-servermod) : Web Interface to manage your server
 
-This project is currently configured for 58 packages providing 468 modlets.
+  - Start/Stop/Force Stop 7DTD Game server
+  - View Game server log
+  - Edit serverconfig.xml or any XML under Data/Config
+  - Easy activation of pre-installed modlets
+  - [Auto-Exploration of Map](https://github.com/XelaNull/7dtd-auto-reveal-map)
+  - Random-World-Generation analysis to inform you on the placement of prefabs within your generated random seed
+  - Authentication utilizes 7DTD Telnet password, to keep the configuration simple
+
+- COMPO-PACK Prefabs installed, providing over 250 new buildings. Suggest using Modlet 'The Wild Land' to implement the Prefabs for placement during RWG.
+
+- Over 450 Modlets pre-installed for easy activation, including Alloc's Server Fixes, ServerTools, Bad Company, CSMM Patrons, The Wild Land, and many more
+
+**Future features:**
+
+- Backup/Restore of Modlet selections & Game Saves
+- Better game update support, without full wipe
+- Update individual Modlet or all Modlets, from web interface
+- Improved log viewer
