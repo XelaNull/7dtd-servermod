@@ -21,18 +21,18 @@
 if [[ $4 != "" ]] && [[ $5 != "" ]]; then CMD="grep \"$5\" \"$1\" | grep \"$4\"";
 elif [[ $4 != "" ]]; then CMD="grep $4 $1"
 else 
-  echo "ERROR in Syntax! Missing Variable.\nSyntax: ./replace.sh full_file_path old_string new_string line_grep_string1 line_grep_string2(optional)\n";
+  echo "SYNTAX ERROR! Missing Variable.\nSyntax: ./replace.sh full_file_path old_string new_string line_grep_string1 line_grep_string2(optional)\n";
   exit
 fi
 
 # Run the grep command to find the line within the file we need to perform the sub_string replacement on
 found_line=`$CMD`;
 if [[ $found_line == "" ]]; then
-  echo "ERROR: Nothing found from grep command: [$CMD]\n";
+  echo "ERROR: Proper line remains unfound from grep command: [$CMD]\n";
   exit
 fi
 if [[ `echo "$found_line" | wc -l` > 1 ]]; then
-  echo "ERROR: Your grep string(s) matched more than one line: [$CMD]\n";
+  echo "ERROR: Your grep string(s) matched more than a single line: [$CMD]\n";
   exit
 fi
 
@@ -45,7 +45,7 @@ fi
 
 # Make sure that the delimeter we are using in the grep command next is not present in any of the strings
 if [[ $found_line == *"|"* ]] || [[ $new_line == *"|"* ]]; then
-  echo "ERROR: The grep delimeter character | is found within the line being replaced. Change the grep_delimeter character.";
+  echo "ERROR: The grep delimeter character | is found within the line being replaced. Change the grep_delimeter character IMEDIATELY.";
   exit
 fi
 
