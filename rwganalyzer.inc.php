@@ -26,6 +26,7 @@ try {
 //if($_POST['WorldName']) { if(is_dir("$INSTALL_DIR/Data/Worlds/$_POST[WorldName]")) $_SESSION['WorldName']=$_POST['WorldName']; }
 if($_GET['WorldName']) { if(is_dir("$INSTALL_DIR/Data/Worlds/$_GET[WorldName]")) $_SESSION['WorldName']=$_GET['WorldName']; }
 if($_SESSION['WorldName']=='') $_SESSION['WorldName']='Navezgane';
+if($_SESSION['WorldName']!='' && $_GET['WorldName']=='') $_GET['WorldName']=$_SESSION['WorldName'];
 //if($_GET['WorldName']=='') $_GET['WorldName']='Navezgane';
 $WORLD_NAME=$_SESSION['WorldName'];
 if($_GET['type']=='biomes') $_SESSION['type']='biomes';
@@ -58,7 +59,7 @@ foreach($lineArray as $linePiece)
 if($Name!='') 
   {
     try {    
-      $Group_Name=findPrefabGroup("$INSTALL_DIR/Mods/TheWildLand/Config/rwgmixer.xml", $Name);
+      $Group_Name=findPrefabGroup("$INSTALL_DIR/Mods/7dtd-RWG_prefab/Config/rwgmixer.xml", $Name);
       if($Group_Name=='') $Group_Name=findPrefabGroup("$INSTALL_DIR/Data/Config/rwgmixer.xml", $Name);
 
       $memory_db->exec("INSERT INTO Prefabs (Name,GroupName,Position) VALUES ('$Name','$Group_Name','$Position')");
@@ -80,9 +81,12 @@ if (is_dir("$INSTALL_DIR/Data/Worlds")) {
     if ($dh = opendir("$INSTALL_DIR/Data/Worlds")) {
         while (($file = readdir($dh)) !== false) {
           if($file=='.' || $file=='..' || is_file($file)) continue;
-          $WORLDHTML.="<option ";
-          if(basename($file)==$_SESSION['WorldName']) $WORLDHTML.='selected ';
-          $WORLDHTML.="value=\"".basename($file)."\">".basename($file)."</option>\n";
+          if(filesize("$INSTALL_DIR/Data/Worlds/".basename($file)."/prefabs.xml")>100)
+            {
+              $WORLDHTML.="<option ";
+              if(basename($file)==$_SESSION['WorldName']) $WORLDHTML.='selected ';
+              $WORLDHTML.="value=\"".basename($file)."\">".basename($file)."</option>\n";
+            }
         }
         closedir($dh);
     }
@@ -92,7 +96,11 @@ $WORLDHTML.="
 </select>
 ";
 
-$rtn.="<br><table><tr><Td width=50% valign=top><font size=6>World: $WORLDHTML ($MAP_SIZE map)</font><br><font size=4>Created: $WORLD_CREATION_DATE</font></form><br><br>";
+$SEED_NAME=file_get_contents("$WORLD_DIR/WorldName.txt");
+$mapPieces=explode('x',$MAP_SIZE); $MAP_SIZE=$mapPieces[0];
+
+$rtn.="<br><table><tr><Td width=50% valign=top><font size=5>World: $WORLDHTML</font><br>
+<font size=5>Seed Name: $SEED_NAME</font><br><font size=4>Map Size: $MAP_SIZE</font><br><font size=4>Created: $WORLD_CREATION_DATE</font></form><br><br>";
 $rtn.="There are <font size=5>".number_format($total_Prefabs)." total</font> and <font size=5>".number_format($unique_prefabs)." unique prefabs</font> placed into the world <br>";
 $rtn.="There are $spawn_points player spawn points and $traders traders.<br>";
 $rtn.="There are ".number_format($water_bodies)." water bodies.<br>";
