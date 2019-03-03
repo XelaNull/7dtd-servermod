@@ -45,7 +45,7 @@ fi
 
 # Make sure that the delimeter we are using in the grep command next is not present in any of the strings
 if [[ $found_line == *"|"* ]] || [[ $new_line == *"|"* ]]; then
-  echo "ERROR: The grep delimeter character | is found within the line being replaced. Change the grep_delimeter character IMEDIATELY.";
+  echo "ERROR: The grep delimeter character | is found within the line being replaced. Change the grep_delimeter character IMMEDIATELY.";
   exit
 fi
 
