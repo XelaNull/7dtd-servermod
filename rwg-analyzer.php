@@ -9,7 +9,7 @@ $memory_db = new PDO('sqlite::memory:');
 try {    
   // Creating a table
   $memory_db->exec(
-  "CREATE TABLE IF NOT EXISTS Prefabs (
+  "CREATE TABLE IF PREFABS DO NOT EXIST (
     id INTEGER PRIMARY KEY, 
     Name TEXT, 
     GroupName TEXT,
@@ -84,8 +84,8 @@ $WORLDHTML.="
 
 echo "World: $WORLDHTML, an $MAP_SIZE map, created: $WORLD_CREATION_DATE</form><br>";
 echo "There are ".number_format($unique_prefabs)." unique prefabs placed into the world ".number_format($total_Prefabs)." times.<br>";
-echo "There are $spawn_points player spawn points and $traders traders.<br>";
-echo "There are ".number_format($water_bodies)." water bodies.<br>";
+echo "There are $spawn_points player spawn points and $traders traders on map.<br>";
+echo "There are ".number_format($water_bodies)." bodies of water on map.<br>";
 echo "<br><br>";
 
 if($_GET['PERC_COUNT']>0 && $_GET['PERC_COUNT']<=100) $PERC_COUNT=$_GET['PERC_COUNT'];
