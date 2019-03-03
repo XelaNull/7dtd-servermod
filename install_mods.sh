@@ -7,11 +7,11 @@ export MODCOUNT=0
 export MYDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 if [[ `whoami` != 'root' ]]; then
-  echo "This script should be run as the root user.";
+  echo "THIS SCRIPT MUST RUN AS ROOT USER!";
   exit;
 fi
 if [[ -z $1 ]]; then 
-  echo "Please provide your 7DTD game server installation directory as an argument to this script."; exit 1;
+  echo "Please provide your 7DTD server directory as an argument to this script as it is imperative to the instructions that follow."; exit 1;
 fi
 
 . install_mods.func.sh
@@ -23,7 +23,7 @@ fi
 cp index.php modmgr.inc.php rwganalyzer.inc.php rwganalyzer.php 7dtd_logo.png direct-download.png $INSTALL_DIR/html/
 
 # Creating "Mods-Available" folder
-echo "Creating the Mods-Available folder to install the mods into"
+echo "Creating the Mods-Available for mod/modlet installation..."
 rm -rf $MODS_DIR && mkdir $MODS_DIR
 cd $MODS_DIR
 
@@ -48,5 +48,5 @@ cd $INSTALL_DIR/7dtd-servermod && rm -rf install_mods.list.cmd
 wget https://raw.githubusercontent.com/XelaNull/7dtd-servermod/master/install_mods.list.cmd
 chmod a+x install_mods.list.cmd && ./install_mods.list.cmd
 
-echo "Applying CUSTOM CONFIGS against application default files ${MYDIR}" && cd $MYDIR && chmod a+x *.sh && ./7dtd-APPLY-CONFIG.sh
+echo "Applying CUSTOM CONFIGS to combat default server files... ${MYDIR}" && cd $MYDIR && chmod a+x *.sh && ./7dtd-APPLY-CONFIG.sh
 chown $USER $INSTALL_DIR -R
