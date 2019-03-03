@@ -6,6 +6,7 @@ wget_download "https://confluence.catalysm.net/download/attachments/1114182/CSMM
 wget_download "https://confluence.catalysm.net/download/attachments/1114446/map.js?version=1&modificationDate=1548000113141&api=v2&download=true" map.js && \
 mv $MODCOUNT/map.js $MODS_DIR/2/Mods/Allocs_WebAndMapRendering/webserver/js
 git_clone https://github.com/ObsComp/7dtd-ServerTools-Latest-Release.git
+cp -r $MODCOUNT/7dtd-ServerTools-Latest-Release/7DaysToDieServer_Data $INSTALL_DIR/
 git_clone https://github.com/XelaNull/COMPOPACK_Modlet.git
 cp $MODS_DIR/$MODCOUNT/COMPOPACK*/Data/Prefabs/* $INSTALL_DIR/Data/Prefabs/ 
 git_clone https://github.com/mjrice/7DaysModlets.git # Just Survive + Better RWG
