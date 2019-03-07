@@ -74,15 +74,15 @@ git_clone https://github.com/Ragsy2145/Ragsy-Get-Real
 
 # https://7daystodie.com/forums/showthread.php?109893-Highope-s-Modlets
 #wget_download "https://7d2dservers.com/7D/A17/1.0/HH_Nude_Players.zip" HH_Nude_Players.zip extract_file
-wget_download "https://7d2dservers.com/7D/A17/2.0/HH_35_New_Dyes_Workstation.zip" HH_35_New_Dyes_Workstation.zip extract_file
-wget_download "https://7d2dservers.com/7D/A17/1.0/HH_Starter_Items.zip" HH_Starter_Items.zip extract_file
-wget_download "https://7d2dservers.com/7D/A17/1.0/HH_All_Types_Of_Trees_Respawn.zip" HH_All_Types_Of_Trees_Respawn.zip extract_file
+w#get_download "https://7d2dservers.com/7D/A17/2.0/HH_35_New_Dyes_Workstation.zip" HH_35_New_Dyes_Workstation.zip extract_file
+w#get_download "https://7d2dservers.com/7D/A17/1.0/HH_Starter_Items.zip" HH_Starter_Items.zip extract_file
+w#get_download "https://7d2dservers.com/7D/A17/1.0/HH_All_Types_Of_Trees_Respawn.zip" HH_All_Types_Of_Trees_Respawn.zip extract_file
 # https://7daystodie.com/forums/showthread.php?96954-Luc-s-Modlet-Collection-(Quality-Bonuses-better-stamina-terrain-mv-spd-etc-)
-wget_download "http://cdgroup.org/files/7dtd/Arrow-XbowConversion.zip" Arrow-XbowConversion.zip extract_file
-wget_download "http://cdgroup.org/files/7dtd/QualityDamageBonuses.zip" QualityDamageBonuses.zip extract_file
-wget_download "http://cdgroup.org/files/7dtd/QualityEffectivenessBonuses.zip" QualityEffectivenessBonuses.zip extract_file
-wget_download "http://cdgroup.org/files/7dtd/ReducedStaminaUsagebyQualityLevel.zip" ReducedStaminaUsagebyQualityLevel.zip extract_file
-wget_download "http://cdgroup.org/files/7dtd/TerrainBasedMovementSpeed.zip" TerrainBasedMovementSpeed.zip extract_file
+#wget_download "http://cdgroup.org/files/7dtd/Arrow-XbowConversion.zip" Arrow-XbowConversion.zip extract_file
+#wget_download "http://cdgroup.org/files/7dtd/QualityDamageBonuses.zip" QualityDamageBonuses.zip extract_file
+#wget_download "http://cdgroup.org/files/7dtd/QualityEffectivenessBonuses.zip" QualityEffectivenessBonuses.zip extract_file
+#wget_download "http://cdgroup.org/files/7dtd/ReducedStaminaUsagebyQualityLevel.zip" ReducedStaminaUsagebyQualityLevel.zip extract_file
+#wget_download "http://cdgroup.org/files/7dtd/TerrainBasedMovementSpeed.zip" TerrainBasedMovementSpeed.zip extract_file
 
 git_clone https://github.com/stasis78/7dtd-mods.git # stasis8 Modlets (FarmLifeMod)
 ln -s $MODCOUNT/7dtd-mods/FarmLifeMod_Models/Resources $MODCOUNT/7dtd-mods/FarmLifeMod/Resources
