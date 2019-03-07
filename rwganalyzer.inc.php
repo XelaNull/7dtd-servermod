@@ -2,6 +2,8 @@
 
 function rwganalyzer() 
 {
+global $memory_db;  
+  
 session_start();
 $INSTALL_DIR='/data/7DTD';
 $LOG_FILE="$INSTALL_DIR/7dtd.log";
@@ -16,8 +18,24 @@ try {
     id INTEGER PRIMARY KEY, 
     Name TEXT, 
     GroupName TEXT,
-    Position TEXT)"
+    Position TEXT,
+    Occurrences TEXT)"
   );
+  
+  $memory_db->exec(
+    "CREATE TABLE IF NOT EXISTS Groups (
+      id INTEGER PRIMARY KEY,
+      GroupName TEXT,
+      PlacedPrefabs TEXT,
+      UniqPrefabs TEXT)"
+    );
+
+  $memory_db->exec(
+    "CREATE TABLE IF NOT EXISTS PrefabGroups (
+      id INTEGER PRIMARY KEY,
+      Name TEXT,
+      GroupName TEXT)"
+    );
 
 } catch(PDOException $e) {
     $rtn.=$e->getMessage();
@@ -46,6 +64,8 @@ $RWG_PREFABS=shell_exec("cat \"$PREFAB_FILE\" | grep model");
 $FILE_PREFAB_ARRAY=explode("\n",$RWG_PREFABS);
 $total_Prefabs=count($FILE_PREFAB_ARRAY)-1;
 
+$prefabGroupArray=buildPrefabGroupArray("/data/7DTD/Data/Config/rwgmixer.xml","/data/7DTD/html/7dtd-RWG_prefab/Config/rwgmixer.xml");
+
 foreach($FILE_PREFAB_ARRAY as $line)
 {
 $lineArray=explode(' ',$line);
@@ -59,10 +79,9 @@ foreach($lineArray as $linePiece)
 if($Name!='') 
   {
     try {    
-      $Group_Name=findPrefabGroup("$INSTALL_DIR/Mods/7dtd-RWG_prefab/Config/rwgmixer.xml", $Name);
-      if($Group_Name=='') $Group_Name=findPrefabGroup("$INSTALL_DIR/Data/Config/rwgmixer.xml", $Name);
-
-      $memory_db->exec("INSERT INTO Prefabs (Name,GroupName,Position) VALUES ('$Name','$Group_Name','$Position')");
+      findPrefabGroup("$INSTALL_DIR/Mods/7dtd-RWG_prefab/Config/rwgmixer.xml", $Name, $memory_db);
+      findPrefabGroup("$INSTALL_DIR/Data/Config/rwgmixer.xml", $Name, $memory_db);
+      $memory_db->exec("INSERT INTO Prefabs (Name,Position) VALUES ('$Name','$Position')");
     } catch(PDOException $e) { $rtn.=$e->getMessage(); }
   }
 }
@@ -111,8 +130,13 @@ if($PERC_COUNT=='') $PERC_COUNT=15;
 
 
 $top_prefab_count=0;
-$results = $memory_db->query("SELECT Name, count(*) as count FROM Prefabs WHERE GroupName != 'crop_Feilds' GROUP by Name ORDER by count desc LIMIT $PERC_COUNT");
-foreach ($results as $result) { $tablerows.="<tr><td><font size=2>".$result['Name']."</td><td><font size=2>".$result['count']."</td></tr>"; $top_prefab_count+=$result['count']; }
+$results = $memory_db->query("SELECT Name, count(*) as count FROM Prefabs GROUP by Name ORDER by count desc LIMIT $PERC_COUNT");
+foreach ($results as $result) 
+  { 
+    $memory_db->exec("Update Prefabs SET Occurrences='".$result['count']."' WHERE Name='$Name'");
+    $tablerows.="<tr><td><font size=2>".$result['Name']."</td><td><font size=2>".$result['count']."</td></tr>"; 
+    $top_prefab_count+=$result['count']; 
+  }
 $TOP_PERC=round($top_prefab_count/$total_Prefabs*100,2);
 
 $PERC_HTML="<select name=PERC_COUNT onChange=\"this.form.submit();\">";
@@ -128,13 +152,19 @@ $PERC_HTML.="
 
 $rtn.="<form method=get action=\"index.php\">
 <input type=hidden name=do value=rwgAnalyzer> <input type=hidden name=WorldName value=\"".htmlentities($_GET[WorldName])."\">
-The $PERC_HTML most commonly duplicated prefabs (that are not a member of crop_Fields) account for $TOP_PERC% of the placed prefabs.<br>
+The $PERC_HTML most commonly duplicated prefabs account for $TOP_PERC% of the placed prefabs.<br>
 </form>
 <table cellpadding=2 cellspacing=0>
 <tr><th>Prefab</th><th>Occurrences</td></tr>
 $tablerows
 </table><br>
 <br>";
+
+
+
+
+
+
 
 $totalPlacedCount=0; $totalUniqueCount=0;
 $results = $memory_db->query('SELECT GroupName, count(*) as count FROM Prefabs GROUP by GroupName ORDER by count desc');
@@ -144,28 +174,44 @@ foreach ($results as $result)
   { 
   $Group_Count++;  
   }
-$rtn.="
-<b>Summary of placed Prefab groups ($Group_Count):</b><br><br>
-<table cellpadding=2 cellspacing=0>
-<tr><th>Prefab Group</th><th>Placed Prefabs</td><th>Unique Prefabs</th></tr>
-";
-$results = $memory_db->query('SELECT GroupName, count(*) as count FROM Prefabs GROUP by GroupName ORDER by count desc');
+
+
+
+// Loop through group names and take a count of how many times the prefab is placed and how many different unique prefabs are using this Group
+$results = $memory_db->query('SELECT GroupName FROM Groups ORDER by GroupName'); $Groupsfound=0;
 foreach ($results as $result) 
   { 
-    $placed_counts = $memory_db->query("SELECT count(*) as count FROM Prefabs WHERE GroupName='".$result['GroupName']."'");
+    $placedCount=0; $uniqPrefabCount=0;
+    $placed_counts = $memory_db->query("SELECT count(*) as count FROM PrefabGroups WHERE GroupName='".$result['GroupName']."'");
     foreach ($placed_counts as $placed_count) { $placedCount=$placed_count['count']; }
     $totalPlacedCount=$totalPlacedCount+$placedCount;
     
-    $groupsArray=array(); $uniqPrefabCount=0;
-    $uniq_counts = $memory_db->query("SELECT DISTINCT Name FROM Prefabs WHERE GroupName='".$result['GroupName']."'");
+    $uniq_counts = $memory_db->query("SELECT DISTINCT Name FROM PrefabGroups WHERE GroupName='".$result['GroupName']."'");
     foreach ($uniq_counts as $uniq_count) {$uniqPrefabCount++;}
     $totalUniqueCount=$totalUniqueCount+$uniqPrefabCount;
-
-    // Calculate Perc
-    $calcPerc=round($placedCount/$total_Prefabs*100,2);
     
-    $rtn.="<tr><td><font size=2>".$result['GroupName']."</td><td><font size=2>".$placedCount." ($calcPerc%)</td><td><font size=2>$uniqPrefabCount (".ratio($placedCount,$uniqPrefabCount).")</td></tr>"; 
+    if($placedCount>0 || $uniqPrefabCount>0)
+      {
+      $Groupsfound++;
+      $memory_db->query("UPDATE Groups SET PlacedPrefabs='$placedCount',UniqPrefabs='$uniqPrefabCount' WHERE GroupName='".$result['GroupName']."'");
+
+      }
   }
+
+$results = $memory_db->query('SELECT GroupName,PlacedPrefabs,UniqPrefabs FROM Groups WHERE PlacedPrefabs != \'\' ORDER by CAST(PlacedPrefabs as INTEGER) desc'); 
+foreach ($results as $result) 
+  {
+    $rows.="<tr><td><font size=2>".$result['GroupName']."</td><td><font size=2>".$result['PlacedPrefabs']."</td><td><font size=2>".$result['UniqPrefabs']."</td></tr>";
+
+  }
+  
+
+// Formulate a list of Prefab Group names
+$rtn.="
+<b>Summary of placed Prefab groups ($Groupsfound):</b><br><br>
+<table cellpadding=2 cellspacing=0>
+<tr><th>Prefab Group</th><th>Placed Prefabs</td><th>Unique Prefabs</th></tr>
+$rows";
 
 $rtn.="<tr><td align=right><b>Sub-Totals:</b></td><td>".number_format($totalPlacedCount)."</td><td>".number_format($totalUniqueCount)."</td></table>
 
@@ -173,21 +219,58 @@ $rtn.="<tr><td align=right><b>Sub-Totals:</b></td><td>".number_format($totalPlac
 <img width=800 src=\"index.php?do=image&type=$_SESSION[type]&WorldName=".$_GET['WorldName']."\">
 </td></tr></table>";
 
+
+
+
+
+////////////////////////
+
 return($rtn);
 }
 
-
-function findPrefabGroup($RWGMIXER_PATH, $PREFAB_NAME)
+function buildPrefabGroupArray($RWGMIXER_PATH, $RWGMIXER_PATH_ALT)
 {
+  global $memory_db;
+  exec('grep "prefab rule" "'.$RWGMIXER_PATH.'" | awk \'{print $2}\' | sort | uniq | cut -d\'"\' -f2', $array);
+  foreach($array as $entry) if($entry!='') $GroupArray[]=$entry;
+  exec('grep "prefab rule" "'.$RWGMIXER_PATH_ALT.'" | awk \'{print $2}\' | sort | uniq | cut -d\'"\' -f2', $array);
+  foreach($array as $entry) if($entry!='') $GroupArray[]=$entry;
+  $uniqArray=array_unique($GroupArray);
+  foreach($uniqArray as $GroupName)
+    {
+      try {
+      $memory_db->query("INSERT INTO Groups (GroupName) VALUES ('$GroupName')");
+      
+      } catch(PDOException $e) {
+          exit($e->getMessage());
+      }
+      
+    }
+  return(array_unique($GroupArray));  
+}
+
+
+
+
+
+function findPrefabGroup($RWGMIXER_PATH, $PREFAB_NAME, $memory_db)
+{
+  global $memory_db;
   $fileArray=file($RWGMIXER_PATH);
   foreach($fileArray as $line)
     {
-      if(strpos($line,'<prefab_rule name=')!==FALSE) $rule_name_line=$line;
-      if(strpos($line,$PREFAB_NAME)!==FALSE) break;
+      if(strpos($line,'<prefab_rule name=')!==FALSE) 
+        {
+          $nameArray=explode('"',$line);
+          $ruleName=str_replace('"','',$nameArray[1]);
+        }
+      if(strpos($line, $PREFAB_NAME)!==FALSE)
+        {
+          //echo "Found $PREFAB_NAME under $ruleName<br>";
+          $memory_db->query("INSERT INTO PrefabGroups (Name,GroupName) VALUES ('$PREFAB_NAME','$ruleName')");
+        }
     }
-  
-  $nameArray=explode('"',$rule_name_line);
-  return(str_replace('"','',$nameArray[1]));
+  return;
 }
 
 function ratio ($arg1, $arg2) { $diff=round($arg1/$arg2,1); return("$diff:1"); }

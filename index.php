@@ -8,11 +8,12 @@ session_start();
 // Pull the server's telnet password.
 $server_password=exec("grep -i TelnetPassword /data/7DTD/serverconfig.xml | cut -d= -f3 | cut -d'\"' -f2");
 if($_POST['Password']!='' && $_POST['Submit']!='' && $server_password==$_POST['Password']) $_SESSION['password']=$_POST['Password']; 
+// If there is not a PHP session saved with a good password in it to match the telnet password, then we should bomb out to the login page
 if($_SESSION['password']!=$server_password)
   {
   $main="<form method=post>
   Password:<br>
-  <input type=password name=Password><br><br>
+  <input type=password name=Password autofocus><br><br>
   <input type=Submit value=Login name=Submit>
   </form>";
   mainscreen("<center><h3><img src=7dtd_logo.png width=260><br><b>SERVERMOD MANAGER</b></h3>".$main, '');
@@ -21,31 +22,178 @@ if($_SESSION['password']!=$server_password)
 
 /* FORM PROCESSING CODE */
 if(@$_POST['editFile']) { $_GET['do']='editFile'; @$_GET['editFile']=$_POST['editFile']; }
-if(@$_GET['editFile']) { $_GET['do']='editFile'; }
+if(@$_GET['editFile']=='../7dtd.log' && $_GET['full']!=1) { $_GET['do']='logviewer'; }
+
+// Determine if the 7DTD Server is UP or DOWN
+$SERVER_PID=exec("ps awwux | grep 7DaysToDieServer | grep -v sudo | grep -v grep");
+if(strlen($SERVER_PID)>2) $status="UP"; else $status="DOWN";
+
+// Main Switch to allow this single page to act as multiple pages
 switch(@$_GET['do'])
 {
+  // The default page to show should be the Active/Deactivate Modlets page (aka the Mod Manager/ModMgr)
   default:
   case "modmgr":
-  $main="<h3>Activate/Deactivate Modlets</h3>Select the Modlets that you would like to enable by simple checking the box next to it. You will need to stop and start your server for any changes to this list to activate.<br><br>".SDD_ModMgr();
+  $main="<h3>Activate/Deactivate Modlets</h3>Select the Modlets that you would like to enable by simple checking the box next to it. 
+  You will need to stop and start your server for any changes to this list to activate.<br><br>".SDD_ModMgr();
   break;
+  
+  case "logviewer":
+  $main="<iframe src=index.php?do=logviewer-frame style=\"width:100%;height:100%\" frameborder=1></iframe>";
+  break;
+  
+  // A better log viewer
+  case "logviewer-frame":
+  echo '
+  <html>
+  <head>
+  <style type="text/css">
+  .textareaContainer {
+  width: auto;
+  height: auto;
+  padding: 20px;
+  margin-bottom: 30px;
+}
 
-  case "image":
-  $WorldName=str_replace("%20",' ',$_GET['WorldName']);
-  switch($_GET['type'])
-  {
-    case "radiation": $name="radiation"; break;
-    case "splat3": $name="splat3"; break;
-    default: $name="biomes"; break;
-  }
-  $im = imagecreatefrompng("/data/7DTD/Data/Worlds/$WorldName/$name.png");
-  header('Content-Type: image/png'); imagepng($im); imagedestroy($im);
+textarea {
+  width: 100%;
+}
+  .border-box {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+}
+
+.content-box {
+  box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  -o-box-sizing: content-box;
+}
+  </style>
+  
+  <script type="text/javascript">
+    window.onload=function(){
+    var textarea = document.getElementById(\'logviewer\');
+    AutoRefresh(1000);
+    setInterval(function(){ textarea.scrollTop = textarea.scrollHeight; }, 500);
+    }
+
+     <!-- 
+     function AutoRefresh( t ) { setTimeout("window.location.replace(\'http://'.$_SERVER['SERVER_NAME'].'/7dtd/index.php?do=logviewer-frame\')", t); } 
+     //-->
+  </script>
+
+  </head>
+  <body><b>Log Watcher:</b><br>';
+  
+  $log=file_get_contents('../7dtd.log');
+  $logLines=explode("\n",$log);
+  $totalLines=count($logLines);
+  for($z=($totalLines-48);$z<=$totalLines;$z++)
+    $newLog.=$logLines[$z]."\n";
+  $log=$newLog;
+  
+  echo '<Div class=textareaContainer>
+  <textarea rows=50 cols=120 name=logviewer id=logviewer class="border-box">'.$log.'</textarea>
+  * The full log can be viewed at: <A target=_MAIN href=index.php?do=editFile&editFile=../7dtd.log&full=1>Full 7dtd.log Log File</a></div>
+  ';
+
+  
+  echo '</body></html>';
   exit;
   break;
   
+  // The server status sub-page
+  case "serverstatus":
+  echo "
+  <html>
+  <head>
+    <script type = \"text/JavaScript\">
+           <!-- 
+           function AutoRefresh( t ) { setTimeout(\"window.location.replace('http://".$_SERVER['SERVER_NAME']."/7dtd/index.php?do=serverstatus')\", t); } 
+           //-->
+    </script>    
+  </head> 
+  <body onload = \"JavaScript:AutoRefresh(5000);\">  <center>
+  <font size=4><b>SERVER STATUS:</b><br>";
+    
+  if(@$_GET['control']!='')
+    {
+      if($_GET['control']=='STOP') { exec("/stop_7dtd.sh &"); $status="STOPPING<br><br>"; }
+      if($_GET['control']=='FORCE_STOP') { exec("echo 'force_stop' > /data/7DTD/server.expected_status"); $status="FORCEFUL STOPPING<br><Br>"; }
+      if($_GET['control']=='START') { exec("/start_7dtd.sh &"); $status="STARTING<br><br>"; }
+      echo $status;
+    }
+  else
+    {
+      echo $status."<br><br>";
+      switch($status)
+      {
+        case "UP":
+        echo "<a href=?do=serverstatus&control=STOP>STOP SERVER</a><br>";
+        echo "<a href=?do=serverstatus&control=FORCE_STOP>FORCE STOP SERVER</a>";
+        break;
+
+        case "DOWN":
+        echo "<a href=?do=serverstatus&control=START>START SERVER</a>";
+        break;
+      }
+    }
+  echo "<br>".date("H:i:s")."</font></center></body></html>"; exit;
+  break;
+  
+  case "autoexplore":
+  echo "
+  <html>
+  <head>
+    <script type = \"text/JavaScript\">
+           <!-- 
+           function AutoRefresh( t ) { setTimeout(\"window.location.replace('http://".$_SERVER['SERVER_NAME']."/7dtd/index.php?do=autoexplore')\", t); } 
+           //-->
+    </script>    
+  </head> 
+  <body onload = \"JavaScript:AutoRefresh(10000);\">  <center>";
+  $AUTOEXPLORE_PID=exec("ps awwux | grep -e expect -e 7dtd-run-after-initial-start | grep -v grep");
+  if($AUTOEXPLORE_PID!='' && $AUTOEXPLORE_STATUS=='') $AUTOEXPLORE_STATUS='STARTED';
+  else $AUTOEXPLORE_STATUS='STOPPED';
+  if(@$_GET['autoexplore_control']!='')
+    {
+      if($_GET['autoexplore_control']=='START_AUTOEXPLORE') { exec("rm -rf /startloop.touch; echo start > /data/7DTD/auto-reveal.status"); $AUTOEXPLORE_STATUS="STARTING"; }
+      if($_GET['autoexplore_control']=='STOP_AUTOEXPLORE') { exec("echo stop > /data/7DTD/auto-reveal.status"); $AUTOEXPLORE_STATUS="STOPPING"; }
+    }
+
+  if($status=='UP')
+  {
+  echo "<b>Auto-Exploration</b><Br>
+  This will make the first player to login, an admin, then will teleport them repeatedly to discover the entire map.<br>
+  <br>
+  <b>Status: </b> $AUTOEXPLORE_STATUS<br>
+  <br>";
+
+  if($AUTOEXPLORE_STATUS=='STOPPED') echo "<a href=http://".$_SERVER['SERVER_NAME']."/7dtd/index.php?do=autoexplore&autoexplore_control=START_AUTOEXPLORE>Start Auto-Explore</a><br>";
+  else echo "<a href=http://".$_SERVER['SERVER_NAME']."/7dtd/index.php?do=autoexplore&autoexplore_control=STOP_AUTOEXPLORE>Stop Auto-Explore</a>";
+  }
+  echo "<br><a target=_new href=http://$_SERVER[HTTP_HOST]:8082>7 Days to Die Map</a><hr>";
+  echo "</center></body></html>";
+  exit;
+  break;
+  
+  // Show the RWG Analyzer page
   case "rwgAnalyzer":
-  $main="<h3>Random World Generator World Analyzer</h3>This page show you statistics about Worlds that your server has generated. It can help you better understand how prefabs were placed into a map before you even play it. Carefully examining this can help you determine if you have a seed and world generated that is worth playing.".rwganalyzer();
+  $main="<h3>Random World Generator World Analyzer</h3>This page show you statistics about Worlds that your server has generated. 
+  It can help you better understand how prefabs were placed into a map before you even play it. Carefully examining this can help you 
+  determine if you have a seed and world generated that is worth playing.".rwganalyzer();
   //phpinfo();
   break;
+  // The PHP script that will read in and display the various game-generated World images
+  case "image":
+  $WorldName=str_replace("%20",' ',$_GET['WorldName']);
+  switch($_GET['type'])   { case "radiation": $name="radiation"; break; case "splat3": $name="splat3"; break; default: $name="biomes"; break; }
+  $im = imagecreatefrompng("/data/7DTD/Data/Worlds/$WorldName/$name.png"); header('Content-Type: image/png'); imagepng($im); imagedestroy($im); exit;
+  break;
+
 
   case "editFile":
   if($_GET['editFile']!='../serverconfig.xml' && $_GET['editFile']!='../7dtd.log') $_GET['editFile']="../Data/Config/".$_GET['editFile'];
@@ -58,17 +206,16 @@ switch(@$_GET['do'])
           fclose($fp);
           }
   $main.=file_get_contents($_GET['editFile']);
-  $main.="</textarea><br><input type=submit name=Submit value=\"SAVE FILE\" style=\"height: 30px;\"> <b>$_GET[editFile]</b>
+  $main.="</textarea><br>";
+  if($_GET['editFile']!='../7dtd.log')$main.="<input type=submit name=Submit value=\"SAVE FILE\" style=\"height: 30px;\"> ";
+  $main.="<b>$_GET[editFile]</b>
   </form>";
   break;
   
 }
 
 
-
-
-
-mainscreen(left_side(), $main);
+mainscreen(left_side($status), $main);
 
 /***********************************/
 /***********************************/
@@ -92,9 +239,7 @@ function mainscreen($left, $main)
     } 
     </style> 
   </head>
-  
 <body>
-  
   <div>
     <div style="width:20%; float:left;"><?php echo $left; ?></div>
     <div style="float:left;width:80%;"><?php echo $main; ?></div>
@@ -102,97 +247,39 @@ function mainscreen($left, $main)
 </body>
 </html>
 <?php
-
 }
 
-
-
-
-function left_side()
+function left_side($status)
 {
 $left="<center>
 <h3><img src=7dtd_logo.png width=260><br>
 <b>SERVERMOD MANAGER</b></h3>
 <p><a href=index.php?do=modmgr><b>Enable/Disable Modlets</b></a></p>
 <p><a href=index.php?do=rwgAnalyzer><b>RWG World Analyzer</b></a></p>
+<hr>
+<!-- Server Status Frame -->
+<iframe src=index.php?do=serverstatus width=280 height=150 frameborder=0></iframe>
 ";
 
-
-
-$left.="
-<hr>
-<center>
-<b>SERVER STATUS:</b><br>";
-$SERVER_PID=exec("ps awwux | grep 7DaysToDieServer | grep -v sudo | grep -v grep");
-//$PORT_DETAIL=exec("netstat -anptu | grep LISTEN | grep 26900");
-if(strlen($SERVER_PID)>2) $status="UP"; else $status="DOWN";
-
-$AUTOEXPLORE_PID=exec("ps awwux | grep -e expect -e 7dtd-run-after-initial-start | grep -v grep");
-if($AUTOEXPLORE_PID!='' && $AUTOEXPLORE_STATUS=='') $AUTOEXPLORE_STATUS='STARTED';
-else $AUTOEXPLORE_STATUS='STOPPED';
-if(@$_GET['autoexplore_control']!='')
-  {
-    if($_GET['autoexplore_control']=='START_AUTOEXPLORE') { exec("rm -rf /startloop.touch; echo start > /data/7DTD/auto-reveal.status"); $AUTOEXPLORE_STATUS="STARTING"; }
-    if($_GET['autoexplore_control']=='STOP_AUTOEXPLORE') { exec("echo stop > /data/7DTD/auto-reveal.status"); $AUTOEXPLORE_STATUS="STOPPING"; }
-  }
-  
-if(@$_GET['control']!='')
-  {
-    if($_GET['control']=='STOP') { exec("/stop_7dtd.sh &"); $status="STOPPING"; }
-    if($_GET['control']=='FORCE_STOP') { exec("echo 'force_stop' > /data/7DTD/server.expected_status"); $status="FORCEFUL STOPPING"; }
-    if($_GET['control']=='START') { exec("/start_7dtd.sh &"); $status="STARTING"; }
-    $left.=$status;
-  }
-else
-  {
-    $left.=$status."<br><br>";
-    switch($status)
-    {
-      case "UP":
-      $left.="<a href=?control=STOP>STOP SERVER</a><br>";
-      $left.="<a href=?control=FORCE_STOP>FORCE STOP SERVER</a>";
-      break;
-
-      case "DOWN":
-      $left.="<a href=?control=START>START SERVER</a>";
-      break;
-    }
-  }
-  // Starting dedicated server
-  // GameServer.Init successful
-
-  $it = new RecursiveDirectoryIterator('../Data/Config');
-  foreach(new RecursiveIteratorIterator($it) as $file) if(basename($file)!='.' && basename($file)!='..') $XML_ARRAY[]=$file;
-  $left.="<hr>
-  <b>serverconfig.xml & 7dtd.log:</b><br>
-  <form method=post><select size=2 onChange=\"this.form.submit();\" name=editFile>
-  <option value=\"../serverconfig.xml\">serverconfig.xml</option>
-  <option value=\"../7dtd.log\">7dtd.log</option>
-  </select>
-  </form>
-  <br>
-
-  <b>Data/Config XML Files:</b> <br><form method=post><select size=10 onChange=\"this.form.submit();\" name=editFile>";
-  foreach($XML_ARRAY as $file) $left.="<option value=".str_replace('../Data/Config/','',$file).">".str_replace('../Data/Config/','',$file)."</option>\n";
-  $left.="</select></form>";
-
-if($status=='UP')
-{
-$left.="<hr><b>Auto-Exploration</b><Br>
-This will make the first player to login, an admin, then will teleport them repeatedly to discover the entire map.<br>
-<br>
-<b>Status: </b> $AUTOEXPLORE_STATUS<br>
+// Display clickable links to serverconfig.xml and 7dtd.log
+$left.="<hr><h3><b>EDIT CONFIGS & VIEW LOG</b></h3>
+<b>serverconfig.xml & 7dtd.log:</b><br>
+<form method=post><select size=2 onChange=\"this.form.submit();\" name=editFile style=\"font-size: 12pt;\">
+<option value=\"../serverconfig.xml\">serverconfig.xml</option>
+<option value=\"../7dtd.log\">7dtd.log</option>
+</select>
+</form>
 <br>";
-
-if($AUTOEXPLORE_STATUS=='STOPPED') $left.="<a href=?autoexplore_control=START_AUTOEXPLORE>Start Auto-Explore</a><br>";
-else $left.="<a href=?autoexplore_control=STOP_AUTOEXPLORE>Stop Auto-Explore</a>";
-}
-
-
-$left.="<br><a target=_new href=http://$_SERVER[HTTP_HOST]:8082>7 Days to Die Map</a>";
-
-$left.="
-<hr><br>
+// Display all XML files to edit
+$it = new RecursiveDirectoryIterator('../Data/Config');
+foreach(new RecursiveIteratorIterator($it) as $file) if(basename($file)!='.' && basename($file)!='..') $XML_ARRAY[]=$file;
+$left.="<b>Data/Config XML Files:</b> <br><form method=post><select size=10 onChange=\"this.form.submit();\" name=editFile style=\"font-size: 12pt;\">";
+foreach($XML_ARRAY as $file) $left.="<option value=".str_replace('../Data/Config/','',$file).">".str_replace('../Data/Config/','',$file)."</option>\n";
+$left.="</select></form>";
+$left.="<hr>
+<!-- Auto-Explore Status Frame -->
+<iframe src=index.php?do=autoexplore width=285 height=230 frameborder=0></iframe>
+<br>
 <a href=index.php>refresh page</a>
 </center>";
 return $left;
