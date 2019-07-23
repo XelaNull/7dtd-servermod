@@ -115,11 +115,12 @@ function SDD_ModMgr()
     $PkgNum=$modPath_Pieces[0];
     if($URL!='') $download_Link="<td width=50 align=center><a href=$URL><img align=top height=38 src=zombie-hand.png alt=\"Download Modlet\"></a></td>";
     else $download_Link='<td>&nbsp;</td>';
-    
-    if(strpos($URL,'github')!==FALSE) $update_Link="<a href=\"index.php?update=$PkgNum\"><img align=top height=20 src=direct-download.png></a>";
-    else $update_Link="";
+            
     
     
+                 //ISSUE: Removed direct-download.png and following code due to conflictions on the server control panel (index.php)
+    
+   
     if($ALT_count==2) { $ALT_count=0; $ROW_COLOR=$ALTCOLOR; } else $ROW_COLOR='white';
     $rtn.="<tr bgcolor=$ROW_COLOR><form method=post><input type=hidden name=ModIDNum value=$modcnt>
     $download_Link
