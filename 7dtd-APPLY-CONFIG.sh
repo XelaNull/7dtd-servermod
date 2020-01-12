@@ -4,10 +4,10 @@
 #
 # Syntax: /replace.sh <file to modify> <old value> <new value> <search string #1 to find the correct line> <optional line search string #2>
 #
-./replace.sh $INSTALL_DIR/Data/Prefabs/skyscraper_01.xml downtown "commercial,downtown" Zoning
-./replace.sh $INSTALL_DIR/Data/Prefabs/skyscraper_02.xml downtown "commercial,downtown" Zoning
-./replace.sh $INSTALL_DIR/Data/Prefabs/skyscraper_03.xml downtown "commercial,downtown" Zoning
-./replace.sh $INSTALL_DIR/Data/Prefabs/skyscraper_04.xml downtown "commercial,downtown" Zoning
+#./replace.sh $INSTALL_DIR/Data/Prefabs/skyscraper_01.xml downtown "commercial,downtown" Zoning
+#./replace.sh $INSTALL_DIR/Data/Prefabs/skyscraper_02.xml downtown "commercial,downtown" Zoning
+#./replace.sh $INSTALL_DIR/Data/Prefabs/skyscraper_03.xml downtown "commercial,downtown" Zoning
+#./replace.sh $INSTALL_DIR/Data/Prefabs/skyscraper_04.xml downtown "commercial,downtown" Zoning
 
 ./replace.sh $INSTALL_DIR/serverconfig.xml "My Game Host" "SANITYS EDGE . MODDED . CUSTOM 8K MAP . EXPERIMENTAL" ServerName
 ./replace.sh $INSTALL_DIR/serverconfig.xml "8" "24" ServerMaxPlayerCount
@@ -27,3 +27,5 @@
 #./replace.sh $INSTALL_DIR/serverconfig.xml "50" "80" MaxSpawnedAnimals
 ./replace.sh $INSTALL_DIR/serverconfig.xml "true" "false" EACEnabled
 ./replace.sh $INSTALL_DIR/serverconfig.xml 'value=""' 'value="This is an experimental server. Do not play here."' ServerLoginConfirmationText
+
+./replace.sh $INSTALL_DIR/serverconfig.xml "" "SteamNetworking" ServerDisabledNetworkProtocols
