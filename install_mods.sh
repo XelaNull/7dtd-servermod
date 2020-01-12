@@ -20,7 +20,7 @@ fi
 
 # Install the Server & Mod-Management PHP Portal
 [[ ! -d $INSTALL_DIR/html ]] && mkdir $INSTALL_DIR/html
-cp index.php modmgr.inc.php rwganalyzer.inc.php rwganalyzer.php 7dtd_logo.png direct-download.png $INSTALL_DIR/html/
+cp index.php modmgr.inc.php rwganalyzer.inc.php rwganalyzer.inc.php 7dtd_logo.png direct-download.png $INSTALL_DIR/html/
 
 # Creating "Mods-Available" folder
 echo "Creating the Mods-Available for mod/modlet installation..."
@@ -38,7 +38,7 @@ cd $MODS_DIR
 
 # STATIC INSTALLS: Auto-Reveal, ServerTools, Allocs Bad Company, CSMM Patrons, CSMM Patrons Allocs Map Addon, COMPOPack
 #1: Auto-Reveal
-git_clone https://github.com/XelaNull/7dtd-auto-reveal-map.git && chmod a+x 7dtd-auto-reveal-map/*.sh && \
+git_clone https://github.com/XelaNull/7dtd-auto-reveal-map.git && chmod a+x $MODS_DIR/7dtd-auto-reveal-map/*.sh && \
 yes | cp -f $MODCOUNT/7dtd-auto-reveal-map/loop_start_autoreveal.sh / && chmod a+x /*.sh
 (/usr/bin/crontab -l 2>/dev/null; echo '* * * * * /loop_start_autoreveal.sh') | /usr/bin/crontab -
 ln -s $MODS_DIR/1/7dtd-auto-reveal-map $INSTALL_DIR/7dtd-auto-reveal-map
