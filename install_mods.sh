@@ -44,9 +44,10 @@ yes | cp -f $MODCOUNT/7dtd-auto-reveal-map/loop_start_autoreveal.sh / && chmod a
 ln -s $MODS_DIR/1/7dtd-auto-reveal-map $INSTALL_DIR/7dtd-auto-reveal-map
 
 # All oher Mods we should gather from a URL-downloaded file
-cd $INSTALL_DIR/7dtd-servermod && rm -rf install_mods.list.cmd
-wget https://raw.githubusercontent.com/XelaNull/7dtd-servermod/master/install_mods.list.cmd
-chmod a+x install_mods.list.cmd && ./install_mods.list.cmd
+#cd $INSTALL_DIR/7dtd-servermod && rm -rf install_mods.list.cmd
+#wget https://raw.githubusercontent.com/XelaNull/7dtd-servermod/master/install_mods.list.cmd
+#chmod a+x install_mods.list.cmd && ./install_mods.list.cmd
 
-echo "Applying CUSTOM CONFIGS to combat default server files... ${MYDIR}" && cd $MYDIR && chmod a+x *.sh && ./7dtd-APPLY-CONFIG.sh
+echo "Applying CUSTOM CONFIGS to combat default server files... ${MYDIR}" && cd $MYDIR && chmod a+x *.sh
+# ./7dtd-APPLY-CONFIG.sh
 chown $USER $INSTALL_DIR -R
