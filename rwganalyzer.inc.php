@@ -41,16 +41,16 @@ try {
     $rtn.=$e->getMessage();
 }
 
-//if($_POST['WorldName']) { if(is_dir("$INSTALL_DIR/Data/Worlds/$_POST[WorldName]")) $_SESSION['WorldName']=$_POST['WorldName']; }
-if($_GET['WorldName']) { if(is_dir("$INSTALL_DIR/Data/Worlds/$_GET[WorldName]")) $_SESSION['WorldName']=$_GET['WorldName']; }
-if($_SESSION['WorldName']=='') $_SESSION['WorldName']='Navezgane';
-if($_SESSION['WorldName']!='' && $_GET['WorldName']=='') $_GET['WorldName']=$_SESSION['WorldName'];
+//if($_POST['WorldName']) { if(is_dir("$INSTALL_DIR/Data/Worlds/$_POST[WorldName]")) $_COOKIE['WorldName']=$_POST['WorldName']; }
+if($_GET['WorldName']) { if(is_dir("$INSTALL_DIR/Data/Worlds/$_GET[WorldName]")) $_COOKIE['WorldName']=$_GET['WorldName']; }
+if($_COOKIE['WorldName']=='') $_COOKIE['WorldName']='Navezgane';
+if($_COOKIE['WorldName']!='' && $_GET['WorldName']=='') $_GET['WorldName']=$_COOKIE['WorldName'];
 //if($_GET['WorldName']=='') $_GET['WorldName']='Navezgane';
-$WORLD_NAME=$_SESSION['WorldName'];
-if($_GET['type']=='biomes') $_SESSION['type']='biomes';
-if($_GET['type']=='splat3') $_SESSION['type']='splat3';
-if($_GET['type']=='radiation') $_SESSION['type']='radiation';
-if($_SESSION['type']=='') $_SESSION['type']='biomes';
+$WORLD_NAME=$_COOKIE['WorldName'];
+if($_GET['type']=='biomes') $_COOKIE['type']='biomes';
+if($_GET['type']=='splat3') $_COOKIE['type']='splat3';
+if($_GET['type']=='radiation') $_COOKIE['type']='radiation';
+if($_COOKIE['type']=='') $_COOKIE['type']='biomes';
 
 // Automatically determine the world name
 $WORLD_DIR="$INSTALL_DIR/Data/Worlds/$WORLD_NAME";
@@ -103,7 +103,7 @@ if (is_dir("$INSTALL_DIR/Data/Worlds")) {
           if(filesize("$INSTALL_DIR/Data/Worlds/".basename($file)."/prefabs.xml")>100)
             {
               $WORLDHTML.="<option ";
-              if(basename($file)==$_SESSION['WorldName']) $WORLDHTML.='selected ';
+              if(basename($file)==$_COOKIE['WorldName']) $WORLDHTML.='selected ';
               $WORLDHTML.="value=\"".basename($file)."\">".basename($file)."</option>\n";
             }
         }
@@ -216,7 +216,7 @@ $rows";
 $rtn.="<tr><td align=right><b>Sub-Totals:</b></td><td>".number_format($totalPlacedCount)."</td><td>".number_format($totalUniqueCount)."</td></table>
 
 </td><td valign=top align=center><a href=\"index.php?do=rwgAnalyzer&WorldName=$_GET[WorldName]&type=biomes\">biomes</a> | <a href=\"index.php?do=rwgAnalyzer&WorldName=$_GET[WorldName]&type=splat3\">splat3</a> | <a href=\"index.php?do=rwgAnalyzer&WorldName=$_GET[WorldName]&type=radiation\">radiation</a>
-<img width=800 src=\"index.php?do=image&type=$_SESSION[type]&WorldName=".$_GET['WorldName']."\">
+<img width=800 src=\"index.php?do=image&type=$_COOKIE[type]&WorldName=".$_GET['WorldName']."\">
 </td></tr></table>";
 
 
