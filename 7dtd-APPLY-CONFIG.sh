@@ -16,7 +16,7 @@ export INSTALL_DIR=/data/7DTD
 ./replace.sh $INSTALL_DIR/serverconfig.xml "Navezgane" "RWG" GameWorld
 ./replace.sh $INSTALL_DIR/serverconfig.xml "My Game" "Sanitys Edge" GameName
 ./replace.sh $INSTALL_DIR/serverconfig.xml "asdf" "serenity19" 'name="WorldGenSeed"'
-./replace.sh $INSTALL_DIR/serverconfig.xml "4096" "8192" 'name="WorldGenSize"'
+#./replace.sh $INSTALL_DIR/serverconfig.xml "4096" "8192" 'name="WorldGenSize"'
 ./replace.sh $INSTALL_DIR/serverconfig.xml "2" "3" GameDifficulty
 ./replace.sh $INSTALL_DIR/serverconfig.xml "3" "2" ZombieMoveNight
 ./replace.sh $INSTALL_DIR/serverconfig.xml "false" "true" BuildCreate
