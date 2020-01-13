@@ -10,7 +10,7 @@ $server_password=exec("grep -i TelnetPassword /data/7DTD/serverconfig.xml | cut 
 if($_POST['Password']!='' && $_POST['Submit']!='' && $server_password==$_POST['Password']) 
   {
   $_SESSION['password']=$_POST['Password'];   
-  setcookie('password',$_POST['Password'])
+  setcookie('password',$_POST['Password']);
   }
 // If there is not a PHP session saved with a good password in it to match the telnet password, then we should bomb out to the login page
 if($_COOKIE['password']!=$server_password && $_SESSION['password']!=$server_password)
