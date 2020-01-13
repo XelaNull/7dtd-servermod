@@ -70,7 +70,7 @@ function SDD_ModMgr()
     {
       $SUBDIRNAME=exec("cat $MODS_DIR/$_GET[update]/ModURL.txt | rev | cut -d/ -f1 | rev | sed 's|.git||g'");
       $GITDIRNAME="$MODS_DIR/$_GET[update]/$SUBDIRNAME";
-      $command="cd $GITDIRNAME && /usr/bin/git pull && cp index.php modmgr.inc.php rwganalyzer.inc.php 7dtd_logo.png update.png zombie-hand.png /var/www/html";
+      $command="cd $GITDIRNAME && /usr/bin/git pull";
       $command_output=exec($command);
       $rtn="<table cellspacing=0 border=1><tr><td><b>Update Command output:</b><br><font size=2><i>$command_output</i></font></td></tr></table><br>";
       
@@ -79,7 +79,7 @@ function SDD_ModMgr()
   // Perform update of the ServerMod Manager
   if($_GET['smmupdate']==1)
     {
-      $command="cd $INSTALL_DIR/7dtd-servermod && /usr/bin/git pull"
+      $command="cd $INSTALL_DIR/7dtd-servermod && /usr/bin/git pull && cp index.php modmgr.inc.php rwganalyzer.inc.php 7dtd_logo.png update.png zombie-hand.png /var/www/html";
       $command_output=exec($command);
       $rtn="<table cellspacing=0 border=1><tr><td><b>Update Command output:</b><br><font size=2><i>$command_output</i></font></td></tr></table><br>";
     }
