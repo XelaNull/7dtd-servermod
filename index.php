@@ -287,7 +287,6 @@ $left.="<hr>
 <a href=index.php?smmupdate=1>Update ServerMod Manager</a><br>
 <br>
 <a href=index.php>refresh page</a>
-
 </center>";
 return $left;
 }
