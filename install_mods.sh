@@ -40,8 +40,12 @@ cd $MODS_DIR
 #1: Auto-Reveal
 git_clone https://github.com/XelaNull/7dtd-auto-reveal-map.git && chmod a+x $MODS_DIR/$MODCOUNT/7dtd-auto-reveal-map/*.sh && \
 yes | cp -f $MODCOUNT/7dtd-auto-reveal-map/loop_start_autoreveal.sh / && chmod a+x /*.sh
-(/usr/bin/crontab -l 2>/dev/null; echo '* * * * * /loop_start_autoreveal.sh') | /usr/bin/crontab -
 ln -s $MODS_DIR/1/7dtd-auto-reveal-map $INSTALL_DIR/7dtd-auto-reveal-map
+CRONTEST=`crontab -l | grep 'loop_start_autoreveal' | wc -l`
+if [[ $CRONTEST == "0" ]]; then
+  (/usr/bin/crontab -l 2>/dev/null; echo '* * * * * /loop_start_autoreveal.sh') | /usr/bin/crontab -
+fi
+
 
 # All oher Mods we should gather from a URL-downloaded file
 cd $INSTALL_DIR/7dtd-servermod && rm -rf install_mods.list.cmd
