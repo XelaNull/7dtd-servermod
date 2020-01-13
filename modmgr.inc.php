@@ -116,7 +116,7 @@ function SDD_ModMgr()
     if($URL!='') $download_Link="<td width=50 align=center><a href=$URL><img align=top height=38 src=zombie-hand.png alt=\"Download Modlet\"></a></td>";
     else $download_Link='<td>&nbsp;</td>';
     
-    if(strpos($URL,'github')!==FALSE) $update_Link="<a href=\"index.php?update=$PkgNum\"><img align=top height=20 src=direct-download.png></a>";
+    if(strpos($URL,'github')!==FALSE) $update_Link="<a href=\"index.php?update=$PkgNum\"><img align=top height=20 src=update.png ALT=\"Perform GIT Pull to UPDATE Modlet\"></a>";
     else $update_Link="";
     
     
