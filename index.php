@@ -284,7 +284,10 @@ $left.="<hr>
 <!-- Auto-Explore Status Frame -->
 <iframe src=index.php?do=autoexplore width=285 height=230 frameborder=0></iframe>
 <br>
+<a href=index.php?smmupdate=1>Update ServerMod Manager</a><br>
+<br>
 <a href=index.php>refresh page</a>
+
 </center>";
 return $left;
 }
