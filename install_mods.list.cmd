@@ -3,8 +3,11 @@
 
 # Last Updated: 2020-01-16
 
+# Bad Company Manager
 wget_download "https://github.com/7days2mod/BadCompanySM/releases/download/v4.2.1/BCManager.zip" BCManager.zip extract_file
+# Botman
 wget_download "http://botman.nz/Botman_Mods_A18.zip" Allocs_Bad_Company.zip extract_file
+# CSMM Patrons
 wget_download "https://github.com/Prisma501/CSMM-Patrons-Mod/archive/13.5.1.zip" CSMM_Patrons.zip extract_file #For A18.2
 wget_download "https://raw.githubusercontent.com/Prisma501/Allocs-Webmap-for-CPM/master/map.js" map.js && \
 mv $MODCOUNT/map.js $MODS_DIR/2/Mods/Allocs_WebAndMapRendering/webserver/js
