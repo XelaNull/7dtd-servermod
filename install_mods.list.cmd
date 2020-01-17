@@ -7,7 +7,8 @@ wget_download "http://botman.nz/Botman_Mods_A18.zip" Allocs_Bad_Company.zip extr
 wget_download "https://github.com/Prisma501/CSMM-Patrons-Mod/archive/13.6.zip" CSMM_Patrons.zip extract_file
 wget_download "https://raw.githubusercontent.com/Prisma501/Allocs-Webmap-for-CPM/master/map.js" map.js && \
 mv $MODCOUNT/map.js $MODS_DIR/2/Mods/Allocs_WebAndMapRendering/webserver/js
-git_clone https://github.com/ObsComp/7dtd-ServerTools-Latest-Release.git
+wget_download "https://github.com/dmustanger/7dtd-ServerTools/releases/download/18.2.4/7dtd-ServerTools-18.2.4.zip" ServerTools.zip extract_file
+#git_clone https://github.com/ObsComp/7dtd-ServerTools-Latest-Release.git
 cp -r $MODCOUNT/7dtd-ServerTools-Latest-Release/7DaysToDieServer_Data $INSTALL_DIR/
 git_clone https://github.com/XelaNull/COMPOPACK_Modlet.git
 cp $MODS_DIR/$MODCOUNT/COMPOPACK*/Data/Prefabs/* $INSTALL_DIR/Data/Prefabs/ 
