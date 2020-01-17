@@ -79,7 +79,7 @@ function SDD_ModMgr()
   // Perform update of the ServerMod Manager
   if($_GET['smmupdate']==1)
     {
-      $command="cd $INSTALL_DIR/7dtd-servermod && /usr/bin/git pull";
+      $command="rm -rf $INSTALL_DIR/7dtd-servermod && cd $INSTALL_DIR && git clone https://github.com/XelaNull/7dtd-servermod.git";
       $command_output=exec($command);
       $rtn="<table cellspacing=0 border=1><tr><td><b>Update Command output:</b><br><font size=2><i>$command_output</i></font></td></tr></table><br>";
     }
