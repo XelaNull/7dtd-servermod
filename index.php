@@ -200,7 +200,7 @@ textarea {
 
 
   case "editFile":
-  if($_GET['editFile']!='../serverconfig.xml' && $_GET['editFile']!='../7dtd.log') $_GET['editFile']="../Data/Config/".$_GET['editFile'];
+  if($_GET['editFile']!='../serverconfig.xml' && $_GET['editFile']!='../7dtd.log' && $_GET['editFile']!='../7dtd-servermod/install_mods.list.cmd') $_GET['editFile']="../Data/Config/".$_GET['editFile'];
   $main="<form method=post action=\"?do=editFile&editFile=".$_GET['editFile']."\">
    <textarea style=\"width:100%;height:90%\" name=fileContents>";
   if(@$_POST['Submit'] && $_POST['fileContents']!='')
@@ -271,6 +271,7 @@ $left.="<hr><h3><b>EDIT CONFIGS & VIEW LOG</b></h3>
 <form method=post><select size=2 onChange=\"this.form.submit();\" name=editFile style=\"font-size: 12pt;\">
 <option value=\"../serverconfig.xml\">serverconfig.xml</option>
 <option value=\"../7dtd.log\">7dtd.log</option>
+<option value=\"../7dtd-servermod/install_mods.list.cmd\">install_mods.list.cmd</option>
 </select>
 </form>
 <br>";
