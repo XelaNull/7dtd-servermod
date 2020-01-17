@@ -79,12 +79,16 @@ function SDD_ModMgr()
   // Perform update of the ServerMod Manager
   if($_GET['smmupdate']==1)
     {
-      $command="cd $INSTALL_DIR/7dtd-servermod && /usr/bin/git pull && cp index.php modmgr.inc.php rwganalyzer.inc.php 7dtd_logo.png update.png zombie-hand.png /var/www/html";
+      $command="cd $INSTALL_DIR/7dtd-servermod && /usr/bin/git pull";
       $command_output=exec($command);
       $rtn="<table cellspacing=0 border=1><tr><td><b>Update Command output:</b><br><font size=2><i>$command_output</i></font></td></tr></table><br>";
     }
-  
-
+  if($_GET['smmreset']==1)
+  {
+    $command="rm -rf $INSTALL_DIR/Mods/* $INSTALL_DIR/Mods-Available/*; cd $INSTALL_DIR/7dtd-servermod && ./install_mods.sh && ./default_mods.sh";
+    $command_output=exec($command);
+    $rtn="<table cellspacing=0 border=1><tr><td><b>Reset Command output:</b><br><font size=2><i>$command_output</i></font></td></tr></table><br>";
+  }
   // Show as a table
   $rtn.="<table width=100% border=1 cellspacing=0 cellpadding=2>
   <tr bgcolor=\"#ffb8ab\"><th>DL</th><th>Name</th><th>Description</th><th>Author</th></tr>

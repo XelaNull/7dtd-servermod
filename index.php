@@ -286,6 +286,7 @@ $left.="<hr>
 <iframe src=index.php?do=autoexplore width=285 height=230 frameborder=0></iframe>
 <br>
 <a href=index.php?smmupdate=1>Update ServerMod Manager</a><br>
+<a href=index.php?smmreset=1>Reset ServerMod Manager Mods</a><br>
 <br>
 <a href=index.php>refresh page</a>
 </center>";
