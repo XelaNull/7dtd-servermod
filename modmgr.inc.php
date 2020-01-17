@@ -85,7 +85,7 @@ function SDD_ModMgr()
     }
   if($_GET['smmreset']==1)
   {
-    $command="rm -rf $INSTALL_DIR/Mods/* $INSTALL_DIR/Mods-Available/*; cd $INSTALL_DIR/7dtd-servermod && ./install_mods.sh && ./default_mods.sh";
+    $command="rm -rf $INSTALL_DIR/Mods/* $INSTALL_DIR/Mods-Available/*; cd $INSTALL_DIR/7dtd-servermod && ./install_mods.sh $INSTALL_DIR && ./default_mods.sh";
     $command_output=exec($command);
     $rtn="<table cellspacing=0 border=1><tr><td><b>Reset Command output:</b><br><font size=2><i>$command_output</i></font></td></tr></table><br>";
   }
