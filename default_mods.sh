@@ -21,6 +21,7 @@ remap WhiteRiverToC_Kuvas_Armor
 remap WhiteRiverToC_Leons_SMG
 remap WhiteRiverToC_REQUIRED
 remap WhiteRiverToC_Tazas_Axe
+remap Origin_UI
 
 # remap "Arrow-Xbow Conversion"
 # remap BCManager

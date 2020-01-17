@@ -12,6 +12,7 @@ cd $MODCOUNT && cp -r 7DaysToDieServer_Data $INSTALL_DIR/ && tar zxvf ServerTool
 
 git_clone https://github.com/XelaNull/XelaNull-7dtd-Modlets # Tools of Citizenship
 git_clone https://github.com/XelaNull/7dtd-Origin-UI.git # Origin UI
+wget_download "https://github.com/7days2mod/BadCompanySM/releases/download/v4.2.1/BCManager.zip" BCManager.zip extract_file
 #git_clone https://github.com/XelaNull/COMPOPACK_Modlet.git
 #cp $MODS_DIR/$MODCOUNT/COMPOPACK*/Data/Prefabs/* $INSTALL_DIR/Data/Prefabs/ 
 #git_clone https://github.com/mjrice/7DaysModlets.git # Just Survive + Better RWG
