@@ -61,3 +61,4 @@ chmod a+x install_mods.list.cmd && ./install_mods.list.cmd
 echo "Applying CUSTOM CONFIGS to combat default server files... ${MYDIR}" && cd $MYDIR && chmod a+x *.sh
 ./7dtd-APPLY-CONFIG.sh
 chown $USER $INSTALL_DIR -R
+echo "Applying DEFAULT MODS" && ./default_mods.sh
