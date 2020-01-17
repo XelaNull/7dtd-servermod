@@ -6,10 +6,10 @@ export USER=steam
 export MODCOUNT=0
 export MYDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-if [[ `whoami` != 'root' ]]; then
-  echo "THIS SCRIPT MUST RUN AS ROOT USER!";
-  exit;
-fi
+# if [[ `whoami` != 'root' ]]; then
+#   echo "THIS SCRIPT MUST RUN AS ROOT USER!";
+#   exit;
+# fi
 if [[ -z $1 ]]; then 
   echo "Please provide your 7DTD server directory as an argument to this script as it is imperative to the instructions that follow."; exit 1;
 fi
