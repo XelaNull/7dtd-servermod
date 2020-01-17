@@ -3,16 +3,16 @@
 
 # Last Updated: 2020-01-16
 
+wget_download "https://github.com/7days2mod/BadCompanySM/releases/download/v4.2.1/BCManager.zip" BCManager.zip extract_file
 wget_download "http://botman.nz/Botman_Mods_A18.zip" Allocs_Bad_Company.zip extract_file
 wget_download "https://github.com/Prisma501/CSMM-Patrons-Mod/archive/13.5.1.zip" CSMM_Patrons.zip extract_file #For A18.2
 wget_download "https://raw.githubusercontent.com/Prisma501/Allocs-Webmap-for-CPM/master/map.js" map.js && \
 mv $MODCOUNT/map.js $MODS_DIR/2/Mods/Allocs_WebAndMapRendering/webserver/js
+git_clone https://github.com/XelaNull/7dtd-Origin-UI.git # Origin UI
 wget_download "https://github.com/dmustanger/7dtd-ServerTools/releases/download/18.2.4/7dtd-ServerTools-18.2.4.zip" ServerTools.zip extract_file
 cd $MODCOUNT && cp -r 7DaysToDieServer_Data $INSTALL_DIR/ && tar zxvf ServerTools-Linux-SQLite-Fix.tgz && cp ServerTools-Linux-SQLite-Fix/centos7/libSQLite.Interop.so ../../7DaysToDieServer_Data/Mono/x86_64/ && cd ..
+git_clone https://github.com/XelaNull/XelaNull-7dtd-Modlets # WhiteRiver Tools of Citizenship
 
-git_clone https://github.com/XelaNull/XelaNull-7dtd-Modlets # Tools of Citizenship
-git_clone https://github.com/XelaNull/7dtd-Origin-UI.git # Origin UI
-wget_download "https://github.com/7days2mod/BadCompanySM/releases/download/v4.2.1/BCManager.zip" BCManager.zip extract_file
 #git_clone https://github.com/XelaNull/COMPOPACK_Modlet.git
 #cp $MODS_DIR/$MODCOUNT/COMPOPACK*/Data/Prefabs/* $INSTALL_DIR/Data/Prefabs/ 
 #git_clone https://github.com/mjrice/7DaysModlets.git # Just Survive + Better RWG
