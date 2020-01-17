@@ -20,7 +20,12 @@ fi
 
 # Install the Server & Mod-Management PHP Portal
 [[ ! -d $INSTALL_DIR/html ]] && mkdir $INSTALL_DIR/html
-cp index.php modmgr.inc.php rwganalyzer.inc.php 7dtd_logo.png update.png zombie-hand.png $INSTALL_DIR/html/
+ln -s $INSTALL_DIR/7dtd-servermod/index.php $INSTALL_DIR/html/index.php
+ln -s $INSTALL_DIR/7dtd-servermod/modmgr.inc.php $INSTALL_DIR/html/modmgr.inc.php
+ln -s $INSTALL_DIR/7dtd-servermod/rwganalyzer.inc.php $INSTALL_DIR/html/rwganalyzer.inc.php
+ln -s $INSTALL_DIR/7dtd-servermod/7dtd_logo.png $INSTALL_DIR/html/7dtd_logo.png
+ln -s $INSTALL_DIR/7dtd-servermod/update.png $INSTALL_DIR/html/update.png
+ln -s $INSTALL_DIR/7dtd-servermod/zombie-hand.png $INSTALL_DIR/html/zombie-hand.png
 
 # Creating "Mods-Available" folder
 echo "Creating the Mods-Available for mod/modlet installation..."
