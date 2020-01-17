@@ -9,7 +9,7 @@ wget_download "https://raw.githubusercontent.com/Prisma501/Allocs-Webmap-for-CPM
 mv $MODCOUNT/map.js $MODS_DIR/2/Mods/Allocs_WebAndMapRendering/webserver/js
 wget_download "https://github.com/dmustanger/7dtd-ServerTools/releases/download/18.2.4/7dtd-ServerTools-18.2.4.zip" ServerTools.zip extract_file
 #git_clone https://github.com/ObsComp/7dtd-ServerTools-Latest-Release.git
-cp -r $MODCOUNT/7dtd-ServerTools-Latest-Release/7DaysToDieServer_Data $INSTALL_DIR/
+cp -r $MODCOUNT/7DaysToDieServer_Data $INSTALL_DIR/
 git_clone https://github.com/XelaNull/COMPOPACK_Modlet.git
 cp $MODS_DIR/$MODCOUNT/COMPOPACK*/Data/Prefabs/* $INSTALL_DIR/Data/Prefabs/ 
 #git_clone https://github.com/mjrice/7DaysModlets.git # Just Survive + Better RWG
