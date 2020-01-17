@@ -268,7 +268,7 @@ $left="<center>
 // Display clickable links to serverconfig.xml and 7dtd.log
 $left.="<hr><h3><b>EDIT CONFIGS & VIEW LOG</b></h3>
 <b>serverconfig.xml & 7dtd.log:</b><br>
-<form method=post><select size=2 onChange=\"this.form.submit();\" name=editFile style=\"font-size: 12pt;\">
+<form method=post><select size=3 onChange=\"this.form.submit();\" name=editFile style=\"font-size: 12pt;\">
 <option value=\"../serverconfig.xml\">serverconfig.xml</option>
 <option value=\"../7dtd.log\">7dtd.log</option>
 <option value=\"../7dtd-servermod/install_mods.list.cmd\">install_mods.list.cmd</option>
