@@ -27,16 +27,6 @@ echo "Creating the Mods-Available for mod/modlet installation..."
 rm -rf $MODS_DIR && mkdir $MODS_DIR
 cd $MODS_DIR
 
-# Sqlite support is broke in ServerTools at the moment, so we have to manually compile the Sqlite 
-# Interop Assembly package. Below is a one-liner compatible with Ubuntu & CentOS to accomplish this.
-if [[ ! -f /data/7DTD/7DaysToDieServer_Data/MonoBleedingEdge/x86_64/libSQLite.Interop.so ]]; then
-  rm -rf System.Data.SQLite $INSTALL_DIR/7DaysToDieServer_Data/MonoBleedingEdge/x86_64/libSQLite.Interop.so && git clone https://github.com/moneymanagerex/System.Data.SQLite && \
-  cd System.Data.SQLite/Setup && \
-  /bin/bash ./compile-interop-assembly-release.sh && \
-  ln -s $MODS_DIR/System.Data.SQLite/SQLite.Interop/src/generic/libSQLite.Interop.so $INSTALL_DIR/7DaysToDieServer_Data/MonoBleedingEdge/x86_64/libSQLite.Interop.so && \
-  echo "yes" && cd ../.. && echo "./7DaysToDieServer_Data/MonoBleedingEdge/x86_64/libSQLite.Interop.so Sym-Linked to this custom compiled file";
-fi
-
 # STATIC INSTALLS: Auto-Reveal, ServerTools, Allocs Bad Company, CSMM Patrons, CSMM Patrons Allocs Map Addon, COMPOPack
 #1: Auto-Reveal
 git_clone https://github.com/XelaNull/7dtd-auto-reveal-map.git && chmod a+x $MODS_DIR/$MODCOUNT/7dtd-auto-reveal-map/*.sh && \
@@ -52,6 +42,16 @@ fi
 cd $INSTALL_DIR/7dtd-servermod && rm -rf install_mods.list.cmd
 wget https://raw.githubusercontent.com/XelaNull/7dtd-servermod/master/install_mods.list.cmd
 chmod a+x install_mods.list.cmd && ./install_mods.list.cmd
+
+# Sqlite support is broke in ServerTools at the moment, so we have to manually compile the Sqlite 
+# Interop Assembly package. Below is a one-liner compatible with Ubuntu & CentOS to accomplish this.
+if [[ ! -f /data/7DTD/7DaysToDieServer_Data/MonoBleedingEdge/x86_64/libSQLite.Interop.so ]]; then
+  rm -rf System.Data.SQLite $INSTALL_DIR/7DaysToDieServer_Data/Mono/x86_64/libSQLite.Interop.so && git clone https://github.com/moneymanagerex/System.Data.SQLite && \
+  cd System.Data.SQLite/Setup && \
+  /bin/bash ./compile-interop-assembly-release.sh && \
+  ln -s $MODS_DIR/System.Data.SQLite/SQLite.Interop/src/generic/libSQLite.Interop.so $INSTALL_DIR/7DaysToDieServer_Data/Mono/x86_64/libSQLite.Interop.so && \
+  echo "yes" && cd ../.. && echo "./7DaysToDieServer_Data/Mono/x86_64/libSQLite.Interop.so Sym-Linked to this custom compiled file";
+fi
 
 echo "Applying CUSTOM CONFIGS to combat default server files... ${MYDIR}" && cd $MYDIR && chmod a+x *.sh
 ./7dtd-APPLY-CONFIG.sh
