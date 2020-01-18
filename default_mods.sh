@@ -22,17 +22,29 @@ remap WhiteRiverToC_Leons_SMG
 remap WhiteRiverToC_REQUIRED
 remap WhiteRiverToC_Tazas_Axe
 remap Origin_UI
+remap "Bad Company Manager"
+remap RELXIX_Blocks_PickThisUp
+remap RELXIX_UI_CompassCenterHighlight
+remap RELXIX_UI_CompassStats
+remap REXIX_UI_MenuTime
+remap RELXIX_UI_ToolbeltSlotNumbers
+remap RELXIX_UI_Tweaks
+remap RELXIX_UI_ZDP2_ZombieKillsDeaths
+remap RELXIX_UI_ZeeNoPlayerXPBar
+remap RELXIX_UI_PlayerStats
+remap RELXIX_UI_MenuStats
+remap RELXIX_UI_ZeeNoPlayerStatNumbers
+# remap Delmod_Archetypes
+# remap Delmod_Combiner
+
 
 # remap "Arrow-Xbow Conversion"
-# remap BCManager
 # remap BH_TrapMod
 # remap "Barrels and Alcohol"
 # remap BetterHoeMod
 # remap "Colors Everywhere"
 # remap Craftworx-ScrapTools
 # remap Craftworx-paraffin
-# remap Delmod_Archetypes
-# remap Delmod_Combiner
 # remap Duke_FuelLog
 # remap Duke_MoreBrass
 # remap "EN_Doors And Blocks AMK"
@@ -89,15 +101,6 @@ remap Origin_UI
 # remap Makabriel_RealisticSafes
 # remap PolishedSteelMod
 # remap "Quality Damage Bonuses"
-# remap RELXIX_Blocks_PickThisUp
-# remap RELXIX_UI_CompassCenterHighlight
-# remap RELXIX_UI_CompassStats
-# remap RELXIX_UI_MenuStats
-# remap RELXIX_UI_PlayerStats
-# remap RELXIX_UI_ToolbeltSlotNumbers
-# remap RELXIX_UI_Tweaks
-# remap RELXIX_UI_ZDP2_ZombieKillsDeaths
-# remap RELXIX_UI_ZeeNoPlayerXPBar
 # remap RussianDoodMSP
 # remap S420_Acid
 # remap S420_BrassCoins
@@ -110,7 +113,6 @@ remap Origin_UI
 # remap S420_TransportTruck
 # remap ScriptingMod
 # remap Sol_BioFuel
-# 
 # remap Sol_BrassMining
 # remap Sol_DailyTraderRestocks
 # remap Sol_RabbitTraps
