@@ -61,6 +61,7 @@ switch(@$_GET['do'])
 
 textarea {
   width: 100%;
+  border: 0px;
 }
   .border-box {
   box-sizing: border-box;
@@ -100,7 +101,7 @@ textarea {
   $log=$newLog;
   
   echo '<Div class=textareaContainer>
-  <textarea rows=50 cols=120 name=logviewer id=logviewer class="border-box">'.$log.'</textarea>
+  <textarea rows=50 cols=140 name=logviewer id=logviewer class="border-box">'.$log.'</textarea>
   * The full log can be viewed at: <A target=_MAIN href=index.php?do=editFile&editFile=../7dtd.log&full=1>Full 7dtd.log Log File</a></div>
   ';
 

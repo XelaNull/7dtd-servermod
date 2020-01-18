@@ -25,17 +25,23 @@ remap Origin_UI
 remap "Bad Company Manager"
 remap RELXIX_Blocks_PickThisUp
 remap RELXIX_UI_CompassCenterHighlight
-# remap RELXIX_UI_CompassStats
-# remap REXIX_UI_MenuTime
+#remap RELXIX_UI_CompassStats
+remap REXIX_UI_MenuTime
 remap RELXIX_UI_ToolbeltSlotNumbers
-# remap RELXIX_UI_Tweaks
-remap RELXIX_UI_ZDP2_ZombieKillsDeaths
+remap RELXIX_UI_Tweaks
+remap RELXIX_UI_ZDP2_ZombieKillsDeathsPlayerKills
+remap Delmod_Start_Packs
+remap Delmod_Stack_Sizes
+remap Delmod_Recipes_Fix
+remap Delmod_Pack_And_Store
+remap Delmod_Jail_Door
+
 # remap RELXIX_UI_ZeeNoPlayerXPBar
 # remap RELXIX_UI_PlayerStats
 # remap RELXIX_UI_MenuStats
 # remap RELXIX_UI_ZeeNoPlayerStatNumbers
-# remap Delmod_Archetypes
-# remap Delmod_Combiner
+remap Delmod_Archetypes
+remap Delmod_Combiner
 
 
 # remap "Arrow-Xbow Conversion"
