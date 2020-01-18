@@ -22,7 +22,7 @@ remap WhiteRiverToC_Leons_SMG
 remap WhiteRiverToC_REQUIRED
 remap WhiteRiverToC_Tazas_Axe
 remap Origin_UI
-remap "Bad Company Manager"
+remap BCManager
 remap RELXIX_Blocks_PickThisUp
 remap RELXIX_UI_CompassCenterHighlight
 #remap RELXIX_UI_CompassStats
