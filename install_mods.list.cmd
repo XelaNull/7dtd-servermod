@@ -50,13 +50,13 @@ git_clone https://github.com/XelaNull/XelaNull-7dtd-Modlets # WhiteRiver Tools o
 #git_clone https://github.com/stedman420/S420s_Other_Modlets.git
 #git_clone https://github.com/stedman420/Simple_UI_Modlets.git
 #git_clone https://github.com/manux32/7d2d_A17_modlets.git
-#git_clone https://github.com/Khelldon/7d2dModlets.git
+git_clone https://github.com/Khelldon/7d2dModlets.git
 #git_clone https://github.com/SnappyYoungGuns/SnappysModlets.git
 #git_clone https://github.com/rewtgr/7D2D_A17_Modlets.git
 #git_clone https://github.com/LatheosMod/Craftworx-Modlets.git
 #git_clone https://github.com/Satissis/7D2D_Modlets.git
 #git_clone https://github.com/Elysium-81/A17Modlets.git
-#git_clone https://github.com/KhaineGB/KhainesModlets.git
+git_clone https://github.com/KhaineGB/KhainesModlets.git
 #git_clone https://github.com/banhmr/7DaysToDie-Modlets.git
 #git_clone https://github.com/n4bb12/7d2d-balance.git
 #git_clone https://github.com/DukeW74/7DaysModlets.git
