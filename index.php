@@ -95,7 +95,7 @@ textarea {
   $log=file_get_contents('../7dtd.log');
   $logLines=explode("\n",$log);
   $totalLines=count($logLines);
-  for($z=($totalLines-48);$z<=$totalLines;$z++)
+  for($z=($totalLines-45);$z<=$totalLines;$z++)
     $newLog.=$logLines[$z]."\n";
   $log=$newLog;
   
