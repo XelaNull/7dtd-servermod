@@ -24,7 +24,8 @@ git_clone https://github.com/XelaNull/XelaNull-7dtd-Modlets # WhiteRiver Tools o
 #git_clone https://github.com/mjrice/7DaysModlets.git # Just Survive + Better RWG
 #sed -i 's|<!-- <prefab rule="COMPOPACK"/>  -->|<prefab rule="COMPOPACK"/>|g' $MODS_DIR/$MODCOUNT/7DaysModlets/TheWildLand/Config/rwgmixer.xml
 
-gdrive_download 1ZH9YtemlSBsXEAfMUz5F0nKZJ7E2CLQU VanillaPlus.rar extract_file && find . -name modinfo.xml -exec bash -c 'mv "$0" "${0/modinfo/ModInfo}"' {} \;
+#gdrive_download 1ZH9YtemlSBsXEAfMUz5F0nKZJ7E2CLQU VanillaPlus.rar extract_file && find . -name modinfo.xml -exec bash -c 'mv "$0" "${0/modinfo/ModInfo}"' {} \;
+#rm -rf $MODCOUNT/*_UIMENU_*
 
 # https://7daystodie.com/forums/showthread.php?100868-Xajar-s-Mod-Collection
 # dropbox_download "https://www.dropbox.com/s/3wdpql2hfwo05ee/xModlets%20A17.1%20B9.zip?dl=0" Xajar.zip extract_file # Xajar's Mod Collection
