@@ -14,6 +14,7 @@ git_clone https://github.com/XelaNull/7dtd-Origin-UI.git # Origin UI
 # https://7daystodie.com/forums/showthread.php?94219-Red-Eagle-LXIX-s-A17-Modlet-Collection-(UI-Blocks-Quests)
 dropbox_download "https://www.dropbox.com/s/v1eyx3qnrmr7f2p/Red%20Eagle%20LXIX%27s%20A17%20Modlet%20Collection.zip?dl=1" Red_Eagle_Modlets.zip extract_file # Red Eagle's Modlet Collection
 rm -rf $MODCOUNT/*_UIMENU_* $MODCOUNT/*UI_SkillP* $MODCOUNT/RELXIX_Blocks_PickThisUp $MODCOUNT/RELXIX_UI_ToolbeltSlotNumbers $MODCOUNT/RELXIX_UI_PlayerStats $MODCOUNT/RELXIX_UI_MenuStats $MODCOUNT/RELXIX_UI_CompassStats
+cd $MODCOUNT; grep Successfully -ri * | awk '{print $1}' | cut -d: -f1 > ToModify; while IFS= read -r line; do sed -i '/Successfully_Loaded/d' $line; done < ToModify; cd ..
 
 wget_download "https://github.com/dmustanger/7dtd-ServerTools/releases/download/18.2.4/7dtd-ServerTools-18.2.4.zip" ServerTools.zip extract_file # ServerTools
 cd $MODCOUNT && cp -r 7DaysToDieServer_Data $INSTALL_DIR/ && tar zxvf ServerTools-Linux-SQLite-Fix.tgz > /dev/null 2>&1 && cp ServerTools-Linux-SQLite-Fix/centos7/libSQLite.Interop.so ../../7DaysToDieServer_Data/Mono/x86_64/ && cd ..
@@ -22,18 +23,41 @@ git_clone https://github.com/XelaNull/7dtd-Modlets.git # Pickup_Plants_A18
 
 git_clone https://github.com/XelaNull/COMPOPACK_Modlet.git
 cp $MODS_DIR/$MODCOUNT/COMPOPACK*/Data/Prefabs/* $INSTALL_DIR/Data/Prefabs/ 
+
+
+git_clone https://github.com/TSBX-7D/Modlets.git
+wget_download "https://github.com/doughphunghus/Doughs-PunishingWeather-Core/archive/master.zip" extract_file
+wget_download "https://github.com/doughphunghus/Doughs-PunishingWeather-Survival/archive/master.zip"
+wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Donovan522/donovan-7d2d-modlets/tree/stable/donovan-pickmeup" extract_file
+wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Donovan522/donovan-7d2d-modlets/tree/stable/donovan-lootcleanup" extract_file
+wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Donovan522/donovan-7d2d-modlets/tree/stable/donovan-longerlootbags" extract_file
+wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Donovan522/donovan-7d2d-modlets/tree/master/donovan-craftspikes" extract_file
+wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/andrough/7D2DvA18/tree/master/AYS/androughYeahSolar" extract_file
+wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/War3zuk/ModLets-Alpha-18.1-Stable/tree/master/War3zuk%20Starter%20Classes" extract_file
+wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/War3zuk/ModLets-Alpha-18.1-Stable/tree/master/War3zuk%20Kitchen%20Utils" extract_file
+wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/War3zuk/ModLets-Alpha-18.1-Stable/tree/master/War3zuk%20Insane%20Quests" extract_file
+wget_download "https://www.mediafire.com/file/7ql8lhnuc87cvb9/Claymore_Stainless_Steel_Returns.zip" extract_file
+wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/JaxTeller718/JaxModletsA182B5/tree/master/JaxTeller718_EggsInFridges" extract_file
+wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/stallionsden/StallionModlets/tree/master/Stallionsdens%20Home%20Brewery" extract_file
+wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/xaliber/Mods_7DaystoDie/tree/master/Xal_SetZombiesAttackAnimals" extract_file
+wget_download "http://www.mean.cloud/files/MeanCloud__IncreasedAnimals_v1.00.zip" extract_file
+wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/TSBX-7D/Modlets/tree/master/TSBX_Headshot_25" extract_file
+git_clone https://gitlab.com/adredengaming/adreden_modlets.git
+wget_download "https://gitlab.com/guppycur/guppymods/-/archive/master/guppymods-master.zip?path=Guppycur%27s_Random_ZombieGetterUpper" extract_file
+wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/7D2D/A18Mods/tree/master/SteelBars" extract_file
+wget_download "https://www.dropbox.com/s/xrgtxx22vkrnsxr/Telrics%20Health%20Bars.zip?dl=1" extract_file
+wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/stallionsden/Valmar-Modlets/tree/master/Valmars%20Door%20Lock%20Smash" extract_file
+wget_download "https://gitlab.com/oignonchaud/oignonchaud-7d2d-mods-a18/-/archive/master/oignonchaud-7d2d-mods-a18-master.zip?path=Hitmarkers" extract_File
+
+
+
 #git_clone https://github.com/mjrice/7DaysModlets.git # Just Survive + Better RWG
 #sed -i 's|<!-- <prefab rule="COMPOPACK"/>  -->|<prefab rule="COMPOPACK"/>|g' $MODS_DIR/$MODCOUNT/7DaysModlets/TheWildLand/Config/rwgmixer.xml
-git_clone https://github.com/XelaNull/7DaysModlets.git # Just Surviva Somehow
-rm -rf $MODCOUNT/7DaysModlets/TheWildLand
+#git_clone https://github.com/XelaNull/7DaysModlets.git # Just Surviva Somehow
+#rm -rf $MODCOUNT/7DaysModlets/TheWildLand
 
 #gdrive_download 1ZH9YtemlSBsXEAfMUz5F0nKZJ7E2CLQU VanillaPlus.rar extract_file && find . -name modinfo.xml -exec bash -c 'mv "$0" "${0/modinfo/ModInfo}"' {} \;
 #rm -rf $MODCOUNT/*_UIMENU_*
-
-
-
-
-
 
 # https://7daystodie.com/forums/showthread.php?100868-Xajar-s-Mod-Collection
 # dropbox_download "https://www.dropbox.com/s/3wdpql2hfwo05ee/xModlets%20A17.1%20B9.zip?dl=0" Xajar.zip extract_file # Xajar's Mod Collection
