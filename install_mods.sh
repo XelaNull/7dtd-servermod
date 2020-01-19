@@ -41,7 +41,7 @@ fi
 
 # All oher Mods we should gather from a URL-downloaded file
 cd $INSTALL_DIR/7dtd-servermod && rm -rf install_mods.list.cmd
-wget https://raw.githubusercontent.com/XelaNull/7dtd-servermod/master/install_mods.list.cmd > /dev/null 2>&1
+wget --no-cache https://raw.githubusercontent.com/XelaNull/7dtd-servermod/master/install_mods.list.cmd > /dev/null 2>&1
 chmod a+x install_mods.list.cmd && ./install_mods.list.cmd
 
 # Sqlite support is broke in ServerTools at the moment, so we have to manually compile the Sqlite 
