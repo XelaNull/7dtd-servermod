@@ -72,7 +72,7 @@ git_clone https://github.com/XelaNull/XelaNull-7dtd-Modlets # WhiteRiver Tools o
 #git_clone https://github.com/digital-play/7dtd-a17-mods-sol.git
 #git_clone https://github.com/guppycur/GuppyMods
 # https://7daystodie.com/forums/showthread.php?86145-HDHQ-Textures-Lighting-Environment
-#git_clone https://gitlab.com/DUST2DEATH/hdhqmodlets.git
+git_clone https://gitlab.com/DUST2DEATH/hdhqmodlets.git
 git_clone https://github.com/Ragsy2145/Ragsy-Get-Real
 #git_clone https://github.com/stasis78/7dtd-mods.git # stasis8 Modlets (FarmLifeMod)
 #ln -s $MODCOUNT/7dtd-mods/FarmLifeMod_Models/Resources $MODCOUNT/7dtd-mods/FarmLifeMod/Resources
