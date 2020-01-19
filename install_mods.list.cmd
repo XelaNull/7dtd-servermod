@@ -8,7 +8,7 @@ wget_download "https://github.com/7days2mod/BadCompanySM/releases/download/v4.2.
 wget_download "https://github.com/Prisma501/CSMM-Patrons-Mod/archive/13.5.1.zip" CSMM_Patrons.zip extract_file # CSMM PatronsFor A18.2
 wget_download "https://raw.githubusercontent.com/Prisma501/Allocs-Webmap-for-CPM/master/map.js" map.js && mv $MODCOUNT/map.js $MODS_DIR/2/Mods/Allocs_WebAndMapRendering/webserver/js
 git_clone https://github.com/DelStryker/Delmod.git #Delmod Modlets
-rm -rf $MODCOUNT/Delmod/ModInfo.xml $MODCOUNT/Delmod/Delmod_Decorations $MODCOUNT/Delmod/Delmod_Kitchen $MODCOUNT/Delmod/Delmod_Double_Door $MODCOUNT/Delmod/Delmod_Electronics $MODCOUNT/Delmod/Delmod_Tools
+rm -rf $MODCOUNT/Delmod/ModInfo.xml $MODCOUNT/Delmod/Delmod_Decorations $MODCOUNT/Delmod/Delmod_Kitchen $MODCOUNT/Delmod/Delmod_Double_Door $MODCOUNT/Delmod/Delmod_Electronics $MODCOUNT/Delmod/Delmod_Tools $MODCOUNT/Delmod/Delmod_Recipes
 git_clone https://github.com/XelaNull/7dtd-Origin-UI.git # Origin UI
 
 # https://7daystodie.com/forums/showthread.php?94219-Red-Eagle-LXIX-s-A17-Modlet-Collection-(UI-Blocks-Quests)
@@ -50,13 +50,13 @@ git_clone https://github.com/XelaNull/XelaNull-7dtd-Modlets # WhiteRiver Tools o
 #git_clone https://github.com/stedman420/S420s_Other_Modlets.git
 #git_clone https://github.com/stedman420/Simple_UI_Modlets.git
 #git_clone https://github.com/manux32/7d2d_A17_modlets.git
-git_clone https://github.com/Khelldon/7d2dModlets.git
+#git_clone https://github.com/Khelldon/7d2dModlets.git
 #git_clone https://github.com/SnappyYoungGuns/SnappysModlets.git
 #git_clone https://github.com/rewtgr/7D2D_A17_Modlets.git
 #git_clone https://github.com/LatheosMod/Craftworx-Modlets.git
 #git_clone https://github.com/Satissis/7D2D_Modlets.git
 #git_clone https://github.com/Elysium-81/A17Modlets.git
-git_clone https://github.com/KhaineGB/KhainesModlets.git
+#git_clone https://github.com/KhaineGB/KhainesModlets.git
 #git_clone https://github.com/banhmr/7DaysToDie-Modlets.git
 #git_clone https://github.com/n4bb12/7d2d-balance.git
 #git_clone https://github.com/DukeW74/7DaysModlets.git
@@ -73,6 +73,6 @@ git_clone https://github.com/KhaineGB/KhainesModlets.git
 #git_clone https://github.com/guppycur/GuppyMods
 # https://7daystodie.com/forums/showthread.php?86145-HDHQ-Textures-Lighting-Environment
 #git_clone https://gitlab.com/DUST2DEATH/hdhqmodlets.git
-#git_clone https://github.com/Ragsy2145/Ragsy-Get-Real
+git_clone https://github.com/Ragsy2145/Ragsy-Get-Real
 #git_clone https://github.com/stasis78/7dtd-mods.git # stasis8 Modlets (FarmLifeMod)
 #ln -s $MODCOUNT/7dtd-mods/FarmLifeMod_Models/Resources $MODCOUNT/7dtd-mods/FarmLifeMod/Resources
