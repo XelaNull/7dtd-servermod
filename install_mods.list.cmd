@@ -8,7 +8,7 @@ wget_download "https://github.com/7days2mod/BadCompanySM/releases/download/v4.2.
 wget_download "https://github.com/Prisma501/CSMM-Patrons-Mod/archive/13.5.1.zip" CSMM_Patrons.zip extract_file # CSMM PatronsFor A18.2
 wget_download "https://raw.githubusercontent.com/Prisma501/Allocs-Webmap-for-CPM/master/map.js" map.js && mv $MODCOUNT/map.js $MODS_DIR/2/Mods/Allocs_WebAndMapRendering/webserver/js
 git_clone https://github.com/DelStryker/Delmod.git #Delmod Modlets
-rm -rf $MODCOUNT/Delmod/ModInfo.xml $MODCOUNT/Delmod/Delmod_Decorations $MODCOUNT/Delmod/Delmod_Kitchen $MODCOUNT/Delmod/Delmod_Double_Door $MODCOUNT/Delmod/Delmod_Electronics $MODCOUNT/Delmod/Delmod_Tools $MODCOUNT/Delmod/Delmod_Recipes
+rm -rf $MODCOUNT/Delmod/ModInfo.xml $MODCOUNT/Delmod/Delmod_Decorations $MODCOUNT/Delmod/Delmod_Kitchen $MODCOUNT/Delmod/Delmod_Double_Door $MODCOUNT/Delmod/Delmod_Electronics $MODCOUNT/Delmod/Delmod_Tools $MODCOUNT/Delmod/Delmod_Recipes*
 git_clone https://github.com/XelaNull/7dtd-Origin-UI.git # Origin UI
 
 # https://7daystodie.com/forums/showthread.php?94219-Red-Eagle-LXIX-s-A17-Modlet-Collection-(UI-Blocks-Quests)
@@ -19,7 +19,7 @@ rm -rf $MODCOUNT/*_UIMENU_* $MODCOUNT/*UI_SkillP*
 wget_download "https://github.com/dmustanger/7dtd-ServerTools/releases/download/18.2.4/7dtd-ServerTools-18.2.4.zip" ServerTools.zip extract_file # ServerTools
 cd $MODCOUNT && cp -r 7DaysToDieServer_Data $INSTALL_DIR/ && tar zxvf ServerTools-Linux-SQLite-Fix.tgz > /dev/null 2>&1 && cp ServerTools-Linux-SQLite-Fix/centos7/libSQLite.Interop.so ../../7DaysToDieServer_Data/Mono/x86_64/ && cd ..
 git_clone https://github.com/XelaNull/XelaNull-7dtd-Modlets # WhiteRiver Tools of Citizenship
-
+git_clone https://github.com/XelaNull/7dtd-Modlets.git # Pickup_Plants_A18
 #git_clone https://github.com/XelaNull/COMPOPACK_Modlet.git
 #cp $MODS_DIR/$MODCOUNT/COMPOPACK*/Data/Prefabs/* $INSTALL_DIR/Data/Prefabs/ 
 #git_clone https://github.com/mjrice/7DaysModlets.git # Just Survive + Better RWG
@@ -72,7 +72,7 @@ git_clone https://github.com/XelaNull/XelaNull-7dtd-Modlets # WhiteRiver Tools o
 #git_clone https://github.com/digital-play/7dtd-a17-mods-sol.git
 #git_clone https://github.com/guppycur/GuppyMods
 # https://7daystodie.com/forums/showthread.php?86145-HDHQ-Textures-Lighting-Environment
-git_clone https://gitlab.com/DUST2DEATH/hdhqmodlets.git
-git_clone https://github.com/Ragsy2145/Ragsy-Get-Real
+# git_clone https://gitlab.com/DUST2DEATH/hdhqmodlets.git
+# git_clone https://github.com/Ragsy2145/Ragsy-Get-Real
 #git_clone https://github.com/stasis78/7dtd-mods.git # stasis8 Modlets (FarmLifeMod)
 #ln -s $MODCOUNT/7dtd-mods/FarmLifeMod_Models/Resources $MODCOUNT/7dtd-mods/FarmLifeMod/Resources
