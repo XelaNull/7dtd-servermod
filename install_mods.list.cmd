@@ -26,28 +26,42 @@ cp $MODS_DIR/$MODCOUNT/COMPOPACK*/Data/Prefabs/* $INSTALL_DIR/Data/Prefabs/
 
 
 git_clone https://github.com/TSBX-7D/Modlets.git
-wget_download "https://github.com/doughphunghus/Doughs-PunishingWeather-Core/archive/master.zip" extract_file
-wget_download "https://github.com/doughphunghus/Doughs-PunishingWeather-Survival/archive/master.zip"
-wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Donovan522/donovan-7d2d-modlets/tree/stable/donovan-pickmeup" extract_file
-wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Donovan522/donovan-7d2d-modlets/tree/stable/donovan-lootcleanup" extract_file
-wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Donovan522/donovan-7d2d-modlets/tree/stable/donovan-longerlootbags" extract_file
-wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Donovan522/donovan-7d2d-modlets/tree/master/donovan-craftspikes" extract_file
-wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/andrough/7D2DvA18/tree/master/AYS/androughYeahSolar" extract_file
-wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/War3zuk/ModLets-Alpha-18.1-Stable/tree/master/War3zuk%20Starter%20Classes" extract_file
-wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/War3zuk/ModLets-Alpha-18.1-Stable/tree/master/War3zuk%20Kitchen%20Utils" extract_file
-wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/War3zuk/ModLets-Alpha-18.1-Stable/tree/master/War3zuk%20Insane%20Quests" extract_file
+git_clone "https://github.com/doughphunghus/Doughs-PunishingWeather-Core.git"
+git_clone "https://github.com/doughphunghus/Doughs-PunishingWeather-Survival.git"
+git_clone "https://github.com/Donovan522/donovan-7d2d-modlets.git"
+git_clone "https://github.com/andrough/7D2DvA18.git"
+
+git_clone "https://github.com/War3zuk/ModLets-Alpha-18.1-Stable.git"
+# Starter Classes
+# Kitchen Utils
+# Insane Quests
+
 wget_download "https://www.mediafire.com/file/7ql8lhnuc87cvb9/Claymore_Stainless_Steel_Returns.zip" extract_file
-wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/JaxTeller718/JaxModletsA182B5/tree/master/JaxTeller718_EggsInFridges" extract_file
-wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/stallionsden/StallionModlets/tree/master/Stallionsdens%20Home%20Brewery" extract_file
-wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/xaliber/Mods_7DaystoDie/tree/master/Xal_SetZombiesAttackAnimals" extract_file
+
+git_clone "https://github.com/JaxTeller718/JaxModletsA182B5.git"
+# EggsInFridges
+
+git_clone "https://github.com/stallionsden/StallionModlets.git"
+# Home Brewery
+
+git_clone "https://github.com/xaliber/Mods_7DaystoDie"
 wget_download "http://www.mean.cloud/files/MeanCloud__IncreasedAnimals_v1.00.zip" extract_file
-wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/TSBX-7D/Modlets/tree/master/TSBX_Headshot_25" extract_file
-git_clone https://gitlab.com/adredengaming/adreden_modlets.git
-wget_download "https://gitlab.com/guppycur/guppymods/-/archive/master/guppymods-master.zip?path=Guppycur%27s_Random_ZombieGetterUpper" extract_file
-wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/7D2D/A18Mods/tree/master/SteelBars" extract_file
+git_clone "https://github.com/TSBX-7D/Modlets.git"
+git_clone "https://gitlab.com/adredengaming/adreden_modlets.git"
+
+git_clone "https://gitlab.com/guppycur/guppymods.git"
+# ZombieGetterUpper
+
+git_clone "https://github.com/7D2D/A18Mods.git"
+# SteelBars
+
 wget_download "https://www.dropbox.com/s/xrgtxx22vkrnsxr/Telrics%20Health%20Bars.zip?dl=1" extract_file
-wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/stallionsden/Valmar-Modlets/tree/master/Valmars%20Door%20Lock%20Smash" extract_file
-wget_download "https://gitlab.com/oignonchaud/oignonchaud-7d2d-mods-a18/-/archive/master/oignonchaud-7d2d-mods-a18-master.zip?path=Hitmarkers" extract_File
+
+git_clone "https://github.com/stallionsden/Valmar-Modlets.git"
+# Lock Smash
+
+git_clone "https://gitlab.com/oignonchaud/oignonchaud-7d2d-mods-a18.git"
+# Hitmarkers
 
 
 
