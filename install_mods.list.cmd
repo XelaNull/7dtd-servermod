@@ -42,7 +42,7 @@ git_clone "https://github.com/andrough/7D2DvA18.git"
 wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/JaxTeller718/JaxModletsA182B5/tree/master/JaxTeller718_EggsInFridges" JaxTeller718_EggsInFridges.zip extract_file
 # EggsInFridges
 
-git_clone "https://github.com/stallionsden/StallionModlets.git"
+#git_clone "https://github.com/stallionsden/StallionModlets.git"
 # Home Brewery
 
 git_clone "https://github.com/xaliber/Mods_7DaystoDie"
