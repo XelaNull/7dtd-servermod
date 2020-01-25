@@ -37,7 +37,15 @@ remap Pickup_Plants_A18
 remap COMPOPACK
 remap androughYeahSolar
 remap Xal_SetZombiesAttackAnimals
-remap ZombieGetterUpper
+remap Guppycur\'s_Random_ZombieGetterUpper
+remap donovan-pickmeup
+remap donovan-lootcleanup
+remap donovan-longerlootbags
+remap donovan-craftspikes
+remap TSBX_Headshot_25
+remap SteelBars
+remap JaxTeller718_EggsInFridges
+remap Claymore_Stainless_Steel_Returns
 
 # remap "Arrow-Xbow Conversion"
 # remap BH_TrapMod
