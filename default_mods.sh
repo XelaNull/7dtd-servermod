@@ -30,15 +30,15 @@ remap RELXIX_UI_MenuTime
 remap RELXIX_UI_ToolbeltSlotNumbers
 remap RELXIX_UI_Tweaks
 remap RELXIX_UI_ZDP3_ZombieKillsDeathsPlayerKills
-remap Delmod_Startup_Packs
 remap Delmod_Stack_Sizes
-remap Delmod_Recipes_Fix
 remap Delmod_Pack_And_Store
 remap Delmod_Jail_Door
-remap Delmod_Archetypes
 remap Delmod_Combiner
-
-
+remap Pickup_Plants_A18
+remap COMPOPACK
+remap androughYearSolar
+remap Xal_SetZombiesAttackAnimals
+remap ZombieGetterUpper
 
 # remap "Arrow-Xbow Conversion"
 # remap BH_TrapMod

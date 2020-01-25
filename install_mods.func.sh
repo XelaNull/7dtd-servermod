@@ -25,6 +25,14 @@ function git_clone () {
   echo "$1" > $MODS_DIR/$MODCOUNT/ModURL.txt
   cd $MODS_DIR
 }
+function svn_checkout () {
+  ((MODCOUNT++))
+  mkdir $MODS_DIR/$MODCOUNT && cd $MODS_DIR/$MODCOUNT
+  echo "SVN Checkout of $1"
+  svn checkout "$1"
+  echo "$1" > $MODS_DIR/$MODCOUNT/ModURL.txt
+  cd $MODS_DIR
+}
 function dropbox_download () {
   ((MODCOUNT++))
   mkdir $MODS_DIR/$MODCOUNT && cd $MODS_DIR/$MODCOUNT
