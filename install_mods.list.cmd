@@ -51,7 +51,7 @@ git_clone "https://github.com/andrough/7D2DvA18.git"
 
 #git_clone "https://github.com/JaxTeller718/JaxModletsA182B5.git"
 #wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/JaxTeller718/JaxModletsA182B5/tree/master/JaxTeller718_EggsInFridges" JaxTeller718_EggsInFridges.zip extract_file
-svn_checkout "https://github.com/JaxTeller718/JaxModletsA182B5/tree/master/JaxTeller718_EggsInFridges"
+svn_checkout "https://github.com/JaxTeller718/JaxModletsA182B5/trunk/JaxTeller718_EggsInFridges"
 # EggsInFridges
 
 #git_clone "https://github.com/stallionsden/StallionModlets.git"
