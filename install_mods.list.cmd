@@ -26,18 +26,20 @@ git_clone https://github.com/XelaNull/COMPOPACK_Modlet.git
 cp $MODS_DIR/$MODCOUNT/COMPOPACK*/Data/Prefabs/* $INSTALL_DIR/Data/Prefabs/ 
 
 
-git_clone "https://github.com/TSBX-7D/Modlets.git"
+wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/TSBX-7D/Modlets/tree/master/TSBX_Headshot_25" TSBX_Headshot_25.zip extract_file
+#git_clone "https://github.com/TSBX-7D/Modlets.git"
 git_clone "https://github.com/doughphunghus/Doughs-PunishingWeather-Core.git"
 git_clone "https://github.com/doughphunghus/Doughs-PunishingWeather-Survival.git"
 git_clone "https://github.com/Donovan522/donovan-7d2d-modlets.git"
 git_clone "https://github.com/andrough/7D2DvA18.git"
 
-git_clone "https://github.com/War3zuk/ModLets-Alpha-18.1-Stable.git"
+# git_clone "https://github.com/War3zuk/ModLets-Alpha-18.1-Stable.git"
 # Starter Classes
 # Kitchen Utils
 # Insane Quests
 
-git_clone "https://github.com/JaxTeller718/JaxModletsA182B5.git"
+#git_clone "https://github.com/JaxTeller718/JaxModletsA182B5.git"
+wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/JaxTeller718/JaxModletsA182B5/tree/master/JaxTeller718_EggsInFridges" JaxTeller718_EggsInFridges.zip extract_file
 # EggsInFridges
 
 git_clone "https://github.com/stallionsden/StallionModlets.git"
@@ -47,16 +49,18 @@ git_clone "https://github.com/xaliber/Mods_7DaystoDie"
 git_clone "https://gitlab.com/adredengaming/adreden_modlets.git"
 
 # git_clone "https://gitlab.com/guppycur/guppymods.git"
-# ZombieGetterUpper
 wget_download "https://gitlab.com/guppycur/guppymods/-/archive/master/guppymods-master.zip?path=Guppycur%27s_Random_ZombieGetterUpper" guppymods-master.zip extract_file
+# ZombieGetterUpper
 
-git_clone "https://github.com/7D2D/A18Mods.git"
+#git_clone "https://github.com/7D2D/A18Mods.git"
+wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/7D2D/A18Mods/tree/master/SteelBars" SteelBars.zip extract_file
 # SteelBars
 
-git_clone "https://github.com/stallionsden/Valmar-Modlets.git"
+#git_clone "https://github.com/stallionsden/Valmar-Modlets.git"
+wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/stallionsden/Valmar-Modlets/tree/master/Valmars%20Door%20Lock%20Smash" Valmars_Lock_Smash.zip extract_file
 # Lock Smash
 
-git_clone "https://gitlab.com/oignonchaud/oignonchaud-7d2d-mods-a18.git"
+#git_clone "https://gitlab.com/oignonchaud/oignonchaud-7d2d-mods-a18.git"
 # Hitmarkers
 
 
