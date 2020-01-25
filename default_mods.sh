@@ -1,5 +1,6 @@
 function remap () {
 rm -rf "$1"
+echo "Setting Default for $1"
 ln -s "`find /data/7DTD/Mods-Available -name \"ModInfo.xml\" | sed 's|/ModInfo.xml||g' | grep "$1" | tail -1`"
 }
 
