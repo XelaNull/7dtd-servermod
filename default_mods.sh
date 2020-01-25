@@ -46,6 +46,7 @@ remap TSBX_Headshot_25
 remap SteelBars
 remap JaxTeller718_EggsInFridges
 remap Claymore_Stainless_Steel_Returns
+remap "Valmars Door Lock Smash"
 
 # remap "Arrow-Xbow Conversion"
 # remap BH_TrapMod
