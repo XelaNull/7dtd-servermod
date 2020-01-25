@@ -29,7 +29,7 @@ function svn_checkout () {
   ((MODCOUNT++))
   mkdir $MODS_DIR/$MODCOUNT && cd $MODS_DIR/$MODCOUNT
   echo "SVN Checkout of $1"
-  svn checkout "$1"
+  svn checkout "$1" > /dev/null 2>&1
   echo "$1" > $MODS_DIR/$MODCOUNT/ModURL.txt
   cd $MODS_DIR
 }
