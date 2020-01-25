@@ -66,7 +66,10 @@ svn_checkout "https://github.com/7D2D/A18Mods/trunk/SteelBars"
 svn_checkout "https://github.com/stallionsden/Valmar-Modlets/trunk/Valmars%20Door%20Lock%20Smash"
 # Lock Smash
 
-
+wget_download https://github.com/digital-play/7dtd-a18-mods-snow/releases/download/a18_barbedwire/Snow_BarbedWire.zip Snow_BarbedWire.zip extract_file
+wget_download https://github.com/digital-play/7dtd-a18-mods-snow/releases/download/a18_woodtocoal/Snow_WoodtoCoal.zip Snow_WoodtoCoal.zip extract_file
+wget_download https://github.com/digital-play/7dtd-a18-mods-snow/releases/download/a18_bladetraps/Snow_BladeTraps.zip Snow_BladeTraps.zip extract_file
+git_clone https://github.com/doughphunghus/Doughs-Buff-PipeBombs
 
 #git_clone https://github.com/mjrice/7DaysModlets.git # Just Survive + Better RWG
 #sed -i 's|<!-- <prefab rule="COMPOPACK"/>  -->|<prefab rule="COMPOPACK"/>|g' $MODS_DIR/$MODCOUNT/7DaysModlets/TheWildLand/Config/rwgmixer.xml
