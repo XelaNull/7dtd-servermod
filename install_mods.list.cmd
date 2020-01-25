@@ -48,7 +48,7 @@ git_clone "https://gitlab.com/adredengaming/adreden_modlets.git"
 
 # git_clone "https://gitlab.com/guppycur/guppymods.git"
 # ZombieGetterUpper
-wget_download "https://gitlab.com/guppycur/guppymods/-/archive/master/guppymods-master.zip?path=Guppycur%27s_Random_ZombieGetterUpper" extract_file
+wget_download "https://gitlab.com/guppycur/guppymods/-/archive/master/guppymods-master.zip?path=Guppycur%27s_Random_ZombieGetterUpper" guppymods-master.zip extract_file
 
 git_clone "https://github.com/7D2D/A18Mods.git"
 # SteelBars
