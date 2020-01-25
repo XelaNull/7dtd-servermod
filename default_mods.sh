@@ -24,11 +24,9 @@ remap WhiteRiverToC_REQUIRED
 remap WhiteRiverToC_Tazas_Axe
 remap Origin_UI
 remap BCManager
-remap RELXIX_Blocks_PickThisUp
 remap RELXIX_UI_CompassCenterHighlight
 #remap RELXIX_UI_CompassStats
 remap RELXIX_UI_MenuTime
-remap RELXIX_UI_ToolbeltSlotNumbers
 remap RELXIX_UI_Tweaks
 remap RELXIX_UI_ZDP3_ZombieKillsDeathsPlayerKills
 remap Delmod_Stack_Sizes
@@ -37,7 +35,7 @@ remap Delmod_Jail_Door
 remap Delmod_Combiner
 remap Pickup_Plants_A18
 remap COMPOPACK
-remap androughYearSolar
+remap androughYeahSolar
 remap Xal_SetZombiesAttackAnimals
 remap ZombieGetterUpper
 
