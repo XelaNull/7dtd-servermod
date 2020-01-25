@@ -1,7 +1,8 @@
 #!/bin/bash
 . install_mods.func.sh
 
-# Last Updated: 2020-01-19_0
+# Last Updated: 2020-01-24_0
+# For A18.3
 
 wget_download "http://botman.nz/Botman_Mods_A18.zip" Allocs_Bad_Company.zip extract_file # Botman
 wget_download "https://github.com/7days2mod/BadCompanySM/releases/download/v4.2.1/BCManager.zip" BCManager.zip extract_file # Bad Company Manager
@@ -25,7 +26,7 @@ git_clone https://github.com/XelaNull/COMPOPACK_Modlet.git
 cp $MODS_DIR/$MODCOUNT/COMPOPACK*/Data/Prefabs/* $INSTALL_DIR/Data/Prefabs/ 
 
 
-git_clone https://github.com/TSBX-7D/Modlets.git
+git_clone "https://github.com/TSBX-7D/Modlets.git"
 git_clone "https://github.com/doughphunghus/Doughs-PunishingWeather-Core.git"
 git_clone "https://github.com/doughphunghus/Doughs-PunishingWeather-Survival.git"
 git_clone "https://github.com/Donovan522/donovan-7d2d-modlets.git"
@@ -36,8 +37,6 @@ git_clone "https://github.com/War3zuk/ModLets-Alpha-18.1-Stable.git"
 # Kitchen Utils
 # Insane Quests
 
-wget_download "https://www.mediafire.com/file/7ql8lhnuc87cvb9/Claymore_Stainless_Steel_Returns.zip" extract_file
-
 git_clone "https://github.com/JaxTeller718/JaxModletsA182B5.git"
 # EggsInFridges
 
@@ -45,17 +44,14 @@ git_clone "https://github.com/stallionsden/StallionModlets.git"
 # Home Brewery
 
 git_clone "https://github.com/xaliber/Mods_7DaystoDie"
-wget_download "http://www.mean.cloud/files/MeanCloud__IncreasedAnimals_v1.00.zip" extract_file
-git_clone "https://github.com/TSBX-7D/Modlets.git"
 git_clone "https://gitlab.com/adredengaming/adreden_modlets.git"
 
-git_clone "https://gitlab.com/guppycur/guppymods.git"
+# git_clone "https://gitlab.com/guppycur/guppymods.git"
 # ZombieGetterUpper
+wget_download "https://gitlab.com/guppycur/guppymods/-/archive/master/guppymods-master.zip?path=Guppycur%27s_Random_ZombieGetterUpper" extract_file
 
 git_clone "https://github.com/7D2D/A18Mods.git"
 # SteelBars
-
-wget_download "https://www.dropbox.com/s/xrgtxx22vkrnsxr/Telrics%20Health%20Bars.zip?dl=1" extract_file
 
 git_clone "https://github.com/stallionsden/Valmar-Modlets.git"
 # Lock Smash
@@ -72,52 +68,3 @@ git_clone "https://gitlab.com/oignonchaud/oignonchaud-7d2d-mods-a18.git"
 
 #gdrive_download 1ZH9YtemlSBsXEAfMUz5F0nKZJ7E2CLQU VanillaPlus.rar extract_file && find . -name modinfo.xml -exec bash -c 'mv "$0" "${0/modinfo/ModInfo}"' {} \;
 #rm -rf $MODCOUNT/*_UIMENU_*
-
-# https://7daystodie.com/forums/showthread.php?100868-Xajar-s-Mod-Collection
-# dropbox_download "https://www.dropbox.com/s/3wdpql2hfwo05ee/xModlets%20A17.1%20B9.zip?dl=0" Xajar.zip extract_file # Xajar's Mod Collection
-#dropbox_download "https://7daystodie.com/forums/showthread.php?99228-Thumper-System&highlight=thumper"
-# https://7daystodie.com/forums/showthread.php?102559-DK-KS-Doors-blocks-and-others-A17
-#dropbox_download "https://www.dropbox.com/s/cz0kf7go3sx72xs/EN_Doors%20And%20Blocks%20AMK.rar?dl=1" Doors_and_Blocks.rar extract_file
-#dropbox_download "https://www.dropbox.com/s/056y5vmt2zkpnki/Barrels%20and%20Alcohol.rar?dl=1" Barrels_and_Alcohol.rar extract_file
-#dropbox_download "https://www.dropbox.com/s/2o5b7i5vqkco88a/Colors%20Everywhere.rar?dl=1" Colors_Everywhere.rar extract_file
-#dropbox_download "https://www.dropbox.com/s/tw6ykjv0isl55go/Climate%20change.rar?dl=0" Climate_Change.rar extract_file
-
-# https://7daystodie.com/forums/showthread.php?104228-Alpha-17-More-Lights-(Craftable-and-Working)
-#gdrive_download 1pZdwB7Hu3zshTmHR2tstlObzmKW-xqWD More_Lights.zip extract_file
-# Vanilla+ & Fix Vanilla+ not having capitalization correct
-#gdrive_download 1ADm8EcJv942SOBjnvtX4EGoUE-gL6xbi SnappySolarPower.zip extract_file # SnappSolarPower v2.5
-
-#git_clone https://github.com/djkrose/7DTD-ScriptingMod # ScriptingMod
-#git_clone https://github.com/Jayick/Firearms-1.2.git
-#git_clone https://github.com/Jayick/Modlets.git
-#git_clone https://github.com/Jayick/Farming.git
-
-#git_clone https://github.com/stedman420/S420s_Other_Modlets.git
-#git_clone https://github.com/stedman420/Simple_UI_Modlets.git
-#git_clone https://github.com/manux32/7d2d_A17_modlets.git
-#git_clone https://github.com/Khelldon/7d2dModlets.git
-#git_clone https://github.com/SnappyYoungGuns/SnappysModlets.git
-#git_clone https://github.com/rewtgr/7D2D_A17_Modlets.git
-#git_clone https://github.com/LatheosMod/Craftworx-Modlets.git
-#git_clone https://github.com/Satissis/7D2D_Modlets.git
-#git_clone https://github.com/Elysium-81/A17Modlets.git
-#git_clone https://github.com/KhaineGB/KhainesModlets.git
-#git_clone https://github.com/banhmr/7DaysToDie-Modlets.git
-#git_clone https://github.com/n4bb12/7d2d-balance.git
-#git_clone https://github.com/DukeW74/7DaysModlets.git
-#git_clone https://github.com/totles/z4lab-7d2d-modlets.git
-#git_clone https://github.com/Donovan522/donovan-7d2d-modlets.git
-#git_clone https://github.com/Russiandood/RussianDoods-Sweet-and-Juicy-Modlets.git
-#git_clone https://github.com/weelillad/7D2D-CloneModSchematics.git
-#git_clone https://github.com/Sirillion/7DXMLfix.git
-#git_clone https://github.com/Sixxgunz/7d2d_Modlets.git
-#git_clone https://github.com/Sixxgunz/7D2D-QualityOfDeath-All-In-One-Modlet-Pack.git
-#git_clone https://github.com/JaxTeller718/JaxModlets.git
-#git_clone https://github.com/GlobalGamer2015/7D2D_A17.git
-#git_clone https://github.com/digital-play/7dtd-a17-mods-sol.git
-#git_clone https://github.com/guppycur/GuppyMods
-# https://7daystodie.com/forums/showthread.php?86145-HDHQ-Textures-Lighting-Environment
-# git_clone https://gitlab.com/DUST2DEATH/hdhqmodlets.git
-# git_clone https://github.com/Ragsy2145/Ragsy-Get-Real
-#git_clone https://github.com/stasis78/7dtd-mods.git # stasis8 Modlets (FarmLifeMod)
-#ln -s $MODCOUNT/7dtd-mods/FarmLifeMod_Models/Resources $MODCOUNT/7dtd-mods/FarmLifeMod/Resources
