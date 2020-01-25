@@ -57,11 +57,6 @@ git_clone "https://github.com/xaliber/Mods_7DaystoDie"
 wget_download "https://gitlab.com/guppycur/guppymods/-/archive/master/guppymods-master.zip?path=Guppycur%27s_Random_ZombieGetterUpper" guppymods-master.zip extract_file
 # ZombieGetterUpper
 
-#git_clone "https://github.com/7D2D/A18Mods.git"
-#wget_download "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/7D2D/A18Mods/tree/master/SteelBars" SteelBars.zip extract_file
-svn_checkout "https://github.com/7D2D/A18Mods/trunk/SteelBars"
-# SteelBars
-
 #git_clone "https://github.com/stallionsden/Valmar-Modlets.git"
 svn_checkout "https://github.com/stallionsden/Valmar-Modlets/trunk/Valmars%20Door%20Lock%20Smash"
 # Lock Smash
