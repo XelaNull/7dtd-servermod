@@ -6,7 +6,7 @@
 
 wget_download "http://botman.nz/Botman_Mods_A18.zip" Allocs_Bad_Company.zip extract_file # Botman
 wget_download "https://github.com/7days2mod/BadCompanySM/releases/download/v4.2.1/BCManager.zip" BCManager.zip extract_file # Bad Company Manager
-wget_download "https://github.com/Prisma501/CSMM-Patrons-Mod/archive/13.5.1.zip" CSMM_Patrons.zip extract_file # CSMM PatronsFor A18.2
+wget_download "https://github.com/Prisma501/CSMM-Patrons-Mod/archive/13.7.zip" CSMM_Patrons.zip extract_file # CSMM PatronsFor A18.2
 wget_download "https://raw.githubusercontent.com/Prisma501/Allocs-Webmap-for-CPM/master/map.js" map.js && mv $MODCOUNT/map.js $MODS_DIR/2/Mods/Allocs_WebAndMapRendering/webserver/js
 git_clone https://github.com/DelStryker/Delmod.git #Delmod Modlets
 rm -rf $MODCOUNT/Delmod/ModInfo.xml $MODCOUNT/Delmod/Delmod_Decorations $MODCOUNT/Delmod/Delmod_Kitchen $MODCOUNT/Delmod/Delmod_Double_Door $MODCOUNT/Delmod/Delmod_Electronics $MODCOUNT/Delmod/Delmod_Tools $MODCOUNT/Delmod/Delmod_Recipes* $MODCOUNT/Delmod/Delmod_Archetypes $MODCOUNT/Delmod/Delmod_Startup*
