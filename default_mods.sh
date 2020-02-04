@@ -25,7 +25,6 @@ remap WhiteRiverToC_Tazas_Axe
 remap Origin_UI
 remap BCManager
 remap RELXIX_UI_CompassCenterHighlight
-#remap RELXIX_UI_CompassStats
 remap RELXIX_UI_MenuTime
 remap RELXIX_UI_Tweaks
 remap RELXIX_UI_ZDP3_ZombieKillsDeathsPlayerKills
@@ -51,8 +50,11 @@ remap Magazine_Skillpoint
 remap Pickup_Plants_A18
 remap Trader_Refresh_1Day
 remap ZLoot_Increase
+remap Snow_BarbedWire
+remap Snow_WoodtoCoal
+remap Snow_BladeTraps
+remap Doughs-Buff-PipeBombs
 
-# remap "Arrow-Xbow Conversion"
 # remap BH_TrapMod
 # remap "Barrels and Alcohol"
 # remap BetterHoeMod
@@ -63,32 +65,11 @@ remap ZLoot_Increase
 # remap Duke_MoreBrass
 # remap "EN_Doors And Blocks AMK"
 # remap Elevator
-# remap Elysium_81-2Skillpointslevel
-# remap Elysium_81-AdditionalQuestSkillpoints
-# remap Elysium_81-MoreResourceFromBoulders
-# remap Elysium_81-MotherLode
-# remap Elysium_81-RWGBuildingTweaker
 # remap FarmLifeMod
 # remap FarmLifeMod_Icons
 # remap FarmLifeMod_Models
 # remap Farming
 # remap GG2015_SniperTurretAnd50CalAmmo
-# remap HDHQBiomeAlpineBaseline
-# remap HDHQBiomeAlpineRedux
-# remap HDHQBiomeBurntBaseline
-# remap HDHQBiomeBurntRedux
-# remap HDHQBiomeDesertBaseline
-# remap HDHQBiomeDesertRedux
-# remap HDHQBiomePineBaseline
-# remap HDHQBiomePineRedux
-# remap HDHQBiomeWasteBaseline
-# remap HDHQBiomeWasteRedux
-# remap HDHQGuns
-# remap HDHQItems
-# remap HDHQParticles
-# remap HDHQPlants
-# remap HDHQPlants-Wind
-# #remap HDHQVehicles
 # remap HH_35_New_Dyes_Workstation
 # remap JSS
 # remap "Jail Door"
