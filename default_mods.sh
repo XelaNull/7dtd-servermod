@@ -44,6 +44,13 @@ remap SteelBars
 remap JaxTeller718_EggsInFridges
 remap Claymore_Stainless_Steel_Returns
 remap "Valmars Door Lock Smash"
+remap 60Slot_Bag_30Reserve
+remap Faster_Bellows
+remap Headshot_25
+remap Magazine_Skillpoint
+remap Pickup_Plants_A18
+remap Trader_Refresh_1Day
+remap ZLoot_Increase
 
 # remap "Arrow-Xbow Conversion"
 # remap BH_TrapMod
