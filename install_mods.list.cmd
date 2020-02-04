@@ -27,14 +27,13 @@ cp $MODS_DIR/$MODCOUNT/COMPOPACK*/Data/Prefabs/* $INSTALL_DIR/Data/Prefabs/
 
 
 #git_clone "https://github.com/TSBX-7D/Modlets.git"
-svn_checkout "https://github.com/TSBX-7D/Modlets/trunk/TSBX_Headshot_25"
 git_clone "https://github.com/doughphunghus/Doughs-PunishingWeather-Core.git"
 git_clone "https://github.com/doughphunghus/Doughs-PunishingWeather-Survival.git"
 
 #git_clone "https://github.com/Donovan522/donovan-7d2d-modlets.git"
 svn_checkout "https://github.com/Donovan522/donovan-7d2d-modlets/trunk/donovan-pickmeup"
 svn_checkout "https://github.com/Donovan522/donovan-7d2d-modlets/trunk/donovan-lootcleanup"
-svn_checkout "https://github.com/Donovan522/donovan-7d2d-modlets/trunk/donovan-longerlootbags"
+#svn_checkout "https://github.com/Donovan522/donovan-7d2d-modlets/trunk/donovan-longerlootbags"
 svn_checkout "https://github.com/Donovan522/donovan-7d2d-modlets/trunk/donovan-craftspikes"
 
 git_clone "https://github.com/andrough/7D2DvA18.git"

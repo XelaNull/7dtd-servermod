@@ -30,7 +30,6 @@ remap RELXIX_UI_MenuTime
 remap RELXIX_UI_Tweaks
 remap RELXIX_UI_ZDP3_ZombieKillsDeathsPlayerKills
 remap Delmod_Stack_Sizes
-remap Delmod_Pack_And_Store
 remap Delmod_Jail_Door
 remap Delmod_Combiner
 remap Pickup_Plants_A18
@@ -40,9 +39,7 @@ remap Xal_SetZombiesAttackAnimals
 remap Guppycur\'s_Random_ZombieGetterUpper
 remap donovan-pickmeup
 remap donovan-lootcleanup
-remap donovan-longerlootbags
 remap donovan-craftspikes
-remap TSBX_Headshot_25
 remap SteelBars
 remap JaxTeller718_EggsInFridges
 remap Claymore_Stainless_Steel_Returns
