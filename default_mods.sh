@@ -13,6 +13,8 @@ remap Botman
 remap 1CSMM_Patrons
 remap ServerTools
 remap WhiteRiverToC_Bambis_Bow
+remap WhiteRiverToC_Bunyans_FireAxe
+remap WhiteRiverToC_Deschains_Revolver
 remap WhiteRiverToC_Dundees_Knife
 remap WhiteRiverToC_Everdeens_Arrows
 remap WhiteRiverToC_Guptas_Bandages
@@ -54,6 +56,7 @@ remap Snow_BarbedWire
 remap Snow_WoodtoCoal
 remap Snow_BladeTraps
 remap Doughs-Buff-PipeBombs
+remap Doughs-PunishingWeather-Survival
 
 # remap BH_TrapMod
 # remap "Barrels and Alcohol"

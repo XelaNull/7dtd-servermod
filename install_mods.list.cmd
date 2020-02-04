@@ -27,7 +27,7 @@ cp $MODS_DIR/$MODCOUNT/COMPOPACK*/Data/Prefabs/* $INSTALL_DIR/Data/Prefabs/
 
 
 #git_clone "https://github.com/TSBX-7D/Modlets.git"
-git_clone "https://github.com/doughphunghus/Doughs-PunishingWeather-Core.git"
+#git_clone "https://github.com/doughphunghus/Doughs-PunishingWeather-Core.git"
 git_clone "https://github.com/doughphunghus/Doughs-PunishingWeather-Survival.git"
 
 #git_clone "https://github.com/Donovan522/donovan-7d2d-modlets.git"
@@ -36,12 +36,7 @@ svn_checkout "https://github.com/Donovan522/donovan-7d2d-modlets/trunk/donovan-l
 #svn_checkout "https://github.com/Donovan522/donovan-7d2d-modlets/trunk/donovan-longerlootbags"
 svn_checkout "https://github.com/Donovan522/donovan-7d2d-modlets/trunk/donovan-craftspikes"
 
-git_clone "https://github.com/andrough/7D2DvA18.git"
-
-# git_clone "https://github.com/War3zuk/ModLets-Alpha-18.1-Stable.git"
-# Starter Classes
-# Kitchen Utils
-# Insane Quests
+git_clone "https://github.com/andrough/7D2DvA18.git"; rm -rf $MODCOUNT/7D2DvA18/ADV/androughDecoVariants
 
 #git_clone "https://github.com/JaxTeller718/JaxModletsA182B5.git"
 svn_checkout "https://github.com/JaxTeller718/JaxModletsA182B5/trunk/JaxTeller718_EggsInFridges"
@@ -52,7 +47,6 @@ svn_checkout "https://github.com/JaxTeller718/JaxModletsA182B5/trunk/JaxTeller71
 
 git_clone "https://github.com/xaliber/Mods_7DaystoDie"
 
-# git_clone "https://gitlab.com/guppycur/guppymods.git"
 wget_download "https://gitlab.com/guppycur/guppymods/-/archive/master/guppymods-master.zip?path=Guppycur%27s_Random_ZombieGetterUpper" guppymods-master.zip extract_file
 # ZombieGetterUpper
 
