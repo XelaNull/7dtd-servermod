@@ -291,7 +291,7 @@ function resize($newWidth, $targetFile, $originalFile) {
 
     $info = getimagesize($originalFile);
     $mime = $info['mime'];
-print_r($info);
+print_r($info); $mime='image/png';
     switch ($mime) {
             case 'image/jpeg':
                     $image_create_func = 'imagecreatefromjpeg';
