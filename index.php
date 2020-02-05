@@ -209,11 +209,18 @@ textarea {
       // Line contains the NAME
       if(strpos($line, 'name="')!==FALSE)
         {
-          $namePos=strpos($line, 'name="')+7;
+          $namePos=strpos($line, 'name="')+6;
           $endNamePos=strpos($line, '"', $namePos);
           $Name=substr($line,$namePos, ($endNamePos-$namePos));
         }
-      $main.="<input type=text value=\"$Name\">";
+      // Try to also extract the value
+      if (strpos($line, 'value="')!==FALSE)
+        {
+          $valuePos=strpos($line, 'value="')+7;
+          $endValuePos=strpos($line, '"', $valuePos);
+          $Value=substr($line,$valuePos, ($endValuePos-$valuePos));
+        }
+      $main.="<b>$Name:</b> <input type=text value=\"$Value\"><br>";
       
     }
   
