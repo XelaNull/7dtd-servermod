@@ -218,7 +218,8 @@ $rows";
 $rtn.="<tr><td align=right><b>Sub-Totals:</b></td><td>".number_format($totalPlacedCount)."</td><td>".number_format($totalUniqueCount)."</td></table>
 
 </td><td valign=top align=center><a href=\"index.php?do=rwgAnalyzer&WorldName=$_GET[WorldName]&type=biomes\">biomes</a> | <a href=\"index.php?do=rwgAnalyzer&WorldName=$_GET[WorldName]&type=splat3\">splat3</a> | <a href=\"index.php?do=rwgAnalyzer&WorldName=$_GET[WorldName]&type=radiation\">radiation</a>
-<img width=800 src=\"index.php?do=image&type=$_COOKIE[type]&WorldName=".$_GET['WorldName']."\">
+<img width=800 src=\"/7dtd/GeneratedWorlds/".$_GET['WorldName']."/$_COOKIE[type].png\">
+
 </td></tr></table>";
 
 
