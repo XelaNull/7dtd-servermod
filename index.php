@@ -225,6 +225,7 @@ textarea {
           $main.="LINE: $line";
           $main.="<b>$Name:</b> <input type=text value=\"$Value\"><br>";
         }
+      $Name=''; $Value='';
     }
   
   $main.="</form>";
