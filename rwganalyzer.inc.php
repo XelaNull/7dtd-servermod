@@ -216,7 +216,7 @@ $rtn.="
 <tr><th>Prefab Group</th><th>Placed Prefabs</td><th>Unique Prefabs</th></tr>
 $rows";
 
-shell_exec("convert GeneratedWorlds/$_GET[WorldName]/$_COOKIE[type].png -resize 800x600 GeneratedWorlds/$_GET[WorldName]/$_COOKIE[type].png")
+shell_exec("convert GeneratedWorlds/$_GET[WorldName]/$_COOKIE[type].png -resize 800x600 GeneratedWorlds/$_GET[WorldName]/$_COOKIE[type].png");
 $rtn.="<tr><td align=right><b>Sub-Totals:</b></td><td>".number_format($totalPlacedCount)."</td><td>".number_format($totalUniqueCount)."</td></table>
 
 </td><td valign=top align=center>
