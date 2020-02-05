@@ -50,8 +50,9 @@ if($_COOKIE['WorldName']!='' && $_GET['WorldName']=='') $_GET['WorldName']=$_COO
 //if($_GET['WorldName']=='') $_GET['WorldName']='Navezgane';
 $WORLD_NAME=$_COOKIE['WorldName'];
 if($_GET['type']=='biomes') $_COOKIE['type']='biomes';
-if($_GET['type']=='splat3') $_COOKIE['type']='splat3';
+if($_GET['type']=='genHM') $_COOKIE['type']='genHM';
 if($_GET['type']=='radiation') $_COOKIE['type']='radiation';
+if($_GET['type']=='previewMap') $_COOKIE['type']='previewMap';
 if($_COOKIE['type']=='') $_COOKIE['type']='biomes';
 
 // Automatically determine the world name
@@ -215,9 +216,15 @@ $rtn.="
 <tr><th>Prefab Group</th><th>Placed Prefabs</td><th>Unique Prefabs</th></tr>
 $rows";
 
+$newWidth=400;
+resize($newWidth, "GeneratedWorlds/$_GET[WorldName]/$_COOKIE[type].png", "GeneratedWorlds/$_GET[WorldName]/$_COOKIE[type].png");
 $rtn.="<tr><td align=right><b>Sub-Totals:</b></td><td>".number_format($totalPlacedCount)."</td><td>".number_format($totalUniqueCount)."</td></table>
 
-</td><td valign=top align=center><a href=\"index.php?do=rwgAnalyzer&WorldName=$_GET[WorldName]&type=biomes\">biomes</a> | <a href=\"index.php?do=rwgAnalyzer&WorldName=$_GET[WorldName]&type=splat3\">splat3</a> | <a href=\"index.php?do=rwgAnalyzer&WorldName=$_GET[WorldName]&type=radiation\">radiation</a>
+</td><td valign=top align=center>
+<a href=\"index.php?do=rwgAnalyzer&WorldName=$_GET[WorldName]&type=biomes\">biomes</a> | 
+<a href=\"index.php?do=rwgAnalyzer&WorldName=$_GET[WorldName]&type=genHM\">genHM</a> | 
+<a href=\"index.php?do=rwgAnalyzer&WorldName=$_GET[WorldName]&type=radiation\">radiation</a> |
+<a href=\"index.php?do=rwgAnalyzer&WorldName=$_GET[WorldName]&type=previewMap\">previewMap</a> | 
 <img width=800 src=\"/7dtd/GeneratedWorlds/".$_GET['WorldName']."/$_COOKIE[type].png\">
 
 </td></tr></table>";
@@ -277,4 +284,49 @@ function findPrefabGroup($RWGMIXER_PATH, $PREFAB_NAME, $memory_db)
 }
 
 function ratio ($arg1, $arg2) { $diff=round($arg1/$arg2,1); return("$diff:1"); }
+
+
+// https://stackoverflow.com/questions/13596794/resize-images-with-php-support-png-jpg
+function resize($newWidth, $targetFile, $originalFile) {
+
+    $info = getimagesize($originalFile);
+    $mime = $info['mime'];
+
+    switch ($mime) {
+            case 'image/jpeg':
+                    $image_create_func = 'imagecreatefromjpeg';
+                    $image_save_func = 'imagejpeg';
+                    $new_image_ext = 'jpg';
+                    break;
+
+            case 'image/png':
+                    $image_create_func = 'imagecreatefrompng';
+                    $image_save_func = 'imagepng';
+                    $new_image_ext = 'png';
+                    break;
+
+            case 'image/gif':
+                    $image_create_func = 'imagecreatefromgif';
+                    $image_save_func = 'imagegif';
+                    $new_image_ext = 'gif';
+                    break;
+
+            default: 
+                    throw new Exception('Unknown image type.');
+    }
+
+    $img = $image_create_func($originalFile);
+    list($width, $height) = getimagesize($originalFile);
+
+    $newHeight = ($height / $width) * $newWidth;
+    $tmp = imagecreatetruecolor($newWidth, $newHeight);
+    imagecopyresampled($tmp, $img, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+
+    if (file_exists($targetFile)) {
+            unlink($targetFile);
+    }
+    $image_save_func($tmp, "$targetFile.$new_image_ext");
+}
+
+
 ?>
