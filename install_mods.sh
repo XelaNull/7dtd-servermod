@@ -16,6 +16,7 @@ fi
 
 # Install the Server & Mod-Management PHP Portal
 [[ ! -d $INSTALL_DIR/html ]] && mkdir $INSTALL_DIR/html
+[[ -f $INSTALL_DIR/html/GeneratedWorlds ]] || ln -s /data/7DTD/.local/share/7DaysToDie/GeneratedWorlds $INSTALL_DIR/html/GeneratedWorlds
 [[ -f $INSTALL_DIR/html/index.php ]] || ln -s $INSTALL_DIR/7dtd-servermod/index.php $INSTALL_DIR/html/index.php
 [[ -f $INSTALL_DIR/html/modmgr.inc.php ]] || ln -s $INSTALL_DIR/7dtd-servermod/modmgr.inc.php $INSTALL_DIR/html/modmgr.inc.php
 [[ -f $INSTALL_DIR/html/rwganalyzer.inc.php ]] || ln -s $INSTALL_DIR/7dtd-servermod/rwganalyzer.inc.php $INSTALL_DIR/html/rwganalyzer.inc.php

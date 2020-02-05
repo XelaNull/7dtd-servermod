@@ -196,7 +196,11 @@ textarea {
   case "image":
   $WorldName=str_replace("%20",' ',$_GET['WorldName']);
   switch($_GET['type'])   { case "radiation": $name="radiation"; break; case "splat3": $name="splat3"; break; default: $name="biomes"; break; }
-  $im = imagecreatefrompng("/data/7DTD/.local/share/7DaysToDie/GeneratedWorlds/$WorldName/$name.png"); header('Content-Type: image/png'); imagepng($im); imagedestroy($im); exit;
+  echo "<img src=/7dtd/GeneratedWorlds/$WorldName/$name.png>";
+/*$im = imagecreatefrompng("/data/7DTD/.local/share/7DaysToDie/GeneratedWorlds/$WorldName/$name.png"); 
+  header('Content-Type: image/png'); 
+  imagepng($im); imagedestroy($im); exit;
+  */
   break;
 
 
