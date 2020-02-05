@@ -222,7 +222,7 @@ textarea {
         }
       if($Name!='')
         {
-          $main.="LINE: ".htmlentities($line)."<br>";
+          //$main.="LINE: ".htmlentities($line)."<br>";
           if($Value!='false' && $Value!='true')$main.="<b>$Name:</b> <input type=text value=\"$Value\" size=".strlen($Value)."><br>";
           else 
             {
