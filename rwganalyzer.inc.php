@@ -216,8 +216,7 @@ $rtn.="
 <tr><th>Prefab Group</th><th>Placed Prefabs</td><th>Unique Prefabs</th></tr>
 $rows";
 
-$newWidth=400;
-resize($newWidth, "GeneratedWorlds/$_GET[WorldName]/$_COOKIE[type].png", "GeneratedWorlds/$_GET[WorldName]/$_COOKIE[type].png");
+shell_exec("convert GeneratedWorlds/$_GET[WorldName]/$_COOKIE[type].png -resize 800x600 GeneratedWorlds/$_GET[WorldName]/$_COOKIE[type].png")
 $rtn.="<tr><td align=right><b>Sub-Totals:</b></td><td>".number_format($totalPlacedCount)."</td><td>".number_format($totalUniqueCount)."</td></table>
 
 </td><td valign=top align=center>
@@ -286,47 +285,7 @@ function findPrefabGroup($RWGMIXER_PATH, $PREFAB_NAME, $memory_db)
 function ratio ($arg1, $arg2) { $diff=round($arg1/$arg2,1); return("$diff:1"); }
 
 
-// https://stackoverflow.com/questions/13596794/resize-images-with-php-support-png-jpg
-function resize($newWidth, $targetFile, $originalFile) {
 
-    $info = getimagesize($originalFile);
-    $mime = $info['mime'];
-print_r($info); $mime='image/png';
-    switch ($mime) {
-            case 'image/jpeg':
-                    $image_create_func = 'imagecreatefromjpeg';
-                    $image_save_func = 'imagejpeg';
-                    $new_image_ext = 'jpg';
-                    break;
-
-            case 'image/png':
-                    $image_create_func = 'imagecreatefrompng';
-                    $image_save_func = 'imagepng';
-                    $new_image_ext = 'png';
-                    break;
-
-            case 'image/gif':
-                    $image_create_func = 'imagecreatefromgif';
-                    $image_save_func = 'imagegif';
-                    $new_image_ext = 'gif';
-                    break;
-
-            default: return;
-                    //throw new Exception('Unknown image type.');
-    }
-
-    $img = $image_create_func($originalFile);
-    list($width, $height) = getimagesize($originalFile);
-
-    $newHeight = ($height / $width) * $newWidth;
-    $tmp = imagecreatetruecolor($newWidth, $newHeight);
-    imagecopyresampled($tmp, $img, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
-
-    if (file_exists($targetFile)) {
-            unlink($targetFile);
-    }
-    $image_save_func($tmp, "$targetFile.$new_image_ext");
-}
 
 
 ?>
