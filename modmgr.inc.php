@@ -117,6 +117,15 @@ function SDD_ModMgr()
         $checkTXT='';  
         if(@$_POST['ModIDNum']==$modcnt && @$_POST["modID$modcnt"]=='on') { enable_mod($INSTALL_DIR,$FullModDir); $checkTXT='checked'; }
       }
+    if($_GET['disableall']==1)
+      {
+        disable_mod($INSTALL_DIR,$FullModDir); $checkTXT='';
+      }
+    elseif($_GET['enableall']==1)
+      {
+        enable_mod($INSTALL_DIR,$FullModDir); $checkTXT='checked';
+      }  
+    
     if(@$modInfo_Array['Website']!='') $Author="<a href=$modInfo_Array[Website]>$modInfo_Array[Author]</a>";
     else $Author="$modInfo_Array[Author]";
     
@@ -148,7 +157,7 @@ function SDD_ModMgr()
   }
   
   $rtn.="</table>";
-  
+  $rtn.="<A href=?enableall=1>enable all</a> . <a href=?disableall=1>disable all</a>"
   $rtn.="<br>Total Modlets: ".number_format(count($MOD_ARRAY));
   
   return($rtn);
