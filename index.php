@@ -226,7 +226,7 @@ textarea {
           if($Value!='false' && $Value!='true')$main.="<b>$Name:</b> <input type=text value=\"$Value\" size=".strlen($Value)."><br>";
           else 
             {
-                $main.="<b>Name</b> <SELECT NAME=\"$Name\"><OPTION ";
+                $main.="<b>$Name</b> <SELECT NAME=\"$Name\"><OPTION ";
                 if($Value=='true') $main.="checked ";
                 $main.="value=true>true<OPTION ";
                 if($Value=='false') $main.="checked ";
