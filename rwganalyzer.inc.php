@@ -61,7 +61,8 @@ $PREFAB_FILE="$WORLD_DIR/prefabs.xml";
 $MAP_FILE="$WORLD_DIR/map_info.xml";
 $WORLD_CREATION_DATE=date ("F d Y H:i:s", filemtime($WORLD_DIR));
 
-$MAP_SIZE=shell_exec("grep Height \"$MAP_FILE\" | awk '{print $3}' | cut -d= -f2 | sed 's|\"||g' | sed 's|,|x|g'");
+$MAP_SIZE=shell_exec("cat \"$MAP_FILE\" | cut -d/ -f2 | cut -d'\"' -f4 | cut -d, -f1");
+//$MAP_SIZE=shell_exec("grep Height \"$MAP_FILE\" | awk '{print $3}' | cut -d= -f2 | sed 's|\"||g' | sed 's|,|x|g'");
 
 $RWG_PREFABS=shell_exec("cat \"$PREFAB_FILE\" | grep model");
 $FILE_PREFAB_ARRAY=explode("\n",$RWG_PREFABS);
@@ -119,7 +120,7 @@ $WORLDHTML.="
 ";
 
 $SEED_NAME=file_get_contents("$WORLD_DIR/WorldName.txt");
-$mapPieces=explode('x',$MAP_SIZE); $MAP_SIZE=$mapPieces[0];
+//$mapPieces=explode('x',$MAP_SIZE); $MAP_SIZE=$mapPieces[0];
 
 $rtn.="<br><table><tr><Td width=50% valign=top><font size=5>World: $WORLDHTML</font><br>
 <font size=5>Seed Name: $SEED_NAME</font><br><font size=4>Map Size: $MAP_SIZE</font><br><font size=4>Created: $WORLD_CREATION_DATE</font></form><br><br>";
