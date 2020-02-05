@@ -201,7 +201,7 @@ textarea {
 
 
   case "editConfig":
-  $main.="<form method=post>";
+  $main.="<form method=post><table>";
   
   $configArray=file("../serverconfig.xml");
   foreach($configArray as $line)
@@ -223,20 +223,20 @@ textarea {
       if($Name!='')
         {
           //$main.="LINE: ".htmlentities($line)."<br>";
-          if($Value!='false' && $Value!='true')$main.="<b>$Name:</b> <input type=text value=\"$Value\" size=".strlen($Value)."><br>";
+          if($Value!='false' && $Value!='true')$main.="<tr><td><b>$Name:</b></td><td><input type=text value=\"$Value\" size=".strlen($Value)."></td></tr>";
           else 
             {
-                $main.="<b>$Name</b> <SELECT NAME=\"$Name\"><OPTION ";
+                $main.="<tr><td><b>$Name</b></td><td><SELECT NAME=\"$Name\"><OPTION ";
                 if($Value=='true') $main.="checked ";
                 $main.="value=true>true<OPTION ";
                 if($Value=='false') $main.="checked ";
-                $main.="value=false>false</SELECT><br>";
+                $main.="value=false>false</SELECT></td></tr>";
             }
         }
       $Name=''; $Value='';
     }
   
-  $main.="</form>";
+  $main.="</table></form>";
   
   break;
 
