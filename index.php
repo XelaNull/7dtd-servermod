@@ -200,6 +200,27 @@ textarea {
   break;
 
 
+  case "editConfig":
+  $main.="<form method=post>";
+  
+  $configArray=file("../serverconfig.xml");
+  foreach($configArray as $line)
+    {
+      // Line contains the NAME
+      if(strpos($line, 'name="')!==FALSE)
+        {
+          $namePos=strpos($line, 'name="')+7;
+          $endNamePos=strpos($line, '"', $namePos);
+          $Name=substr($line,$namePos, ($endNamePos-$namePos));
+        }
+      $main.="<input type=text value=\"$Name\">";
+      
+    }
+  
+  $main.="</form>";
+  
+  break;
+
   case "editFile":
   if($_GET['editFile']!='../serverconfig.xml' && $_GET['editFile']!='../7dtd.log' && $_GET['editFile']!='../7dtd-servermod/install_mods.list.cmd') $_GET['editFile']="../Data/Config/".$_GET['editFile'];
   $main="<form method=post action=\"?do=editFile&editFile=".$_GET['editFile']."\">
@@ -261,6 +282,7 @@ $left="<center>
 <b>SERVERMOD MANAGER</b></h3>
 <p><a href=index.php?do=modmgr><b>Enable/Disable Modlets</b></a></p>
 <p><a href=index.php?do=rwgAnalyzer><b>RWG World Analyzer</b></a></p>
+<p><a href=index.php?do=editConfig><b>Edit Server Config</b></a></p>
 <hr>
 <!-- Server Status Frame -->
 <iframe src=index.php?do=serverstatus width=280 height=150 frameborder=0></iframe>
