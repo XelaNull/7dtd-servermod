@@ -25,7 +25,7 @@ export INSTALL_DIR=/data/7DTD
 ./replace.sh $INSTALL_DIR/serverconfig.xml "72" "36" AirDropFrequency
 #./replace.sh $INSTALL_DIR/serverconfig.xml "60" "90" MaxSpawnedZombies
 #./replace.sh $INSTALL_DIR/serverconfig.xml "50" "80" MaxSpawnedAnimals
-./replace.sh $INSTALL_DIR/serverconfig.xml "true" "false" EACEnabled
+#./replace.sh $INSTALL_DIR/serverconfig.xml "true" "false" EACEnabled
 ./replace.sh $INSTALL_DIR/serverconfig.xml 'value=""' 'value="This is an experimental server. Do not play here."' ServerLoginConfirmationText
 
-./replace.sh $INSTALL_DIR/serverconfig.xml "" "SteamNetworking" ServerDisabledNetworkProtocols
+#./replace.sh $INSTALL_DIR/serverconfig.xml "" "SteamNetworking" ServerDisabledNetworkProtocols
