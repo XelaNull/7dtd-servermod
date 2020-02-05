@@ -209,7 +209,7 @@ textarea {
       // Line contains the NAME
       if(strpos($line, 'name="')!==FALSE)
         {
-          $namePos=strpos($line, 'name="')+6;
+          $namePos=strpos($line, 'property name=')+15;
           $endNamePos=strpos($line, '"', $namePos);
           $Name=substr($line,$namePos, ($endNamePos-$namePos));
         }
