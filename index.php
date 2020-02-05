@@ -220,8 +220,11 @@ textarea {
           $endValuePos=strpos($line, '"', $valuePos);
           $Value=substr($line,$valuePos, ($endValuePos-$valuePos));
         }
-      $main.="<b>$Name:</b> <input type=text value=\"$Value\"><br>";
-      
+      if($Name!='')
+        {
+          $main.="LINE: $line";
+          $main.="<b>$Name:</b> <input type=text value=\"$Value\"><br>";
+        }
     }
   
   $main.="</form>";
