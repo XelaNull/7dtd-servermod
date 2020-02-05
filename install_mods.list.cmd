@@ -27,7 +27,8 @@ cp $MODS_DIR/$MODCOUNT/COMPOPACK*/Data/Prefabs/* $INSTALL_DIR/Data/Prefabs/
 
 
 #git_clone "https://github.com/TSBX-7D/Modlets.git"
-#git_clone "https://github.com/doughphunghus/Doughs-PunishingWeather-Core.git"
+git_clone "https://github.com/doughphunghus/Doughs-PunishingWeather-Core.git"
+git_clone "https://github.com/doughphunghus/Doughs-PunishingWeather-Effects-Medium"
 git_clone "https://github.com/doughphunghus/Doughs-PunishingWeather-Survival.git"
 
 #git_clone "https://github.com/Donovan522/donovan-7d2d-modlets.git"
