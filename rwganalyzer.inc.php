@@ -291,7 +291,7 @@ function resize($newWidth, $targetFile, $originalFile) {
 
     $info = getimagesize($originalFile);
     $mime = $info['mime'];
-
+print_r($info);
     switch ($mime) {
             case 'image/jpeg':
                     $image_create_func = 'imagecreatefromjpeg';
@@ -311,8 +311,8 @@ function resize($newWidth, $targetFile, $originalFile) {
                     $new_image_ext = 'gif';
                     break;
 
-            default: 
-                    throw new Exception('Unknown image type.');
+            default: return;
+                    //throw new Exception('Unknown image type.');
     }
 
     $img = $image_create_func($originalFile);
