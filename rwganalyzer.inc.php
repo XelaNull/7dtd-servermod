@@ -41,8 +41,10 @@ try {
     $rtn.=$e->getMessage();
 }
 
-//if($_POST['WorldName']) { if(is_dir("$INSTALL_DIR/Data/Worlds/$_POST[WorldName]")) $_COOKIE['WorldName']=$_POST['WorldName']; }
-if($_GET['WorldName']) { if(is_dir("$INSTALL_DIR/Data/Worlds/$_GET[WorldName]")) $_COOKIE['WorldName']=$_GET['WorldName']; }
+$WORLDS_DIR="$INSTALL_DIR/Data/Worlds";
+$WORLDS_DIR="$INSTALL_DIR/.local/share/7DaysToDie/GeneratedWorlds";
+
+if($_GET['WorldName']) { if(is_dir("$WORLDS_DIR/$_GET[WorldName]")) $_COOKIE['WorldName']=$_GET['WorldName']; }
 if($_COOKIE['WorldName']=='') $_COOKIE['WorldName']='Navezgane';
 if($_COOKIE['WorldName']!='' && $_GET['WorldName']=='') $_GET['WorldName']=$_COOKIE['WorldName'];
 //if($_GET['WorldName']=='') $_GET['WorldName']='Navezgane';
@@ -53,7 +55,7 @@ if($_GET['type']=='radiation') $_COOKIE['type']='radiation';
 if($_COOKIE['type']=='') $_COOKIE['type']='biomes';
 
 // Automatically determine the world name
-$WORLD_DIR="$INSTALL_DIR/Data/Worlds/$WORLD_NAME";
+$WORLD_DIR="$WORLDS_DIR/$WORLD_NAME";
 $PREFAB_FILE="$WORLD_DIR/prefabs.xml";
 $MAP_FILE="$WORLD_DIR/map_info.xml";
 $WORLD_CREATION_DATE=date ("F d Y H:i:s", filemtime($WORLD_DIR));
@@ -96,11 +98,11 @@ $water_bodies=shell_exec("grep pos \"$WORLD_DIR/water_info.xml\" | awk '{print $
 $rtn.="<form method=GET action=\"index.php\"><input type=hidden name=do value=rwgAnalyzer>";
 $WORLDHTML="<select name=WorldName style=\"font-size: 24px\" onChange=\"this.form.submit();\">";
 
-if (is_dir("$INSTALL_DIR/Data/Worlds")) {
-    if ($dh = opendir("$INSTALL_DIR/Data/Worlds")) {
+if (is_dir("$WORLDS_DIR")) {
+    if ($dh = opendir("$WORLDS_DIR")) {
         while (($file = readdir($dh)) !== false) {
           if($file=='.' || $file=='..' || is_file($file)) continue;
-          if(filesize("$INSTALL_DIR/Data/Worlds/".basename($file)."/prefabs.xml")>100)
+          if(filesize("$WORLDS_DIR/".basename($file)."/prefabs.xml")>100)
             {
               $WORLDHTML.="<option ";
               if(basename($file)==$_COOKIE['WorldName']) $WORLDHTML.='selected ';
