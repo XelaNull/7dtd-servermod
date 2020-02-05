@@ -142,7 +142,7 @@ function SDD_ModMgr()
     
     
     if($ALT_count==2) { $ALT_count=0; $ROW_COLOR=$ALTCOLOR; } else $ROW_COLOR='white';
-    $rtn.="<tr bgcolor=$ROW_COLOR><form method=post><input type=hidden name=ModIDNum value=$modcnt>
+    $rtn.="<tr bgcolor=$ROW_COLOR><form method=post action=?do=modmgr><input type=hidden name=ModIDNum value=$modcnt>
     $download_Link
     <td width=350>
     
