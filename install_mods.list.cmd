@@ -19,12 +19,13 @@ cd $MODCOUNT; grep Successfully -ri * | awk '{print $1}' | cut -d: -f1 > ToModif
 
 wget_download "https://github.com/dmustanger/7dtd-ServerTools/releases/download/18.2.4/7dtd-ServerTools-18.2.4.zip" ServerTools.zip extract_file # ServerTools
 cd $MODCOUNT && cp -r 7DaysToDieServer_Data $INSTALL_DIR/ && tar zxvf ServerTools-Linux-SQLite-Fix.tgz > /dev/null 2>&1 && cp ServerTools-Linux-SQLite-Fix/centos7/libSQLite.Interop.so ../../7DaysToDieServer_Data/Mono/x86_64/ && cd ..
-git_clone https://github.com/XelaNull/XelaNull-7dtd-Modlets # WhiteRiver Tools of Citizenship
-git_clone https://github.com/XelaNull/7dtd-Modlets.git # Pickup_Plants_A18
+git_clone https://github.com/XelaNull/7DTD-WhiteRiver_ToC.git # WhiteRiver Tools of Citizenship
+git_clone https://github.com/XelaNull/7DTD-ZombieLootbag_Increase.git
+git_clone https://github.com/XelaNull/7DTD-Bag_Bellows_Headshot.git
+git_clone https://github.com/XelaNull/7DTD-Magazine_Plants_Trader.git
 
 git_clone https://github.com/XelaNull/COMPOPACK_Modlet.git
 cp $MODS_DIR/$MODCOUNT/COMPOPACK*/Data/Prefabs/* $INSTALL_DIR/Data/Prefabs/ 
-
 
 #git_clone "https://github.com/TSBX-7D/Modlets.git"
 git_clone "https://github.com/doughphunghus/Doughs-PunishingWeather-Core.git"
@@ -38,6 +39,7 @@ svn_checkout "https://github.com/Donovan522/donovan-7d2d-modlets/trunk/donovan-l
 svn_checkout "https://github.com/Donovan522/donovan-7d2d-modlets/trunk/donovan-craftspikes"
 
 git_clone "https://github.com/andrough/7D2DvA18.git"; rm -rf $MODCOUNT/7D2DvA18/ADV/androughDecoVariants
+# androughYeahSolar
 
 #git_clone "https://github.com/JaxTeller718/JaxModletsA182B5.git"
 svn_checkout "https://github.com/JaxTeller718/JaxModletsA182B5/trunk/JaxTeller718_EggsInFridges"
@@ -47,6 +49,7 @@ svn_checkout "https://github.com/JaxTeller718/JaxModletsA182B5/trunk/JaxTeller71
 # Home Brewery
 
 git_clone "https://github.com/xaliber/Mods_7DaystoDie"
+# Xal_SetZombiesAttackAnimals
 
 wget_download "https://gitlab.com/guppycur/guppymods/-/archive/master/guppymods-master.zip?path=Guppycur%27s_Random_ZombieGetterUpper" guppymods-master.zip extract_file
 # ZombieGetterUpper
@@ -59,11 +62,6 @@ wget_download https://github.com/digital-play/7dtd-a18-mods-snow/releases/downlo
 wget_download https://github.com/digital-play/7dtd-a18-mods-snow/releases/download/a18_woodtocoal/Snow_WoodtoCoal.zip Snow_WoodtoCoal.zip extract_file
 wget_download https://github.com/digital-play/7dtd-a18-mods-snow/releases/download/a18_bladetraps/Snow_BladeTraps.zip Snow_BladeTraps.zip extract_file
 git_clone https://github.com/doughphunghus/Doughs-Buff-PipeBombs
-
-#git_clone https://github.com/mjrice/7DaysModlets.git # Just Survive + Better RWG
-#sed -i 's|<!-- <prefab rule="COMPOPACK"/>  -->|<prefab rule="COMPOPACK"/>|g' $MODS_DIR/$MODCOUNT/7DaysModlets/TheWildLand/Config/rwgmixer.xml
-#git_clone https://github.com/XelaNull/7DaysModlets.git # Just Surviva Somehow
-#rm -rf $MODCOUNT/7DaysModlets/TheWildLand
 
 #gdrive_download 1ZH9YtemlSBsXEAfMUz5F0nKZJ7E2CLQU VanillaPlus.rar extract_file && find . -name modinfo.xml -exec bash -c 'mv "$0" "${0/modinfo/ModInfo}"' {} \;
 #rm -rf $MODCOUNT/*_UIMENU_*
