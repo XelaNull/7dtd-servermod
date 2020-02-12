@@ -63,5 +63,8 @@ wget_download https://github.com/digital-play/7dtd-a18-mods-snow/releases/downlo
 wget_download https://github.com/digital-play/7dtd-a18-mods-snow/releases/download/a18_bladetraps/Snow_BladeTraps.zip Snow_BladeTraps.zip extract_file
 git_clone https://github.com/doughphunghus/Doughs-Buff-PipeBombs
 
+git_clone "https://github.com/stamplesmods/7d2dmodlets"
+# Ghillie Suit
+
 #gdrive_download 1ZH9YtemlSBsXEAfMUz5F0nKZJ7E2CLQU VanillaPlus.rar extract_file && find . -name modinfo.xml -exec bash -c 'mv "$0" "${0/modinfo/ModInfo}"' {} \;
 #rm -rf $MODCOUNT/*_UIMENU_*
