@@ -86,7 +86,7 @@ textarea {
     }
 
      <!-- 
-     function AutoRefresh( t ) { setTimeout("window.location.replace(\'http://'.$_SERVER['SERVER_NAME'].'/7dtd/index.php?do=logviewer-frame\')", t); } 
+     function AutoRefresh( t ) { setTimeout("window.location.replace(\'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].'/7dtd/index.php?do=logviewer-frame\')", t); } 
      //-->
   </script>
 
@@ -117,7 +117,7 @@ textarea {
   <head>
     <script type = \"text/JavaScript\">
            <!-- 
-           function AutoRefresh( t ) { setTimeout(\"window.location.replace('http://".$_SERVER['SERVER_NAME']."/7dtd/index.php?do=serverstatus')\", t); } 
+           function AutoRefresh( t ) { setTimeout(\"window.location.replace('http://".$_SERVER['SERVER_NAME'].":".$_SERVER['SERVER_PORT']."/7dtd/index.php?do=serverstatus')\", t); } 
            //-->
     </script>    
   </head> 
@@ -155,7 +155,7 @@ textarea {
   <head>
     <script type = \"text/JavaScript\">
            <!-- 
-           function AutoRefresh( t ) { setTimeout(\"window.location.replace('http://".$_SERVER['SERVER_NAME']."/7dtd/index.php?do=autoexplore')\", t); } 
+           function AutoRefresh( t ) { setTimeout(\"window.location.replace('http://".$_SERVER['SERVER_NAME'].":".$_SERVER['SERVER_PORT']."/7dtd/index.php?do=autoexplore')\", t); } 
            //-->
     </script>    
   </head> 
@@ -177,8 +177,8 @@ textarea {
   <b>Status: </b> $AUTOEXPLORE_STATUS<br>
   <br>";
 
-  if($AUTOEXPLORE_STATUS=='STOPPED') echo "<a href=http://".$_SERVER['SERVER_NAME']."/7dtd/index.php?do=autoexplore&autoexplore_control=START_AUTOEXPLORE>Start Auto-Explore</a><br>";
-  else echo "<a href=http://".$_SERVER['SERVER_NAME']."/7dtd/index.php?do=autoexplore&autoexplore_control=STOP_AUTOEXPLORE>Stop Auto-Explore</a>";
+  if($AUTOEXPLORE_STATUS=='STOPPED') echo "<a href=http://".$_SERVER['SERVER_NAME'].":".$_SERVER['SERVER_PORT']."/7dtd/index.php?do=autoexplore&autoexplore_control=START_AUTOEXPLORE>Start Auto-Explore</a><br>";
+  else echo "<a href=http://".$_SERVER['SERVER_NAME'].":".$_SERVER['SERVER_PORT']."/7dtd/index.php?do=autoexplore&autoexplore_control=STOP_AUTOEXPLORE>Stop Auto-Explore</a>";
   }
   echo "<br><a target=_new href=http://$_SERVER[HTTP_HOST]:8082>7 Days to Die Map</a><hr>";
   echo "</center></body></html>";
