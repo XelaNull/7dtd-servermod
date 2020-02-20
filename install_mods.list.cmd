@@ -24,6 +24,7 @@ git_clone https://github.com/XelaNull/7DTD-ZombieLootbag_Increase.git
 git_clone https://github.com/XelaNull/7DTD-Bag_Bellows_Headshot.git
 git_clone https://github.com/XelaNull/7DTD-Magazine_Plants_Trader.git
 git_clone https://github.com/XelaNull/7DTD-Combiner.git
+git_clone https://github.com/XelaNull/7DTD-LootableSolar.git
 
 git_clone https://github.com/XelaNull/COMPOPACK_Modlet.git
 cp $MODS_DIR/$MODCOUNT/COMPOPACK*/Data/Prefabs/* $INSTALL_DIR/Data/Prefabs/ 
