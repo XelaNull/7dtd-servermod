@@ -52,9 +52,6 @@ svn_checkout "https://github.com/JaxTeller718/JaxModletsA182B5/trunk/JaxTeller71
 #git_clone "https://github.com/stallionsden/StallionModlets.git"
 # Home Brewery
 
-git_clone "https://github.com/xaliber/Mods_7DaystoDie"
-# Xal_SetZombiesAttackAnimals
-
 wget_download "https://gitlab.com/guppycur/guppymods/-/archive/master/guppymods-master.zip?path=Guppycur%27s_Random_ZombieGetterUpper" guppymods-master.zip extract_file
 # ZombieGetterUpper
 
