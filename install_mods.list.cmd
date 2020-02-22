@@ -70,5 +70,14 @@ git_clone https://github.com/doughphunghus/Doughs-Buff-PipeBombs
 git_clone "https://github.com/stamplesmods/7d2dmodlets"
 # Ghillie Suit
 
+wget_download "https://github.com/GopherMods/7DTDMods/raw/master/MoreCookedFoods.zip" MoreCookedFoods.zip extract_file
+wget_download "https://github.com/GopherMods/7DTDMods/raw/master/SuperCornCookedFoods.zip" SuperCornCookedFoods.zip extract_file
+
+# Get The Herp & Bigger Buck and Doe
+git_clone https://github.com/doughphunghus/7d2dModlets
+rm -rf $MODCOUNT/Khelldon-A* $MODCOUNT/Khelldon-Baby* $MODCOUNT/Khelldon-Bad* $MODCOUNT/Khelldon-BiggerChicken* $MODCOUNT/Khelldon-C* $MODCOUNT/Khelldon-GetF* $MODCOUNT/Khelldon-GetG* $MODCOUNT/Khelldon-GetH* $MODCOUNT/Khelldon-GetN* $MODCOUNT/Khelldon-GetP* $MODCOUNT/Khelldon-H* $MODCOUNT/Khelldon-R* $MODCOUNT/Khelldon-S* $MODCOUNT/Khelldon-a* $MODCOUNT/zzz*
+
+wget_download "http://cdgroup.org/files/7dtd/TerrainBasedMovementSpeed.zip" TerrainBasedMovementSpeed.zip extract_file
+wget_download "http://cdgroup.org/files/7dtd/QualityEffectivenessBonuses.zip" QualityEffectivenessBonuses.zip extract_file
 #gdrive_download 1ZH9YtemlSBsXEAfMUz5F0nKZJ7E2CLQU VanillaPlus.rar extract_file && find . -name modinfo.xml -exec bash -c 'mv "$0" "${0/modinfo/ModInfo}"' {} \;
 #rm -rf $MODCOUNT/*_UIMENU_*
