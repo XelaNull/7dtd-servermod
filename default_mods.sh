@@ -55,7 +55,7 @@ remap Snow_WoodtoCoal
 remap Snow_BladeTraps
 remap Doughs-Buff-PipeBombs
 remap Doughs-PunishingWeather-Survival
-remap Schematic_Skillpoint
+remap Schematics_Skillpoint
 remap SalvagedElectronics-Battery
 remap SalvagedElectronics-Generator
 remap SalvagedElectronics-Lights
