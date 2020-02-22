@@ -75,7 +75,7 @@ wget_download "https://github.com/GopherMods/7DTDMods/raw/master/SuperCornCooked
 
 # Get The Herp & Bigger Buck and Doe
 git_clone https://github.com/doughphunghus/7d2dModlets
-rm -rf $MODCOUNT/Khelldon*Aww* $MODCOUNT/Khelldon*Baby* $MODCOUNT/Khelldon*Bad* $MODCOUNT/Khelldon*Chicken* $MODCOUNT/Khelldon*Complex* $MODCOUNT/Khelldon*Custom* $MODCOUNT/Khelldon*Framed* $MODCOUNT/Khelldon*Greener* $MODCOUNT/Khelldon*Horny* $MODCOUNT/Khelldon*Nailed* $MODCOUNT/Khelldon*Piggy* $MODCOUNT/Khelldon*Antioch* $MODCOUNT/Khelldon*Rebar* $MODCOUNT/Khelldon*Screamer* $MODCOUNT/Khelldon*Starter* $MODCOUNT/Khelldon*Gullivers* $MODCOUNT/Khelldon*Benched* $MODCOUNT/zzz*
+rm -rf $MODCOUNT/7d2dModlets/Khelldon*Aww* $MODCOUNT/7d2dModlets/Khelldon*Baby* $MODCOUNT/7d2dModlets/Khelldon*Bad* $MODCOUNT/7d2dModlets/Khelldon*Chicken* $MODCOUNT/7d2dModlets/Khelldon*Complex* $MODCOUNT/7d2dModlets/Khelldon*Custom* $MODCOUNT/7d2dModlets/Khelldon*Framed* $MODCOUNT/7d2dModlets/Khelldon*Greener* $MODCOUNT/7d2dModlets/Khelldon*Horny* $MODCOUNT/7d2dModlets/Khelldon*Nailed* $MODCOUNT/7d2dModlets/Khelldon*Piggy* $MODCOUNT/7d2dModlets/Khelldon*Antioch* $MODCOUNT/7d2dModlets/Khelldon*Rebar* $MODCOUNT/7d2dModlets/Khelldon*Screamer* $MODCOUNT/7d2dModlets/Khelldon*Starter* $MODCOUNT/7d2dModlets/Khelldon*Gullivers* $MODCOUNT/7d2dModlets/Khelldon*Benched* $MODCOUNT/7d2dModlets/zzz*
 
 wget_download "http://cdgroup.org/files/7dtd/TerrainBasedMovementSpeed.zip" TerrainBasedMovementSpeed.zip extract_file
 wget_download "http://cdgroup.org/files/7dtd/QualityEffectivenessBonuses.zip" QualityEffectivenessBonuses.zip extract_file
