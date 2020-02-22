@@ -41,9 +41,7 @@ remap Guppycur\'s_Random_ZombieGetterUpper
 remap donovan-pickmeup
 remap donovan-lootcleanup
 remap donovan-craftspikes
-remap SteelBars
 remap JaxTeller718_EggsInFridges
-remap Claymore_Stainless_Steel_Returns
 remap "Valmars Door Lock Smash"
 remap 60Slot_Bag_30Reserve
 remap Faster_Bellows
@@ -57,6 +55,21 @@ remap Snow_WoodtoCoal
 remap Snow_BladeTraps
 remap Doughs-Buff-PipeBombs
 remap Doughs-PunishingWeather-Survival
+remap Schematic_Skillpoint
+remap SalvagedElectronics-Battery
+remap SalvagedElectronics-Generator
+remap SalvagedElectronics-Lights
+remap SalvagedElectronics-Parts
+remap SalvagedElectronics-Signs
+remap SalvagedElectronics-Solar
+remap 7DTD-MeatRendering
+remap 7DTD-SewingKit
+remap 7DTD-SteelTrussingSheet
+remap DrPrepper
+remap EmperorDye
+remap Frobscottle
+remap GhillieSuitAsMods
+remap Claymore_Stainless_Steel_Returns
 
 # remap BH_TrapMod
 # remap "Barrels and Alcohol"
