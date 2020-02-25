@@ -91,7 +91,7 @@ function SDD_ModMgr()
   }
   // Show as a table
   $rtn.="<table width=100% border=1 cellspacing=0 cellpadding=2>
-  <tr bgcolor=\"#ffb8ab\"><th>Name</th><th>DL / Update</th><th>Description</th><th>Author</th></tr>
+  <tr bgcolor=\"#ffb8ab\"><td align=left><b>Name</b></td><td><b>DL / Update</b></td><td><b>Description</b></td><td><b>Author</b></td></tr>
   ";
   
   
@@ -137,7 +137,7 @@ function SDD_ModMgr()
     if(strpos($URL,'github')!==FALSE) $update_Link="<a href=\"index.php?update=$PkgNum\"><img align=top height=20 src=update.png ALT=\"Perform GIT Pull to UPDATE Modlet\"></a>";
     else $update_Link="";
 
-    if($URL!='') $download_Link="<td width=50 align=center><a href=$URL><img align=top height=38 src=zombie-hand.png alt=\"Download Modlet\"></a> $update_Link</td>";
+    if($URL!='') $download_Link="<td width=75 align=center><a href=$URL><img align=top height=38 src=zombie-hand.png alt=\"Download Modlet\"></a> $update_Link</td>";
     else $download_Link="<td>$update_Link</td>";
     
     
