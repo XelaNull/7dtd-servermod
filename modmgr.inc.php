@@ -90,13 +90,13 @@ function SDD_ModMgr()
     $rtn="<table cellspacing=0 border=1><tr><td><b>Reset Command output:</b><br><font size=2><i>$command_output</i></font></td></tr></table><br>";
   }
   // Show as a table
-  $rtn.="<table width=100% border=1 cellspacing=0 cellpadding=3 id=modTable class=tablesorter>
+  $rtn.="id="myDummyTable" class="tablesorter"
   <tr bgcolor=\"#ab180e\">
-    <td>&nbsp;</td>
-    <td align=left onclick=\"sortTable(1)\"><font color=white><b>Name</b></td>
-    <td onclick=\"sortTable(2)\"><font color=white><b>Download / Update</b></td>
-    <td onclick=\"sortTable(3)\"><font color=white><b>Description</b></td>
-    <td onclick=\"sortTable(4)\"><font color=white><b>Author</b></td>
+    <th align=left><font color=white><b>Name</b></th>
+    <th>&nbsp;</td>
+    <th align=left><font color=white><b>Download / Update</b></th>
+    <th align=left><font color=white><b>Description</b></th>
+    <th align=left><font color=white><b>Author</b></th>
   </tr>
   ";
   
@@ -150,16 +150,18 @@ function SDD_ModMgr()
     
     if($ALT_count==2) { $ALT_count=0; $ROW_COLOR=$ALTCOLOR; } else $ROW_COLOR='white';
     $rtn.="<tr bgcolor=$ROW_COLOR><form method=post action=?do=modmgr><input type=hidden name=ModIDNum value=$modcnt>
-    <td>
-      <div style=\"display:inline-block;\"><font size=2><input $checkTXT name=modID$modcnt type=checkbox onChange=\"this.form.submit();\"></div>
-    </td>
+
 
     <td width=350>
     <div style=\"display:inline-block;\"><b>$modInfo_Array[Name]</b><br>
     Version: $modInfo_Array[Version] </font>
-    </div>
-    
+    </div>  
     </td>
+    <td>
+      <div style=\"display:inline-block;\"><font size=2><input $checkTXT name=modID$modcnt type=checkbox onChange=\"this.form.submit();\"></div>
+    </td>    
+    
+    
     $download_Link
     <td width=auto><font size=2>$modInfo_Array[Description]</font></td>
     <td><font size=2>$Author</td>
