@@ -276,15 +276,15 @@ $top="
 <tr>
   <td rowspan=2 width=280><a href=index.php><img src=7dtd_logo.png width=260 border=0></a></td>
 
-  <td colspan=4 height=50><b><font size=6>".readConfigValue('ServerName')."</font></b><br>
+  <td colspan=4 height=50><b><font size=5>".readConfigValue('ServerName')."</font></b><br>
   <iframe src=index.php?do=serverstatus width=600 height=30 frameborder=0 scrolling=no></iframe>
   </td>
 </tr>
 <tr>  
-  <td><p><a href=index.php?do=modmgr><b>Enable/Disable Modlets</b></a></p></td>
-  <td><p><a href=index.php?do=logviewer><b>View 7DTD Log</b></a></p></td>
-  <td><p><a href=index.php?do=editConfig><b>Edit Configs</b></a></p></td>
-  <td><p><a href=index.php?smmupdate=1>Update ServerMod Manager</a></p></td>
+  <td><p><a href=index.php?do=modmgr><font size=4><b>Enable/Disable Modlets</b></font></a></p></td>
+  <td><p><a href=index.php?do=logviewer><font size=4><b>View 7DTD Log</b></font></a></p></td>
+  <td><p><a href=index.php?do=editConfig><font size=4><b>Edit Configs</b></font></a></p></td>
+  <td><p><a href=index.php?smmupdate=1><font size=4><b>Update ServerMod Manager</b></font></a></p></td>
 </tr>
 </table>
 ";
