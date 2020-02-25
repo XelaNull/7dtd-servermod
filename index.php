@@ -291,6 +291,7 @@ function readConfigValue($SearchName)
         }
         
       if($Name==$SearchName && $Value!='') return($Value);
+    }
   
 }
 
