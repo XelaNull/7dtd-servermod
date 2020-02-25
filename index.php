@@ -1,7 +1,6 @@
 <?php 
 
 include "modmgr.inc.php";
-include "rwganalyzer.inc.php";
 
 session_start();
 
@@ -154,63 +153,6 @@ textarea {
   echo "<br>".date("H:i:s")."</font></center></body></html>"; exit;
   break;
   
-  /*
-  case "autoexplore":
-  echo "
-  <html>
-  <head>
-    <script type = \"text/JavaScript\">
-           <!-- 
-           function AutoRefresh( t ) { setTimeout(\"window.location.replace('http://".$_SERVER['SERVER_NAME'].":".$_SERVER['SERVER_PORT']."/7dtd/index.php?do=autoexplore')\", t); } 
-           //-->
-    </script>    
-  </head> 
-  <body onload = \"JavaScript:AutoRefresh(10000);\">  <center>";
-  $AUTOEXPLORE_PID=exec("ps awwux | grep -e expect -e 7dtd-run-after-initial-start | grep -v grep");
-  if($AUTOEXPLORE_PID!='' && $AUTOEXPLORE_STATUS=='') $AUTOEXPLORE_STATUS='STARTED';
-  else $AUTOEXPLORE_STATUS='STOPPED';
-  if(@$_GET['autoexplore_control']!='')
-    {
-      if($_GET['autoexplore_control']=='START_AUTOEXPLORE') { exec("rm -rf /startloop.touch; echo start > /data/7DTD/auto-reveal.status"); $AUTOEXPLORE_STATUS="STARTING"; }
-      if($_GET['autoexplore_control']=='STOP_AUTOEXPLORE') { exec("echo stop > /data/7DTD/auto-reveal.status"); $AUTOEXPLORE_STATUS="STOPPING"; }
-    }
-
-  if($status=='UP')
-  {
-  echo "<b>Auto-Exploration</b><Br>
-  This will make the first player to login, an admin, then will teleport them repeatedly to discover the entire map.<br>
-  <br>
-  <b>Status: </b> $AUTOEXPLORE_STATUS<br>
-  <br>";
-
-  if($AUTOEXPLORE_STATUS=='STOPPED') echo "<a href=http://".$_SERVER['SERVER_NAME'].":".$_SERVER['SERVER_PORT']."/7dtd/index.php?do=autoexplore&autoexplore_control=START_AUTOEXPLORE>Start Auto-Explore</a><br>";
-  else echo "<a href=http://".$_SERVER['SERVER_NAME'].":".$_SERVER['SERVER_PORT']."/7dtd/index.php?do=autoexplore&autoexplore_control=STOP_AUTOEXPLORE>Stop Auto-Explore</a>";
-  }
-  echo "<br><a target=_new href=http://$_SERVER[HTTP_HOST]:8082>7 Days to Die Map</a><hr>";
-  echo "</center></body></html>";
-  exit;
-  break;
-  
-  // Show the RWG Analyzer page
-  case "rwgAnalyzer":
-  $main="<h3>Random World Generator World Analyzer</h3>This page show you statistics about Worlds that your server has generated. 
-  It can help you better understand how prefabs were placed into a map before you even play it. Carefully examining this can help you 
-  determine if you have a seed and world generated that is worth playing.".rwganalyzer();
-  //phpinfo();
-  break;
-  // The PHP script that will read in and display the various game-generated World images
-  case "image":
-  $WorldName=str_replace("%20",' ',$_GET['WorldName']);
-  switch($_GET['type'])   { case "radiation": $name="radiation"; break; case "splat3": $name="splat3"; break; default: $name="biomes"; break; }
-  echo "<img src=/7dtd/GeneratedWorlds/$WorldName/$name.png>"; 
-  */
-/*$im = imagecreatefrompng("/data/7DTD/.local/share/7DaysToDie/GeneratedWorlds/$WorldName/$name.png"); 
-  header('Content-Type: image/png'); 
-  imagepng($im); imagedestroy($im); exit;
-  */
-  //break;
-
-
   case "editConfig":
   $main.="<form method=post><table>";
   
@@ -295,17 +237,17 @@ function readConfigValue($SearchName)
   
 }
 
-mainscreen(left_side($status), $main);
+mainscreen(top_row($status), $main);
 
 /***********************************/
 /***********************************/
 
-function mainscreen($left, $main)
+function mainscreen($top, $main)
 {
 ?>
 <html>
   <head>
-    <title>7DTD ServerMod Manager (7DTD-SMM): <?php echo readConfigValue('ServerName'); ?></title>
+    <title>7DTD-SMM: <?php echo readConfigValue('ServerName'); ?></title>
     <style type="text/css">
     textarea
     {
@@ -320,29 +262,34 @@ function mainscreen($left, $main)
     </style> 
   </head>
 <body>
-  <div>
-    <div style="width:20%; float:left;"><?php echo $left; ?></div>
-    <div style="float:left;width:80%;"><?php echo $main; ?></div>
-  </div>
+    <div style="width:100%"><?php echo $top; ?></div>
+    <div style="width:100%;"><?php echo $main; ?></div>
+
 </body>
 </html>
 <?php
 }
 
-function left_side($status)
+function top_row($status)
 {
-$left="<center>
-<h3><img src=7dtd_logo.png width=260><br>
-<b>SERVERMOD MANAGER</b></h3>
-<p><a href=index.php?do=modmgr><b>Enable/Disable Modlets</b></a></p>
-<!--<p><a href=index.php?do=rwgAnalyzer><b>RWG World Analyzer</b></a></p>-->
-<p><a href=index.php?do=editConfig><b>Edit Server Config</b></a></p>
-<hr>
-<!-- Server Status Frame -->
-<iframe src=index.php?do=serverstatus width=280 height=150 frameborder=0></iframe>
+$top="
+<table cellspacing=0 cellpadding=0 width=100%>
+<tr>
+  <td><h3><img src=7dtd_logo.png width=260></td>
+  <td>".readConfigValue('ServerName')."<br>
+      <iframe src=index.php?do=serverstatus width=280 height=150 frameborder=0></iframe>
+  </td>
+  
+  <td><p><a href=index.php?do=modmgr><b>Enable/Disable Modlets</b></a></p></td>
+  <td><p><a href=index.php?do=viewlog><b>View 7DTD Log</b></a></p></td>
+  <td><p><a href=index.php?do=editConfig><b>Edit Configs</b></a></p></td>
+  <td><p><a href=index.php?smmupdate=1>Update ServerMod Manager</a></p></td>
+</tr>
+</table>
 ";
 
 // Display clickable links to serverconfig.xml and 7dtd.log
+/*
 $left.="<hr><h3><b>EDIT CONFIGS & VIEW LOG</b></h3>
 <b>serverconfig.xml & 7dtd.log:</b><br>
 <form method=post><select size=3 onChange=\"this.form.submit();\" name=editFile style=\"font-size: 12pt;\">
@@ -358,16 +305,14 @@ foreach(new RecursiveIteratorIterator($it) as $file) if(basename($file)!='.' && 
 $left.="<b>Data/Config XML Files:</b> <br><form method=post><select size=10 onChange=\"this.form.submit();\" name=editFile style=\"font-size: 12pt;\">";
 foreach($XML_ARRAY as $file) $left.="<option value=".str_replace('../Data/Config/','',$file).">".str_replace('../Data/Config/','',$file)."</option>\n";
 $left.="</select></form>";
+
 $left.="<hr>
-<!-- Auto-Explore Status Frame 
-<iframe src=index.php?do=autoexplore width=285 height=230 frameborder=0></iframe>
-<br>-->
 <a href=index.php?smmupdate=1>Update ServerMod Manager</a><br>
 <a href=index.php?smmreset=1>Reset ServerMod Manager Mods</a><br>
 <br>
 <a href=index.php>refresh page</a>
-</center>";
-return $left;
+</center>";*/
+return $top;
 }
 
 
