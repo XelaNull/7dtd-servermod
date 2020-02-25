@@ -217,7 +217,7 @@ function mainscreen($top, $main)
     $(function(){
       $("#myDummyTable").tablesorter({
        widgets: ['zebra'],
-       sortList : [[0,1]]
+       sortList : [[0,0]]
        });
     });
       
