@@ -209,8 +209,8 @@ function mainscreen($top, $main)
     .tablesorter-default th,
     .tablesorter-default thead td {
     	font-weight: bold;
-    	color: #000000;
-    	background-color: #b3b2b1;;
+    	color: #ffffff;
+    	background-color: #615f5f;
     	border-collapse: collapse;
     	border-bottom: #ccc 2px solid;
     	padding: 0;
