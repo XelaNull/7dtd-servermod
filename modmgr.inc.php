@@ -151,7 +151,7 @@ function SDD_ModMgr()
     
     $rtn.="<tr>
     <td><input $checkTXT name=modID$modcnt type=checkbox onChange=\"this.form.submit();\"></td>    
-    <td width=350>$modInfo_Array[Name]<br>Version: $modInfo_Array[Version]</td>
+    <td width=350><b>$modInfo_Array[Name]</b><br>Version: $modInfo_Array[Version]</td>
     $download_Link
     <td width=auto><font size=2>$modInfo_Array[Description]</font></td>
     <td><font size=2>$Author</td>
