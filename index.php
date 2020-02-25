@@ -284,7 +284,7 @@ function mainscreen($top, $main)
     	background-color: #bdb48a;
     }
     .tablesorter-default tr.even > td {
-    	background-color: #e69d8e;
+    	background-color: #c7524c;
     }
 
     /* Column Widget - column sort colors */
