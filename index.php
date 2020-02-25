@@ -272,7 +272,7 @@ function mainscreen($top, $main)
 function top_row($status)
 {
 $top="
-<table cellspacing=0 cellpadding=3 width=100% border=1>
+<table cellspacing=0 cellpadding=3 width=100% border=0>
 <tr>
   <td rowspan=2 width=280><h3><a href=index.php><img src=7dtd_logo.png width=260 border=0></a></td>
 
