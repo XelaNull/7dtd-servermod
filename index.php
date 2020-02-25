@@ -277,7 +277,7 @@ $top="
   <td rowspan=2 width=280><h3><a href=index.php><img src=7dtd_logo.png width=260 border=0></a></td>
 
   <td colspan=4>".readConfigValue('ServerName')."<br>
-  <iframe src=index.php?do=serverstatus width=600 height=28 frameborder=0></iframe>
+  <iframe src=index.php?do=serverstatus width=600 height=30 frameborder=0></iframe>
   </td>
 </tr>
 <tr>  
