@@ -72,7 +72,7 @@ switch(@$_GET['do'])
   else
     {
       if($currentRequest=='stop' && $status=="UP") $status='STOPPING';
-      echo $status[$currentRequest]." (";
+      echo "$status [$currentRequest] (";
       switch($status)
       {
         case "UP":
