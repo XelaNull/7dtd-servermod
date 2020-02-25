@@ -272,10 +272,11 @@ function mainscreen($top, $main)
 function top_row($status)
 {
 $top="
-<table cellspacing=0 cellpadding=0 width=100%>
+<table cellspacing=0 cellpadding=0 width=100% border=1>
 <tr>
-  <td><h3><img src=7dtd_logo.png width=260></td>
-  <td>".readConfigValue('ServerName')."<br>
+  <td rowspan=2><h3><img src=7dtd_logo.png width=260></td>
+
+  <td colspan=5>".readConfigValue('ServerName')."<br>
       <iframe src=index.php?do=serverstatus width=280 height=150 frameborder=0></iframe>
   </td>
   
