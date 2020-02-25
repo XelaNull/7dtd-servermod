@@ -281,10 +281,10 @@ function mainscreen($top, $main)
 
     /* Zebra Widget - row alternating colors */
     .tablesorter-default tr.odd > td {
-    	background-color: #f27e7e;
+    	background-color: #bdb48a;
     }
     .tablesorter-default tr.even > td {
-    	background-color: #b52d2d;
+    	background-color: #b3b2b1;
     }
 
     /* Column Widget - column sort colors */
