@@ -90,7 +90,8 @@ function SDD_ModMgr()
     $rtn="<table cellspacing=0 border=1><tr><td><b>Reset Command output:</b><br><font size=2><i>$command_output</i></font></td></tr></table><br>";
   }
   // Show as a table
-  $rtn.="     <table id=\"myDummyTable\" class=\"tablesorter\" border=0 cellpadding=0 cellspacing=1>
+  $rtn.="<form method=post action=?do=modmgr><input type=hidden name=ModIDNum value=$modcnt>
+  <table id=\"myDummyTable\" class=\"tablesorter\" border=0 cellpadding=0 cellspacing=1>
   <tr bgcolor=\"#ab180e\">
     <th align=left><font color=white><b>Name</b></th>
     <th>&nbsp;</td>
@@ -149,7 +150,7 @@ function SDD_ModMgr()
     
     
     if($ALT_count==2) { $ALT_count=0; $ROW_COLOR=$ALTCOLOR; } else $ROW_COLOR='white';
-    $rtn.="<tr bgcolor=$ROW_COLOR><form method=post action=?do=modmgr><input type=hidden name=ModIDNum value=$modcnt>
+    $rtn.="<tr bgcolor=$ROW_COLOR>
 
 
     <td width=350>
@@ -157,9 +158,7 @@ function SDD_ModMgr()
     Version: $modInfo_Array[Version] </font>
     </div>  
     </td>
-    <td>
-      <div style=\"display:inline-block;\"><font size=2><input $checkTXT name=modID$modcnt type=checkbox onChange=\"this.form.submit();\"></div>
-    </td>    
+    <td><input $checkTXT name=modID$modcnt type=checkbox onChange=\"this.form.submit();\"></td>    
     
     
     $download_Link
