@@ -201,6 +201,14 @@ function mainscreen($top, $main)
       padding:3px;
     } 
     </style> 
+    <!-- choose a theme file -->
+    <link rel="stylesheet" href="/path/to/theme.default.css">
+    <!-- load jQuery and tablesorter scripts -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/jquery.tablesorter.min.js"></script>
+
+    <!-- tablesorter widgets (optional) -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/jquery.tablesorter.widgets.min.js"></script>
   </head>
 <body>
     <div style="width:100%; padding: 0px;"><?php echo $top; ?></div>
