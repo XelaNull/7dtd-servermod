@@ -149,8 +149,6 @@ function SDD_ModMgr()
     if($URL!='') $download_Link="<td width=90 align=center><a href=$URL><img align=top height=28 src=direct-download.png alt=\"Download Modlet\"></a> $update_Link</td>";
     else $download_Link="<td>$update_Link</td>";
     
-    
-    
     $rtn.="<tr>
     <td><input $checkTXT name=modID$modcnt type=checkbox onChange=\"this.form.submit();\"></td>    
     <td width=350>$modInfo_Array[Name]<br>Version: $modInfo_Array[Version]</td>

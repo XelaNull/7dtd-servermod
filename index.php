@@ -215,7 +215,8 @@ function mainscreen($top, $main)
       background-color: #ebf0fa;
     }
     </style> 
-    <link href="http://mottie.github.io/tablesorter/css/theme.default.css" rel="stylesheet">
+    <!-- <link href="http://mottie.github.io/tablesorter/css/theme.default.css" rel="stylesheet"> -->
+    <!--<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/cupertino/jquery-ui.css"> -->
      
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"></script>
