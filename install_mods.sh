@@ -23,6 +23,7 @@ fi
 [[ -f $INSTALL_DIR/html/7dtd_logo.png ]] || ln -s $INSTALL_DIR/7dtd-servermod/7dtd_logo.png $INSTALL_DIR/html/7dtd_logo.png
 [[ -f $INSTALL_DIR/html/update.png ]] || ln -s $INSTALL_DIR/7dtd-servermod/update.png $INSTALL_DIR/html/update.png
 [[ -f $INSTALL_DIR/html/zombie-hand.png ]] || ln -s $INSTALL_DIR/7dtd-servermod/zombie-hand.png $INSTALL_DIR/html/zombie-hand.png
+[[ -f $INSTALL_DIR/html/direct-download.png ]] || ln -s $INSTALL_DIR/7dtd-servermod/direct-download.png $INSTALL_DIR/html/direct-download.png
 
 # Creating "Mods-Available" folder
 echo "Creating the Mods-Available directory for mod/modlet installation..."
