@@ -199,7 +199,7 @@ function mainscreen($top, $main)
     	width: 100%;
     	font: 12px/18px Arial, Sans-serif;
     	color: #333;
-    	background-color: #fff;
+    	background-color: #525252;
     	border-spacing: 0;
     	margin: 10px 0 15px;
     	text-align: left;
@@ -209,8 +209,8 @@ function mainscreen($top, $main)
     .tablesorter-default th,
     .tablesorter-default thead td {
     	font-weight: bold;
-    	color: #000000;
-    	background-color: #b80f0f;
+    	color: #ffffff;
+    	background-color: #000000;
     	border-collapse: collapse;
     	border-bottom: #ccc 2px solid;
     	padding: 0;
@@ -387,7 +387,6 @@ function mainscreen($top, $main)
     }
 
     </style> 
-    <!--<link href="http://mottie.github.io/tablesorter/css/theme.default.css" rel="stylesheet">-->
      
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"></script>
