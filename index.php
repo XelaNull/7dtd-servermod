@@ -27,12 +27,12 @@ if($_COOKIE['password']!=$server_password && $_SESSION['password']!=$server_pass
 if(@$_POST['editFile']) { $_GET['do']='editFile'; @$_GET['editFile']=$_POST['editFile']; }
 if(@$_GET['editFile']=='../7dtd.log' && $_GET['full']!=1) { $_GET['do']='logviewer'; }
 
-// Determine if the 7DTD Server is UP or DOWN
+// Determine if the 7DTD Server is STARTED or DOWN
 $SERVER_PID=exec("ps awwux | grep 7DaysToDieServer | grep -v sudo | grep -v grep");
 if(strlen($SERVER_PID)>2) 
   {
     $server_started=str_replace("\n","",exec("grep 'GameServer.Init successful' /data/7DTD/7dtd.log | wc -l"));
-    if($server_started==1) $status="UP";   
+    if($server_started==1) $status="STARTED";   
     else $status="STARTING";
   }
 else $status="DOWN";
@@ -72,11 +72,11 @@ switch(@$_GET['do'])
     }
   else
     {
-      if($currentRequest=='stop' && $status=="UP") $status='STOPPING';
+      if($currentRequest=='stop' && $status=="STARTED") $status='STOPPING';
       echo "$status (";
       switch($status)
       {
-        case "UP":
+        case "STARTED":
         if($currentRequest!='stop') echo "<a href=?do=serverstatus&control=STOP>stop</a>";
         else echo "<a href=?do=serverstatus&control=FORCE_STOP>force stop</a>";
         break;
