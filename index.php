@@ -120,7 +120,7 @@ textarea {
            //-->
     </script>    
   </head> 
-  <body onload = \"JavaScript:AutoRefresh(5000);\">  <center>
+  <body onload = \"JavaScript:AutoRefresh(5000);\">
   <font size=4><b>Server Status:</b> ";
 
   $currentRequest=file("/data/7DTD/server.expected_status");
@@ -149,7 +149,7 @@ textarea {
         break;
       }
     }
-  echo " ".date("H:i:s")."</font></center></body></html>"; exit;
+  echo " ".date("H:i:s")."</font></body></html>"; exit;
   break;
   
   case "editConfig":
