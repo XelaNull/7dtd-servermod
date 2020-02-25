@@ -27,7 +27,7 @@ if($_COOKIE['password']!=$server_password && $_SESSION['password']!=$server_pass
 if(@$_POST['editFile']) { $_GET['do']='editFile'; @$_GET['editFile']=$_POST['editFile']; }
 if(@$_GET['editFile']=='../7dtd.log' && $_GET['full']!=1) { $_GET['do']='logviewer'; }
 
-// Determine if the 7DTD Server is STARTED or DOWN
+// Determine if the 7DTD Server is STARTED or STOPPED
 $SERVER_PID=exec("ps awwux | grep 7DaysToDieServer | grep -v sudo | grep -v grep");
 if(strlen($SERVER_PID)>2) 
   {
@@ -35,7 +35,7 @@ if(strlen($SERVER_PID)>2)
     if($server_started==1) $status="STARTED";   
     else $status="STARTING";
   }
-else $status="DOWN";
+else $status="STOPPED";
 
 // Main Switch to allow this single page to act as multiple pages
 switch(@$_GET['do'])
@@ -85,8 +85,8 @@ switch(@$_GET['do'])
         echo "<a href=?do=serverstatus&control=FORCE_STOP>force stop</a>";
         break;
 
-        case "DOWN":
-        echo "<a href=?do=serverstatus&control=START>START SERVER</a>";
+        case "STOPPED":
+        echo "<a href=?do=serverstatus&control=START>start server</a>";
         break;
       }
       echo ")";
