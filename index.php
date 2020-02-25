@@ -304,7 +304,7 @@ $left="<center>
 <h3><img src=7dtd_logo.png width=260><br>
 <b>SERVERMOD MANAGER</b></h3>
 <p><a href=index.php?do=modmgr><b>Enable/Disable Modlets</b></a></p>
-<p><a href=index.php?do=rwgAnalyzer><b>RWG World Analyzer</b></a></p>
+<!--<p><a href=index.php?do=rwgAnalyzer><b>RWG World Analyzer</b></a></p>-->
 <p><a href=index.php?do=editConfig><b>Edit Server Config</b></a></p>
 <hr>
 <!-- Server Status Frame -->
@@ -328,9 +328,9 @@ $left.="<b>Data/Config XML Files:</b> <br><form method=post><select size=10 onCh
 foreach($XML_ARRAY as $file) $left.="<option value=".str_replace('../Data/Config/','',$file).">".str_replace('../Data/Config/','',$file)."</option>\n";
 $left.="</select></form>";
 $left.="<hr>
-<!-- Auto-Explore Status Frame -->
+<!-- Auto-Explore Status Frame 
 <iframe src=index.php?do=autoexplore width=285 height=230 frameborder=0></iframe>
-<br>
+<br>-->
 <a href=index.php?smmupdate=1>Update ServerMod Manager</a><br>
 <a href=index.php?smmreset=1>Reset ServerMod Manager Mods</a><br>
 <br>
