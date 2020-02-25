@@ -92,14 +92,17 @@ function SDD_ModMgr()
   // Show as a table
   $rtn.="<form method=post action=?do=modmgr><input type=hidden name=ModIDNum value=$modcnt>
   <table id=\"myDummyTable\" class=\"tablesorter\" border=0 cellpadding=0 cellspacing=1>
-  <tr bgcolor=\"#ab180e\">
-    <th align=left><font color=white><b>Name</b></th>
-    <th>Version</th>
-    <th>&nbsp;</td>
-    <th align=left><font color=white><b>Download / Update</b></th>
-    <th align=left><font color=white><b>Description</b></th>
-    <th align=left><font color=white><b>Author</b></th>
-  </tr>
+  <thead>
+    <tr bgcolor=\"#ab180e\">
+      <th align=left><font color=white><b>Name</b></th>
+      <th>Version</th>
+      <th>&nbsp;</td>
+      <th align=left><font color=white><b>Download / Update</b></th>
+      <th align=left><font color=white><b>Description</b></th>
+      <th align=left><font color=white><b>Author</b></th>
+    </tr>
+  </thead>
+  <tbody>
   ";
   
   
@@ -165,11 +168,7 @@ function SDD_ModMgr()
     </form></tr>";
   }
   
-  $rtn.="</table>";
-  $rtn.="<script>$(function() {
-  $(\"#modTable\").tablesorter();
-});
-  </script>";
+  $rtn.="</tbody>\n</table>";
   $rtn.="<A href=?enableall=1>enable all</a> . <a href=?disableall=1>disable all</a>";
   $rtn.="<br>Total Modlets: ".number_format(count($MOD_ARRAY));
   
