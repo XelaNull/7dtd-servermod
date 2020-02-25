@@ -170,7 +170,7 @@ function SDD_ModMgr()
   $rtn.="<script>$(function() {
   $(\"#modTable\").tablesorter();
 });
-  </script>"
+  </script>";
   $rtn.="<A href=?enableall=1>enable all</a> . <a href=?disableall=1>disable all</a>";
   $rtn.="<br>Total Modlets: ".number_format(count($MOD_ARRAY));
   
