@@ -223,7 +223,7 @@ function mainscreen($top, $main)
     <script>
     $(function(){
       $("#myDummyTable").tablesorter({
-      theme: 'blue',
+       theme: 'blue',
        widgets: ['zebra'],
        sortList : [[1,0]]
        });
