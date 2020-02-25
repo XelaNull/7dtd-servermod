@@ -276,7 +276,7 @@ $top="
 <tr>
   <td rowspan=2><h3><img src=7dtd_logo.png width=260></td>
 
-  <td colspan=5>".readConfigValue('ServerName')."</td>
+  <td>".readConfigValue('ServerName')."</td>
 </tr>
 <tr>
   <td>
