@@ -90,7 +90,7 @@ function SDD_ModMgr()
     $rtn="<table cellspacing=0 border=1><tr><td><b>Reset Command output:</b><br><font size=2><i>$command_output</i></font></td></tr></table><br>";
   }
   // Show as a table
-  $rtn.="id="myDummyTable" class="tablesorter"
+  $rtn.="     <table id=\"myDummyTable\" class=\"tablesorter\" border=0 cellpadding=0 cellspacing=1>
   <tr bgcolor=\"#ab180e\">
     <th align=left><font color=white><b>Name</b></th>
     <th>&nbsp;</td>
