@@ -29,7 +29,13 @@ if(@$_GET['editFile']=='../7dtd.log' && $_GET['full']!=1) { $_GET['do']='logview
 
 // Determine if the 7DTD Server is UP or DOWN
 $SERVER_PID=exec("ps awwux | grep 7DaysToDieServer | grep -v sudo | grep -v grep");
-if(strlen($SERVER_PID)>2) $status="UP"; else $status="DOWN";
+if(strlen($SERVER_PID)>2) 
+  {
+    $server_started=exec("grep 'GameServer.Init successful' /data/7DTD/serverconfig.xml | wc -l");
+    if($server_started==1) $status="UP";   
+    else $status="STARTING";
+  }
+else $status="DOWN";
 
 // Main Switch to allow this single page to act as multiple pages
 switch(@$_GET['do'])
@@ -40,76 +46,6 @@ switch(@$_GET['do'])
   $main="<h3>Activate/Deactivate Modlets</h3>Select the Modlets that you would like to enable by simple checking the box next to it. 
   You will need to stop and start your server for any changes to this list to activate.<br><br>".SDD_ModMgr();
   break;
-  
-  /*
-  case "logviewer":
-  $main="<iframe src=index.php?do=logviewer-frame style=\"width:100%;height:100%\" frameborder=1></iframe>";
-  break;
-  
-  // A better log viewer
-  case "logviewer-frame":
-  echo '
-  <html>
-  <head>
-  <style type="text/css">
-  .textareaContainer {
-  width: auto;
-  height: auto;
-  padding: 20px;
-  margin-bottom: 30px;
-}
-
-textarea {
-  width: 100%;
-  border: 0px;
-}
-  .border-box {
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -o-box-sizing: border-box;
-}
-
-.content-box {
-  box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  -o-box-sizing: content-box;
-}
-  </style>
-  
-  <script type="text/javascript">
-    window.onload=function(){
-    var textarea = document.getElementById(\'logviewer\');
-    AutoRefresh(1000);
-    setInterval(function(){ textarea.scrollTop = textarea.scrollHeight; }, 500);
-    }
-
-     <!-- 
-     function AutoRefresh( t ) { setTimeout("window.location.replace(\'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].'/7dtd/index.php?do=logviewer-frame\')", t); } 
-     //-->
-  </script>
-
-  </head>
-  <body><b>Log Watcher:</b><br>';
-  
-  $log=file_get_contents('../7dtd.log');
-  $logLines=explode("\n",$log);
-  $totalLines=count($logLines);
-  for($z=($totalLines-45);$z<=$totalLines;$z++)
-    $newLog.=$logLines[$z]."\n";
-  $log=$newLog;
-  
-  echo '<Div class=textareaContainer>
-  <textarea rows=50 cols=140 name=logviewer id=logviewer class="border-box">'.$log.'</textarea>
-  * The full log can be viewed at: <A target=_MAIN href=index.php?do=editFile&editFile=../7dtd.log&full=1>Full 7dtd.log Log File</a></div>
-  ';
-
-  
-  echo '</body></html>';
-  exit;
-  break;
-  */
   
   // The server status sub-page
   case "serverstatus":
@@ -144,6 +80,10 @@ textarea {
             echo "<a href=?do=serverstatus&control=STOP>stop</a>)";
           }
         else echo "<a href=?do=serverstatus&control=FORCE_STOP>force stop</a>)";
+        break;
+        
+        case "STARTING":
+        echo "<a href=?do=serverstatus&control=FORCE_STOP>force stop</a>)";
         break;
 
         case "DOWN":
