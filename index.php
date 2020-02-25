@@ -73,25 +73,23 @@ switch(@$_GET['do'])
   else
     {
       if($currentRequest=='stop' && $status=="UP") $status='STOPPING';
-      echo "$status [$currentRequest] (";
+      echo "$status (";
       switch($status)
       {
         case "UP":
-        if($currentRequest!='stop')
-          {
-            echo "<a href=?do=serverstatus&control=STOP>stop</a>)";
-          }
-        else echo "<a href=?do=serverstatus&control=FORCE_STOP>force stop</a>)";
+        if($currentRequest!='stop') echo "<a href=?do=serverstatus&control=STOP>stop</a>";
+        else echo "<a href=?do=serverstatus&control=FORCE_STOP>force stop</a>";
         break;
               
         case "STARTING":
-        echo "<a href=?do=serverstatus&control=FORCE_STOP>force stop</a>)";
+        echo "<a href=?do=serverstatus&control=FORCE_STOP>force stop</a>";
         break;
 
         case "DOWN":
-        echo "<a href=?do=serverstatus&control=START>START SERVER</a>)";
+        echo "<a href=?do=serverstatus&control=START>START SERVER</a>";
         break;
       }
+      echo ")";
     }
   echo " ".date("H:i:s")."</font></body></html>"; exit;
   break;
