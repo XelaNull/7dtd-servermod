@@ -190,33 +190,8 @@ function mainscreen($top, $main)
 <html>
   <head>
     <title>7DTD-SMM: <?php echo readConfigValue('ServerName'); ?></title>
-    <style type="text/css">
-    table.tablesorter-blue td.primary,
-    table.tablesorter-blue tr.odd td.primary {
-      background-color: #ab180e;
-    }
-    table.tablesorter-blue tr.even td.primary {
-      background-color: #fec5bb;
-    }
-
-    table.tablesorter-blue td.secondary,
-    table.tablesorter-blue tr.odd td.secondary {
-      background-color: #c2d1f0;
-    }
-    table.tablesorter-blue tr.even td.secondary {
-      background-color: #d6e0f5;
-    }
-
-    table.tablesorter-blue td.tertiary,
-    table.tablesorter-blue tr.odd td.tertiary {
-      background-color: #d6e0f5;
-    }
-    table.tablesorter-blue tr.even td.tertiary {
-      background-color: #ebf0fa;
-    }
-    </style> 
     <!-- <link href="http://mottie.github.io/tablesorter/css/theme.default.css" rel="stylesheet"> -->
-    <!--<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/cupertino/jquery-ui.css"> -->
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/cupertino/jquery-ui.css"> 
      
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"></script>
@@ -224,7 +199,7 @@ function mainscreen($top, $main)
     <script>
     $(function(){
       $("#myDummyTable").tablesorter({
-       theme: 'blue',
+       theme: 'jui',
        widgets: ['zebra'],
        sortList : [[1,0]]
        });
