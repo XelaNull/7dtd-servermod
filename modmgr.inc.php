@@ -95,7 +95,6 @@ function SDD_ModMgr()
   <thead>
     <tr bgcolor=\"#ab180e\">
       <th align=left>Name</th>
-      <th>Version</th>
       <th>&nbsp;</td>
       <th align=left>Download / Update</th>
       <th align=left>Description</th>
@@ -157,8 +156,7 @@ function SDD_ModMgr()
     $rtn.="<tr bgcolor=$ROW_COLOR>
 
 
-    <td width=350>$modInfo_Array[Name]</td>
-    <td>$modInfo_Array[Version]</td>
+    <td width=350>$modInfo_Array[Name]<br>Version: $modInfo_Array[Version]</td>
     <td><input $checkTXT name=modID$modcnt type=checkbox onChange=\"this.form.submit();\"></td>    
     
     
