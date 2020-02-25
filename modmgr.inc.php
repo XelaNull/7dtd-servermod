@@ -94,12 +94,12 @@ function SDD_ModMgr()
   <table id=\"myDummyTable\" class=\"tablesorter\" border=0 cellpadding=0 cellspacing=1>
   <thead>
     <tr bgcolor=\"#ab180e\">
-      <th align=left><font color=white><b>Name</b></th>
+      <th align=left>Name</th>
       <th>Version</th>
       <th>&nbsp;</td>
-      <th align=left><font color=white><b>Download / Update</b></th>
-      <th align=left><font color=white><b>Description</b></th>
-      <th align=left><font color=white><b>Author</b></th>
+      <th align=left>Download / Update</th>
+      <th align=left>Description</th>
+      <th align=left>Author</th>
     </tr>
   </thead>
   <tbody>

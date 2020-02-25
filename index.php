@@ -213,7 +213,7 @@ function mainscreen($top, $main)
     </script>
   </head>
 <body>
-    <?php /*<div style="width:100%; padding: 0px;"><?php echo $top; ?></div> */ ?>
+    <div style="width:100%; padding: 0px;"><?php echo $top; ?></div>
     <?php echo $main; ?>
 
 </body>
