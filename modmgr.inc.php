@@ -144,7 +144,7 @@ function SDD_ModMgr()
     if($ALT_count==2) { $ALT_count=0; $ROW_COLOR=$ALTCOLOR; } else $ROW_COLOR='white';
     $rtn.="<tr bgcolor=$ROW_COLOR><form method=post action=?do=modmgr><input type=hidden name=ModIDNum value=$modcnt>
     $download_Link
-    <td width=350>
+    <td width=380>
     
     <div style=\"display:inline-block;\"><font size=2><input $checkTXT name=modID$modcnt type=checkbox onChange=\"this.form.submit();\"></div>
     <div style=\"display:inline-block;\"><b>$modInfo_Array[Name]</b><br>

@@ -282,7 +282,7 @@ $top="
 </tr>
 <tr>  
   <td><p><a href=index.php?do=modmgr><b>Enable/Disable Modlets</b></a></p></td>
-  <td><p><a href=index.php?do=viewlog><b>View 7DTD Log</b></a></p></td>
+  <td><p><a href=index.php?do=logviewer><b>View 7DTD Log</b></a></p></td>
   <td><p><a href=index.php?do=editConfig><b>Edit Configs</b></a></p></td>
   <td><p><a href=index.php?smmupdate=1>Update ServerMod Manager</a></p></td>
 </tr>
