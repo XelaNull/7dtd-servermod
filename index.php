@@ -154,6 +154,7 @@ textarea {
   echo "<br>".date("H:i:s")."</font></center></body></html>"; exit;
   break;
   
+  /*
   case "autoexplore":
   echo "
   <html>
@@ -201,12 +202,13 @@ textarea {
   case "image":
   $WorldName=str_replace("%20",' ',$_GET['WorldName']);
   switch($_GET['type'])   { case "radiation": $name="radiation"; break; case "splat3": $name="splat3"; break; default: $name="biomes"; break; }
-  echo "<img src=/7dtd/GeneratedWorlds/$WorldName/$name.png>";
+  echo "<img src=/7dtd/GeneratedWorlds/$WorldName/$name.png>"; 
+  */
 /*$im = imagecreatefrompng("/data/7DTD/.local/share/7DaysToDie/GeneratedWorlds/$WorldName/$name.png"); 
   header('Content-Type: image/png'); 
   imagepng($im); imagedestroy($im); exit;
   */
-  break;
+  //break;
 
 
   case "editConfig":
@@ -268,6 +270,29 @@ textarea {
   
 }
 
+function readConfigValue($SearchName)
+{
+  $configArray=file("../serverconfig.xml");
+  foreach($configArray as $line)
+    {
+      // Line contains the NAME
+      if(strpos($line, 'name="')!==FALSE)
+        {
+          $namePos=strpos($line, 'property name=')+15;
+          $endNamePos=strpos($line, '"', $namePos);
+          $Name=substr($line,$namePos, ($endNamePos-$namePos));
+        }
+      // Try to also extract the value
+      if (strpos($line, 'value="')!==FALSE)
+        {
+          $valuePos=strpos($line, 'value="')+7;
+          $endValuePos=strpos($line, '"', $valuePos);
+          $Value=substr($line,$valuePos, ($endValuePos-$valuePos));
+        }
+        
+      if($Name==$SearchName && $Value!='') return($Value);
+  
+}
 
 mainscreen(left_side($status), $main);
 
@@ -279,7 +304,7 @@ function mainscreen($left, $main)
 ?>
 <html>
   <head>
-    <title>7DTD ServerMod Manager (7DTD-SMM)</title>
+    <title>7DTD ServerMod Manager (7DTD-SMM): <?php echo readConfigValue('ServerName'); ?></title>
     <style type="text/css">
     textarea
     {
