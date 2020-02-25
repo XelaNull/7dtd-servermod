@@ -64,9 +64,9 @@ switch(@$_GET['do'])
   $currentRequest=file("/data/7DTD/server.expected_status");
   if(@$_GET['control']!='')
     {
-      if($_GET['control']=='STOP') { exec("/stop_7dtd.sh &"); $status="STOPPING<br><br>"; }
-      if($_GET['control']=='FORCE_STOP' && $currentRequest=='stop') { exec("echo 'force_stop' > /data/7DTD/server.expected_status"); $status="FORCEFUL STOPPING<br><Br>"; }
-      if($_GET['control']=='START') { exec("/start_7dtd.sh &"); $status="STARTING<br><br>"; }
+      if($_GET['control']=='STOP') { exec("/stop_7dtd.sh &"); $status="STOPPING"; }
+      if($_GET['control']=='FORCE_STOP' && $currentRequest=='stop') { exec("echo 'force_stop' > /data/7DTD/server.expected_status"); $status="FORCEFUL STOPPING"; }
+      if($_GET['control']=='START') { exec("/start_7dtd.sh &"); $status="STARTING"; }
       echo $status;
     }
   else
