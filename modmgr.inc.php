@@ -95,10 +95,10 @@ function SDD_ModMgr()
   <thead>
     <tr>
       <th>&nbsp;</td>
-      <th align=left>Name</th>
-      <th align=left>Download / Update</th>
-      <th align=left>Description</th>
-      <th align=left>Author</th>
+      <th align=left><b>Name</b></th>
+      <th align=left><b>Download / Update</b></th>
+      <th align=left><b>Description</b></th>
+      <th align=left><b>Author</b></th>
     </tr>
   </thead>
   <tbody>
