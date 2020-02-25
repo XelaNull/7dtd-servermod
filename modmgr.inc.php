@@ -90,7 +90,7 @@ function SDD_ModMgr()
     $rtn="<table cellspacing=0 border=1><tr><td><b>Reset Command output:</b><br><font size=2><i>$command_output</i></font></td></tr></table><br>";
   }
   // Show as a table
-  $rtn.="<table width=100% border=1 cellspacing=0 cellpadding=2>
+  $rtn.="<table width=100% border=1 cellspacing=0 cellpadding=3>
   <tr bgcolor=\"#ffb8ab\"><td align=left><b>Name</b></td><td><b>DL / Update</b></td><td><b>Description</b></td><td><b>Author</b></td></tr>
   ";
   
@@ -153,7 +153,7 @@ function SDD_ModMgr()
     </td>
     $download_Link
     <td width=auto><font size=2>$modInfo_Array[Description]</font></td>
-    <td align=center><font size=2>$Author</td>
+    <td><font size=2>$Author</td>
     </form></tr>";
   }
   
