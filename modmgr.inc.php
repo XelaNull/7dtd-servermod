@@ -134,22 +134,22 @@ function SDD_ModMgr()
     @$URL=file_get_contents($MODS_DIR.'/'.$modPath_Pieces[0].'/ModURL.txt');
     
     $PkgNum=$modPath_Pieces[0];
-    if($URL!='') $download_Link="<td width=50 align=center><a href=$URL><img align=top height=38 src=zombie-hand.png alt=\"Download Modlet\"></a></td>";
-    else $download_Link='<td>&nbsp;</td>';
-    
     if(strpos($URL,'github')!==FALSE) $update_Link="<a href=\"index.php?update=$PkgNum\"><img align=top height=20 src=update.png ALT=\"Perform GIT Pull to UPDATE Modlet\"></a>";
     else $update_Link="";
+
+    if($URL!='') $download_Link="<td width=50 align=center><a href=$URL><img align=top height=38 src=zombie-hand.png alt=\"Download Modlet\"></a> $update_Link</td>";
+    else $download_Link="<td>$update_Link</td>";
+    
     
     
     if($ALT_count==2) { $ALT_count=0; $ROW_COLOR=$ALTCOLOR; } else $ROW_COLOR='white';
     $rtn.="<tr bgcolor=$ROW_COLOR><form method=post action=?do=modmgr><input type=hidden name=ModIDNum value=$modcnt>
     $download_Link
     <td width=380>
-    
+    <div style=\"display:inline-block;\"><font size=2><input $checkTXT name=modID$modcnt type=checkbox onChange=\"this.form.submit();\"></div>
     <div style=\"display:inline-block;\"><b>$modInfo_Array[Name]</b><br>
     Version: $modInfo_Array[Version] </font>
     </div>
-    <div style=\"display:inline-block;\"><font size=2><input $checkTXT name=modID$modcnt type=checkbox onChange=\"this.form.submit();\"> $update_Link</div>
     
     </td>
     <td width=auto><font size=2>$modInfo_Array[Description]</font></td>
