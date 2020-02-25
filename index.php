@@ -71,6 +71,7 @@ switch(@$_GET['do'])
     }
   else
     {
+      if($currentRequest=='stop' && $status="UP") $status='STOPPING';
       echo $status." (";
       switch($status)
       {
@@ -81,7 +82,7 @@ switch(@$_GET['do'])
           }
         else echo "<a href=?do=serverstatus&control=FORCE_STOP>force stop</a>)";
         break;
-        
+              
         case "STARTING":
         echo "<a href=?do=serverstatus&control=FORCE_STOP>force stop</a>)";
         break;
