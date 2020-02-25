@@ -261,8 +261,8 @@ function mainscreen($top, $main)
     </style> 
   </head>
 <body>
-    <div style="width:100%"><?php echo $top; ?></div>
-    <div style="width:100%;"><?php echo $main; ?></div>
+    <div style="width:100%; padding: 0px;"><?php echo $top; ?></div>
+    <div style="width:100%; padding: 0px;"><?php echo $main; ?></div>
 
 </body>
 </html>
