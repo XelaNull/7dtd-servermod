@@ -94,6 +94,7 @@ function SDD_ModMgr()
   <table id=\"myDummyTable\" class=\"tablesorter\" border=0 cellpadding=0 cellspacing=1>
   <tr bgcolor=\"#ab180e\">
     <th align=left><font color=white><b>Name</b></th>
+    <th>Version</th>
     <th>&nbsp;</td>
     <th align=left><font color=white><b>Download / Update</b></th>
     <th align=left><font color=white><b>Description</b></th>
@@ -153,11 +154,8 @@ function SDD_ModMgr()
     $rtn.="<tr bgcolor=$ROW_COLOR>
 
 
-    <td width=350>
-    <div style=\"display:inline-block;\"><b>$modInfo_Array[Name]</b><br>
-    Version: $modInfo_Array[Version] </font>
-    </div>  
-    </td>
+    <td width=350>$modInfo_Array[Name]</td>
+    <td>$modInfo_Array[Version]</td>
     <td><input $checkTXT name=modID$modcnt type=checkbox onChange=\"this.form.submit();\"></td>    
     
     
