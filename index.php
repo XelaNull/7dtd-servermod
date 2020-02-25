@@ -205,19 +205,12 @@ function mainscreen($top, $main)
      
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"></script>
-     <!--
-     $(function(){
-       $("#myDummyTable").tablesorter({
-        widgets: ['zebra'],
-        sortList : [[1,0],[2,0],[3,0]]
-        });
-     });
-     -->
+
     <script>
     $(function(){
       $("#myDummyTable").tablesorter({
        widgets: ['zebra'],
-       sortList : [[0,0]]
+       sortList : [[1,0]]
        });
     });
       

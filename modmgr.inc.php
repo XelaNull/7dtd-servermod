@@ -94,8 +94,8 @@ function SDD_ModMgr()
   <table id=\"myDummyTable\" class=\"tablesorter\" border=0 cellpadding=0 cellspacing=1>
   <thead>
     <tr bgcolor=\"#ab180e\">
-      <th align=left>Name</th>
       <th>&nbsp;</td>
+      <th align=left>Name</th>
       <th align=left>Download / Update</th>
       <th align=left>Description</th>
       <th align=left>Author</th>
@@ -154,12 +154,8 @@ function SDD_ModMgr()
     
     if($ALT_count==2) { $ALT_count=0; $ROW_COLOR=$ALTCOLOR; } else $ROW_COLOR='white';
     $rtn.="<tr bgcolor=$ROW_COLOR>
-
-
-    <td width=350>$modInfo_Array[Name]<br>Version: $modInfo_Array[Version]</td>
     <td><input $checkTXT name=modID$modcnt type=checkbox onChange=\"this.form.submit();\"></td>    
-    
-    
+    <td width=350>$modInfo_Array[Name]<br>Version: $modInfo_Array[Version]</td>
     $download_Link
     <td width=auto><font size=2>$modInfo_Array[Description]</font></td>
     <td><font size=2>$Author</td>
