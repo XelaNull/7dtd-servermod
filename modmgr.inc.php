@@ -93,10 +93,10 @@ function SDD_ModMgr()
   $rtn.="<table width=100% border=1 cellspacing=0 cellpadding=3 id=modTable>
   <tr bgcolor=\"#ab180e\">
     <td>&nbsp;</td>
-    <td align=left onclick=\"sortTable(0)\"><font color=white><b>Name</b></td>
-    <td onclick=\"sortTable(1)\"><font color=white><b>Download / Update</b></td>
-    <td onclick=\"sortTable(2)\"><font color=white><b>Description</b></td>
-    <td onclick=\"sortTable(3)\"><font color=white><b>Author</b></td>
+    <td align=left onclick=\"sortTable(1)\"><font color=white><b>Name</b></td>
+    <td onclick=\"sortTable(2)\"><font color=white><b>Download / Update</b></td>
+    <td onclick=\"sortTable(3)\"><font color=white><b>Description</b></td>
+    <td onclick=\"sortTable(4)\"><font color=white><b>Author</b></td>
   </tr>
   ";
   
@@ -222,7 +222,7 @@ function sortTable(n) {
     }
   }
 }
-sortTable(0);
+sortTable(1);
 </script>';
   $rtn.="<A href=?enableall=1>enable all</a> . <a href=?disableall=1>disable all</a>";
   $rtn.="<br>Total Modlets: ".number_format(count($MOD_ARRAY));
