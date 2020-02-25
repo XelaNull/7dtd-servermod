@@ -41,6 +41,7 @@ switch(@$_GET['do'])
   You will need to stop and start your server for any changes to this list to activate.<br><br>".SDD_ModMgr();
   break;
   
+  /*
   case "logviewer":
   $main="<iframe src=index.php?do=logviewer-frame style=\"width:100%;height:100%\" frameborder=1></iframe>";
   break;
@@ -108,6 +109,7 @@ textarea {
   echo '</body></html>';
   exit;
   break;
+  */
   
   // The server status sub-page
   case "serverstatus":
@@ -195,7 +197,7 @@ textarea {
   case "editFile":
   if($_GET['editFile']!='../serverconfig.xml' && $_GET['editFile']!='../7dtd.log' && $_GET['editFile']!='../7dtd-servermod/install_mods.list.cmd') $_GET['editFile']="../Data/Config/".$_GET['editFile'];
   $main="<form method=post action=\"?do=editFile&editFile=".$_GET['editFile']."\">
-   <textarea style=\"width:100%;height:90%\" name=fileContents>";
+   <textarea style=\"width:100%;height:80%\" name=fileContents>";
   if(@$_POST['Submit'] && $_POST['fileContents']!='')
           {
           $fp=fopen($_GET['editFile'],"w");
