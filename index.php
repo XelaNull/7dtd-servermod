@@ -31,7 +31,7 @@ if(@$_GET['editFile']=='../7dtd.log' && $_GET['full']!=1) { $_GET['do']='logview
 $SERVER_PID=exec("ps awwux | grep 7DaysToDieServer | grep -v sudo | grep -v grep");
 if(strlen($SERVER_PID)>2) 
   {
-    $server_started=str_replace("\n","",exec("grep 'GameServer.Init successful' /data/7DTD/serverconfig.xml | wc -l"));
+    $server_started=str_replace("\n","",exec("grep 'GameServer.Init successful' /data/7DTD/7dtd.log | wc -l"));
     if($server_started==1) $status="UP";   
     else $status="STARTING";
   }
