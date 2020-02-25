@@ -91,7 +91,7 @@ function SDD_ModMgr()
   }
   // Show as a table
   $rtn.="<table width=100% border=1 cellspacing=0 cellpadding=3>
-  <tr bgcolor=\"#ffb8ab\"><td align=left><b>Name</b></td><td><b>Download / Update</b></td><td><b>Description</b></td><td><b>Author</b></td></tr>
+  <tr bgcolor=\"#ab180e\"><td align=left><font color=white><b>Name</b></td><td><font color=white><b>Download / Update</b></td><td><font color=white><b>Description</b></td><td><font color=white><b>Author</b></td></tr>
   ";
   
   
