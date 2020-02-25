@@ -93,7 +93,7 @@ function SDD_ModMgr()
   $rtn.="<form method=post action=?do=modmgr><input type=hidden name=ModIDNum value=$modcnt>
   <table id=\"myDummyTable\" class=\"tablesorter\" border=0 cellpadding=0 cellspacing=1>
   <thead>
-    <tr bgcolor=\"#ab180e\">
+    <tr>
       <th>&nbsp;</td>
       <th align=left>Name</th>
       <th align=left>Download / Update</th>
@@ -106,11 +106,10 @@ function SDD_ModMgr()
   
   
   $modcnt=0;
-  $ALTCOLOR="#fec5bb"; $ALT_count=0;
   // Loop through all the mods
   foreach($MOD_ARRAY as $ModPath)
   {
-    $modcnt++; $ALT_count++;
+    $modcnt++; 
     $FullModPath_ModInfoXML=$ModPath; 
     $FullModDir=str_replace('/ModInfo.xml','',$ModPath);
     $modInfo_Array=readModInfo($FullModPath_ModInfoXML);
@@ -152,8 +151,7 @@ function SDD_ModMgr()
     
     
     
-    if($ALT_count==2) { $ALT_count=0; $ROW_COLOR=$ALTCOLOR; } else $ROW_COLOR='white';
-    $rtn.="<tr bgcolor=$ROW_COLOR>
+    $rtn.="<tr>
     <td><input $checkTXT name=modID$modcnt type=checkbox onChange=\"this.form.submit();\"></td>    
     <td width=350>$modInfo_Array[Name]<br>Version: $modInfo_Array[Version]</td>
     $download_Link
