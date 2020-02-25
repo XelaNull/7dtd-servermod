@@ -62,7 +62,7 @@ switch(@$_GET['do'])
   <font size=4><b>Server Status:</b> ";
 
   $currentRequest=file("/data/7DTD/server.expected_status");
-  $currentRequest=$currentRequest[0];
+  $currentRequest=trim($currentRequest[0]);
   if(@$_GET['control']!='')
     {
       if($_GET['control']=='STOP') { exec("/stop_7dtd.sh &"); $status="STOPPING"; }
