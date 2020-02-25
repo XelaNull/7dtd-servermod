@@ -146,10 +146,10 @@ function SDD_ModMgr()
     $download_Link
     <td width=380>
     
-    <div style=\"display:inline-block;\"><font size=2><input $checkTXT name=modID$modcnt type=checkbox onChange=\"this.form.submit();\"></div>
     <div style=\"display:inline-block;\"><b>$modInfo_Array[Name]</b><br>
-    Version: $modInfo_Array[Version] $update_Link</font>
+    Version: $modInfo_Array[Version] </font>
     </div>
+    <div style=\"display:inline-block;\"><font size=2><input $checkTXT name=modID$modcnt type=checkbox onChange=\"this.form.submit();\"> $update_Link</div>
     
     </td>
     <td width=auto><font size=2>$modInfo_Array[Description]</font></td>
