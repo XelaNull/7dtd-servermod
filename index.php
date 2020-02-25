@@ -121,8 +121,7 @@ textarea {
     </script>    
   </head> 
   <body onload = \"JavaScript:AutoRefresh(5000);\">  <center>
-  <font size=4><b>SERVER STATUS:</b><br>";
-
+  <font size=4><b>SERVER STATUS:</b> ";
 
   $currentRequest=file("/data/7DTD/server.expected_status");
   if(@$_GET['control']!='')
@@ -134,19 +133,19 @@ textarea {
     }
   else
     {
-      echo $status."<br><br>";
+      echo $status." (";
       switch($status)
       {
         case "UP":
         if($currentRequest!='stop')
           {
-            echo "<a href=?do=serverstatus&control=STOP>STOP SERVER</a><br>";
+            echo "<a href=?do=serverstatus&control=STOP>STOP SERVER</a>)";
           }
-        else echo "<a href=?do=serverstatus&control=FORCE_STOP>FORCE STOP SERVER</a>";
+        else echo "<a href=?do=serverstatus&control=FORCE_STOP>FORCE STOP SERVER</a>)";
         break;
 
         case "DOWN":
-        echo "<a href=?do=serverstatus&control=START>START SERVER</a>";
+        echo "<a href=?do=serverstatus&control=START>START SERVER</a>)";
         break;
       }
     }
