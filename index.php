@@ -149,7 +149,7 @@ textarea {
         break;
       }
     }
-  echo "<br>".date("H:i:s")."</font></center></body></html>"; exit;
+  echo " ".date("H:i:s")."</font></center></body></html>"; exit;
   break;
   
   case "editConfig":
@@ -276,13 +276,11 @@ $top="
 <tr>
   <td rowspan=2><h3><img src=7dtd_logo.png width=260></td>
 
-  <td>".readConfigValue('ServerName')."</td>
-</tr>
-<tr>
-  <td>
-      <iframe src=index.php?do=serverstatus width=280 height=150 frameborder=0></iframe>
+  <td>".readConfigValue('ServerName')."<br>
+  <iframe src=index.php?do=serverstatus width=400 height=100 frameborder=0></iframe>
   </td>
-  
+</tr>
+<tr>  
   <td><p><a href=index.php?do=modmgr><b>Enable/Disable Modlets</b></a></p></td>
   <td><p><a href=index.php?do=viewlog><b>View 7DTD Log</b></a></p></td>
   <td><p><a href=index.php?do=editConfig><b>Edit Configs</b></a></p></td>
