@@ -205,11 +205,40 @@ function mainscreen($top, $main)
      
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"></script>
-     
+     <!--
+     $(function(){
+       $("#myDummyTable").tablesorter({widgets: ['zebra']});
+     });
+     -->
     <script>
-        $(function(){
-          $("#myDummyTable").tablesorter({widgets: ['zebra']});
-        });
+
+        $(function() {
+
+  // call the tablesorter plugin
+  $("myDummyTable").tablesorter({
+    theme : 'blue',
+
+    sortList : [[1,0],[2,0],[3,0]],
+
+    // header layout template; {icon} needed for some themes
+    headerTemplate : '{content}{icon}',
+
+    // initialize zebra striping and column styling of the table
+    widgets : ["zebra", "columns"],
+
+    widgetOptions : {
+      // change the default column class names
+      // primary is the first column sorted, secondary is the second, etc
+      columns : [ "primary", "secondary", "tertiary" ],
+      // include thead when adding class names
+      columns_thead : true,
+      // include tfoot when adding class names
+      columns_tfoot : true
+    }
+
+  });
+
+});
     </script>
   </head>
 <body>
