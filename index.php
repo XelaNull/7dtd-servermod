@@ -209,8 +209,8 @@ function mainscreen($top, $main)
     .tablesorter-default th,
     .tablesorter-default thead td {
     	font-weight: bold;
-    	color: #ffffff;
-    	background-color: #000000;
+    	color: #000000;
+    	background-color: #b3b2b1;;
     	border-collapse: collapse;
     	border-bottom: #ccc 2px solid;
     	padding: 0;
@@ -284,7 +284,7 @@ function mainscreen($top, $main)
     	background-color: #bdb48a;
     }
     .tablesorter-default tr.even > td {
-    	background-color: #b3b2b1;
+    	background-color: #e69d8e;
     }
 
     /* Column Widget - column sort colors */
