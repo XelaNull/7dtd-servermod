@@ -123,11 +123,13 @@ textarea {
   </head> 
   <body onload = \"JavaScript:AutoRefresh(5000);\">  <center>
   <font size=4><b>SERVER STATUS:</b><br>";
-    
+
+
+  $currentRequest=file("/data/7DTD/server.expected_status");
   if(@$_GET['control']!='')
     {
       if($_GET['control']=='STOP') { exec("/stop_7dtd.sh &"); $status="STOPPING<br><br>"; }
-      if($_GET['control']=='FORCE_STOP') { exec("echo 'force_stop' > /data/7DTD/server.expected_status"); $status="FORCEFUL STOPPING<br><Br>"; }
+      if($_GET['control']=='FORCE_STOP' && $currentRequest=='stop') { exec("echo 'force_stop' > /data/7DTD/server.expected_status"); $status="FORCEFUL STOPPING<br><Br>"; }
       if($_GET['control']=='START') { exec("/start_7dtd.sh &"); $status="STARTING<br><br>"; }
       echo $status;
     }
@@ -137,8 +139,11 @@ textarea {
       switch($status)
       {
         case "UP":
-        echo "<a href=?do=serverstatus&control=STOP>STOP SERVER</a><br>";
-        echo "<a href=?do=serverstatus&control=FORCE_STOP>FORCE STOP SERVER</a>";
+        if($currentRequest!='stop')
+          {
+            echo "<a href=?do=serverstatus&control=STOP>STOP SERVER</a><br>";
+          }
+        else echo "<a href=?do=serverstatus&control=FORCE_STOP>FORCE STOP SERVER</a>";
         break;
 
         case "DOWN":
