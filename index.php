@@ -191,16 +191,29 @@ function mainscreen($top, $main)
   <head>
     <title>7DTD-SMM: <?php echo readConfigValue('ServerName'); ?></title>
     <style type="text/css">
-    textarea
-    {
-      width:100%;
+    table.tablesorter-blue td.primary,
+    table.tablesorter-blue tr.odd td.primary {
+      background-color: #ab180e;
     }
-    .textwrapper
-    {
-      border:1px solid #999999;
-      margin:5px 0;
-      padding:3px;
-    } 
+    table.tablesorter-blue tr.even td.primary {
+      background-color: #fec5bb;
+    }
+
+    table.tablesorter-blue td.secondary,
+    table.tablesorter-blue tr.odd td.secondary {
+      background-color: #c2d1f0;
+    }
+    table.tablesorter-blue tr.even td.secondary {
+      background-color: #d6e0f5;
+    }
+
+    table.tablesorter-blue td.tertiary,
+    table.tablesorter-blue tr.odd td.tertiary {
+      background-color: #d6e0f5;
+    }
+    table.tablesorter-blue tr.even td.tertiary {
+      background-color: #ebf0fa;
+    }
     </style> 
     <link href="http://mottie.github.io/tablesorter/css/theme.default.css" rel="stylesheet">
      
@@ -210,6 +223,7 @@ function mainscreen($top, $main)
     <script>
     $(function(){
       $("#myDummyTable").tablesorter({
+      theme: 'blue',
        widgets: ['zebra'],
        sortList : [[1,0]]
        });
