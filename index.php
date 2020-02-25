@@ -274,10 +274,10 @@ function top_row($status)
 $top="
 <table cellspacing=0 cellpadding=3 width=100% border=1>
 <tr>
-  <td rowspan=2><h3><img src=7dtd_logo.png width=260></td>
+  <td rowspan=2><h3><a href=index.php><img src=7dtd_logo.png width=260 border=0></a></td>
 
   <td colspan=4>".readConfigValue('ServerName')."<br>
-  <iframe src=index.php?do=serverstatus width=400 height=40 frameborder=0></iframe>
+  <iframe src=index.php?do=serverstatus width=500 height=40 frameborder=0></iframe>
   </td>
 </tr>
 <tr>  
