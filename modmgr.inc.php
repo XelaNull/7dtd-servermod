@@ -137,7 +137,7 @@ function SDD_ModMgr()
     if(strpos($URL,'github')!==FALSE) $update_Link="<a href=\"index.php?update=$PkgNum\"><img align=top height=28 src=update.png ALT=\"Perform GIT Pull to UPDATE Modlet\"></a>";
     else $update_Link="";
 
-    if($URL!='') $download_Link="<td width=80 align=center><a href=$URL><img align=top height=28 src=direct-download.png alt=\"Download Modlet\"></a> $update_Link</td>";
+    if($URL!='') $download_Link="<td width=90 align=center><a href=$URL><img align=top height=28 src=direct-download.png alt=\"Download Modlet\"></a> $update_Link</td>";
     else $download_Link="<td>$update_Link</td>";
     
     
