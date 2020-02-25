@@ -92,6 +92,7 @@ function SDD_ModMgr()
   // Show as a table
   $rtn.="<table width=100% border=1 cellspacing=0 cellpadding=3 id=modTable>
   <tr bgcolor=\"#ab180e\">
+    <td>&nbsp;</td>
     <td align=left onclick=\"sortTable(0)\"><font color=white><b>Name</b></td>
     <td onclick=\"sortTable(1)\"><font color=white><b>Download / Update</b></td>
     <td onclick=\"sortTable(2)\"><font color=white><b>Description</b></td>
@@ -149,8 +150,11 @@ function SDD_ModMgr()
     
     if($ALT_count==2) { $ALT_count=0; $ROW_COLOR=$ALTCOLOR; } else $ROW_COLOR='white';
     $rtn.="<tr bgcolor=$ROW_COLOR><form method=post action=?do=modmgr><input type=hidden name=ModIDNum value=$modcnt>
-    <td width=380>
-    <div style=\"display:inline-block;\"><font size=2><input $checkTXT name=modID$modcnt type=checkbox onChange=\"this.form.submit();\"></div>
+    <td>
+      <div style=\"display:inline-block;\"><font size=2><input $checkTXT name=modID$modcnt type=checkbox onChange=\"this.form.submit();\"></div>
+    </td>
+
+    <td width=350>
     <div style=\"display:inline-block;\"><b>$modInfo_Array[Name]</b><br>
     Version: $modInfo_Array[Version] </font>
     </div>
