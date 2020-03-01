@@ -72,7 +72,7 @@ function SDD_ModMgr()
       $GITDIRNAME="$MODS_DIR/$_GET[update]/$SUBDIRNAME";
       $command="cd $GITDIRNAME && /usr/bin/git pull";
       $command_output=exec($command);
-      $rtn="<table cellspacing=0 border=1><tr><td><b>Update Command output:</b><br><font size=2><i>$command_output</i></font></td></tr></table><br>";
+      $rtn="<table cellspacing=0 border=1><tr><td><b>Update Command output:</b><br><font size=2><i>$$command<br>$command_output</i></font></td></tr></table><br>";
       
     }
     
