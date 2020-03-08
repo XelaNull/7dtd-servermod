@@ -202,7 +202,7 @@ function mainscreen($top, $main)
     	border-collapse: collapse;
     	border-bottom: #ccc 2px solid;
     	padding: 0;
-      font: 18px Arial, Sans-serif;      
+      font: 16px Arial, Sans-serif;      
     }
     .tablesorter-default thead td {
     	font-weight: bold;
