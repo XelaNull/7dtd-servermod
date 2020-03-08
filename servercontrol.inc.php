@@ -19,9 +19,10 @@ function servercontrol() {
       else $status="STARTING";
     }
   else $status="STOPPED";
-  
+/*  
   echo "GET-CONTROL: $_GET[control]<br>";
   echo "savedCommand: $savedCommand<br>";
+*/
   
   if(@$_GET['control']!='')
     {
@@ -31,7 +32,7 @@ function servercontrol() {
       if($_GET['control']=='STOP') { exec("/stop_7dtd.sh &"); $status="STOPPING"; }
     
       if($_GET['control']=='START') 
-        { exec("/start_7dtd.sh &"); $status="STARTING"; $status_link="<a href=?do=serverstatus&control=FORCE_STOP>img border=0 width=40 src=force-stop.png></a>"; }
+        { exec("/start_7dtd.sh &"); $status="STARTING"; $status_link="<a href=?do=serverstatus&control=FORCE_STOP><img border=0 width=40 src=force-stop.png></a>"; }
       $serverStatus=$status;
     }
   else
