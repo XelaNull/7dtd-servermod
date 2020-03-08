@@ -84,9 +84,7 @@ switch(@$_GET['do'])
       $WRN=exec("grep WRN /data/7DTD/7dtd.log | wc -l");
       $ERR=exec("grep ERR /data/7DTD/7dtd.log | wc -l");
       echo "<br>WARNINGS: $WRN | ERRORS: $ERR";
-      
     }
-  
   echo "</body></html>"; exit;
   break;
   
@@ -409,7 +407,7 @@ $top="
   <td rowspan=2 width=280><a href=index.php><img src=7dtd_logo.png width=260 border=0></a></td>
 
   <td colspan=4 height=50><b><font size=5>".readConfigValue('ServerName')."</font></b><br>
-  <iframe src=index.php?do=serverstatus width=600 height=30 frameborder=0 scrolling=no></iframe>
+  <iframe src=index.php?do=serverstatus width=600 height=50 frameborder=0 scrolling=no></iframe>
   </td>
 </tr>
 <tr>  
