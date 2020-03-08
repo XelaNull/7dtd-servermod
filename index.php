@@ -34,6 +34,10 @@ if(strlen($SERVER_PID)>2)
   }
 else $status="STOPPED";
 
+// DEBUG
+echo "currentRequest: $currentRequest<br>";
+echo "control: $_GET[control]";
+
 // Main Switch to allow this single page to act as multiple pages
 switch(@$_GET['do'])
 {
@@ -67,6 +71,7 @@ switch(@$_GET['do'])
 
   $currentRequest=file("/data/7DTD/server.expected_status");
   $currentRequest=trim($currentRequest[0]);
+
   if(@$_GET['control']!='')
     {
       if($_GET['control']=='STOP') { exec("/stop_7dtd.sh &"); $status="STOPPING"; }
