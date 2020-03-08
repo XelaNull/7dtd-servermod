@@ -25,16 +25,6 @@ if($_COOKIE['password']!=$server_password && $_SESSION['password']!=$server_pass
 if(@$_POST['editFile']) { $_GET['do']='editFile'; @$_GET['editFile']=$_POST['editFile']; }
 if(@$_GET['editFile']=='../7dtd.log' && $_GET['full']!=1) { $_GET['do']='logviewer'; }
 
-// Determine if the 7DTD Server is STARTED or STOPPED
-$SERVER_PID=exec("ps awwux | grep 7DaysToDieServer | grep -v sudo | grep -v grep");
-if(strlen($SERVER_PID)>2) 
-  {
-    $server_started=str_replace("\n","",exec("grep 'GameServer.Init successful' /data/7DTD/7dtd.log | wc -l"));
-    if($server_started==1) $status="STARTED";   
-    else $status="STARTING";
-  }
-else $status="STOPPED";
-
 // Main Switch to allow this single page to act as multiple pages
 switch(@$_GET['do'])
 {
@@ -128,7 +118,7 @@ function readConfigValue($SearchName)
     }
 }
 
-mainscreen(top_row($status), $main);
+mainscreen(top_row(), $main);
 
 /***********************************/
 /***********************************/
@@ -367,7 +357,7 @@ function mainscreen($top, $main)
 <?php
 }
 
-function top_row($status)
+function top_row()
 {
 $top="
 <table cellspacing=0 cellpadding=3 width=100% border=0>

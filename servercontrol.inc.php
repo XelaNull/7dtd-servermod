@@ -3,6 +3,15 @@ function servercontrol() {
   $currentRequest=file("/data/7DTD/server.expected_status");
   $currentRequest=trim($currentRequest[0]);  
   
+  // Determine if the 7DTD Server is STARTED or STOPPED
+  $SERVER_PID=exec("ps awwux | grep 7DaysToDieServer | grep -v sudo | grep -v grep");
+  if(strlen($SERVER_PID)>2) 
+    {
+      $server_started=str_replace("\n","",exec("grep 'GameServer.Init successful' /data/7DTD/7dtd.log | wc -l"));
+      if($server_started==1) $status="STARTED";   
+      else $status="STARTING";
+    }
+  else $status="STOPPED";
   
   if(@$_GET['control']!='')
     {
