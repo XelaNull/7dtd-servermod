@@ -52,7 +52,7 @@ switch(@$_GET['do'])
     <script type = \"text/JavaScript\"><!-- function AutoRefresh( t ) { setTimeout(\"window.location.replace('http://".$_SERVER['SERVER_NAME'].":".$_SERVER['SERVER_PORT']."/7dtd/index.php?do=serverstatus')\", t); }  //--></script>    
     <style type=\"text/css\">
     body {
-      font: 14px Arial, Sans-serif;
+      font: 12px Arial, Sans-serif;
     }
     </style>
   </head> 
@@ -420,7 +420,7 @@ $top="
   <td rowspan=2 width=280><a href=index.php><img src=7dtd_logo.png width=260 border=0></a></td>
 
   <td colspan=4 height=50><b><font size=5>".readConfigValue('ServerName')."</font></b><br>
-  <iframe src=index.php?do=serverstatus width=600 height=50 frameborder=1 scrolling=no></iframe>
+  <iframe src=index.php?do=serverstatus width=400 height=40 frameborder=1 scrolling=no></iframe>
   </td>
 </tr>
 <tr>  
