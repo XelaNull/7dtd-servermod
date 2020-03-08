@@ -41,7 +41,7 @@ switch(@$_GET['do'])
   default:
   case "modmgr":
   $main="<h3>Activate/Deactivate Modlets</h3>Select the Modlets that you would like to enable by simple checking the box next to it. 
-  You will need to stop and start your server for any changes to this list to activate.<br><br>".SDD_ModMgr();
+  You will need to stop and start your server for any changes to this list to activate.<br>".SDD_ModMgr();
   break;
   
   // The server status sub-page
@@ -60,7 +60,7 @@ switch(@$_GET['do'])
     {
       if($_GET['control']=='STOP') { exec("/stop_7dtd.sh &"); $status="STOPPING"; }
       if($_GET['control']=='FORCE_STOP' && $currentRequest=='stop') { exec("echo 'force_stop' > /data/7DTD/server.expected_status"); $status="FORCEFUL STOPPING"; }
-      if($_GET['control']=='START') { exec("/start_7dtd.sh &"); $status="STARTING"; }
+      if($_GET['control']=='START') { exec("/start_7dtd.sh &"); $status="STARTING (<a href=?do=serverstatus&control=FORCE_STOP>FORCE STOP</a>)"; }
       echo $status;
     }
   else
@@ -83,7 +83,7 @@ switch(@$_GET['do'])
     {
       $WRN=exec("grep WRN /data/7DTD/7dtd.log | wc -l");
       $ERR=exec("grep ERR /data/7DTD/7dtd.log | wc -l");
-      echo "<br>WARNINGS: $WRN | ERRORS: $ERR";
+      echo "<br><font color=yellow>warnings</font>: $WRN | <font color=red>errors</b>: $ERR";
     }
   echo "</body></html>"; exit;
   break;
