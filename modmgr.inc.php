@@ -90,7 +90,7 @@ function SDD_ModMgr()
     $rtn="<table cellspacing=0 border=1><tr><td><b>Reset Command output:</b><br><font size=2><i>$command_output</i></font></td></tr></table><br>";
   }
   // Show as a table
-  $rtn.="<form method=post action=?do=modmgr><input type=hidden name=ModIDNum value=$modcnt>
+  $rtn.="<form method=post action=index.php?do=modmgr><input type=hidden name=ModIDNum value=$modcnt>
   <table id=\"myDummyTable\" class=\"tablesorter\" border=0 cellpadding=0 cellspacing=1>
   <thead>
     <tr>
@@ -119,25 +119,29 @@ function SDD_ModMgr()
     if(is_mod_enabled('/data/7DTD',$SymLinkString)) 
       {
         $checkTXT='checked';
-        if(@$_POST['ModIDNum']==$modcnt && @$_POST["modID$modcnt"]!='on') { disable_mod($INSTALL_DIR,$FullModDir); $checkTXT=''; }
+        if(@$_POST['ModIDNum']==$modcnt && @$_POST["modID$modcnt"]!='on') 
+          { disable_mod($INSTALL_DIR,$FullModDir); $checkTXT=''; }
       }
     else 
       {
         $checkTXT='';  
-        if(@$_POST['ModIDNum']==$modcnt && @$_POST["modID$modcnt"]=='on') { enable_mod($INSTALL_DIR,$FullModDir); $checkTXT='checked'; }
+        if(@$_POST['ModIDNum']==$modcnt && @$_POST["modID$modcnt"]=='on') 
+          { enable_mod($INSTALL_DIR,$FullModDir); $checkTXT='checked'; }
       }
       
     if($_GET['disableall']==1) { disable_mod($INSTALL_DIR,$FullModDir); $checkTXT=''; }
     elseif($_GET['enableall']==1) { enable_mod($INSTALL_DIR,$FullModDir); $checkTXT='checked'; }  
     
-    if(@$modInfo_Array['Website']!='') $Author="<a href=$modInfo_Array[Website]>$modInfo_Array[Author]</a>";
+    if(@$modInfo_Array['Website']!='') 
+      $Author="<a href=$modInfo_Array[Website]>$modInfo_Array[Author]</a>";
     else $Author="$modInfo_Array[Author]";
     
     // Collect the URL that we downloaded this mod from
     @$URL=file_get_contents($MODS_DIR.'/'.$modPath_Pieces[0].'/ModURL.txt');
     
     $PkgNum=$modPath_Pieces[0];
-    if(strpos($URL,'github')!==FALSE) $update_Link="<a href=\"index.php?update=$PkgNum\" title=\"Perform GIT Pull to UPDATE Modlet\"  ><img align=top height=28 src=update.png ALT=\"Perform GIT Pull to UPDATE Modlet\"></a>";
+    if(strpos($URL,'github')!==FALSE) 
+      $update_Link="<a href=\"index.php?update=$PkgNum\" title=\"Perform GIT Pull to UPDATE Modlet\"  ><img align=top height=28 src=update.png ALT=\"Perform GIT Pull to UPDATE Modlet\"></a>";
     else $update_Link="";
 
     if($URL!='') $download_Link="<td width=90 align=center><a href=\"$URL\" title=\"Download Modlet\" ><img align=top height=28 src=direct-download.png alt=\"Download Modlet\"></a> $update_Link</td>";
