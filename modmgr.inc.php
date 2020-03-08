@@ -59,6 +59,7 @@ function SDD_ModMgr()
 {
   $INSTALL_DIR="/data/7DTD";
   $MODS_DIR="$INSTALL_DIR/Mods-Available";
+  echo "PRINTING POST:";
   print_r($_POST);
   
   // Build array of ModInfo.xml instances installed
