@@ -59,8 +59,8 @@ function SDD_ModMgr()
 {
   $INSTALL_DIR="/data/7DTD";
   $MODS_DIR="$INSTALL_DIR/Mods-Available";
-  echo "PRINTING POST:";
-  print_r($_POST);
+  //echo "PRINTING POST:";
+  //print_r($_POST);
   
   // Build array of ModInfo.xml instances installed
   $it = new RecursiveDirectoryIterator($MODS_DIR);
@@ -118,7 +118,7 @@ function SDD_ModMgr()
     $ShortModPath=str_replace($MODS_DIR.'/','',$ModPath); // Strip off the MODS_DIR path prefix
     $modPath_Pieces=explode('/',$ShortModPath);
     $SymLinkString=$MODS_DIR.'/'.dirname($ShortModPath);
-    echo "MOD_OUTPUT($SymLinkString)[$modcnt]: ".is_mod_enabled('/data/7DTD',$SymLinkString)."<br>";
+  //  echo "MOD_OUTPUT($SymLinkString)[$modcnt]: ".is_mod_enabled('/data/7DTD',$SymLinkString)."<br>";
     if(is_mod_enabled('/data/7DTD',$SymLinkString)) 
       {
         $checkTXT='checked';
