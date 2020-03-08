@@ -25,9 +25,11 @@ function servercontrol() {
   
   if(@$_GET['control']!='')
     {
-      if($_GET['control']=='STOP') { exec("/stop_7dtd.sh &"); $status="STOPPING"; }
-      if($_GET['control']=='FORCE_STOP' && ($savedCommand=='stop' || $savedCommand=='')) 
+      if($_GET['control']=='FORCE_STOP'/* && ($savedCommand=='stop' || $savedCommand=='')*/) 
         { exec("echo 'force_stop' > /data/7DTD/server.expected_status"); $status="FORCEFUL STOPPING"; }
+    
+      if($_GET['control']=='STOP') { exec("/stop_7dtd.sh &"); $status="STOPPING"; }
+    
       if($_GET['control']=='START') 
         { exec("/start_7dtd.sh &"); $status="STARTING"; $status_link="<a href=?do=serverstatus&control=FORCE_STOP>img border=0 width=40 src=force-stop.png></a>"; }
       $serverStatus=$status;
