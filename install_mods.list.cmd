@@ -3,6 +3,10 @@
 
 # Last Updated: 2020-01-24_0
 # For A18.3
+((MODCOUNT++))
+mkdir $MODS_DIR/$MODCOUNT
+mv /data/7DTD/7dtd-servermod/best_mod.zip $MODS_DIR/$MODCOUNT
+cd $MODS_DIR/$MODCOUNT && unzip /data/7DTD/7dtd-servermod/best_mod.zip
 
 wget_download "http://botman.nz/Botman_Mods_A18.zip" Allocs_Bad_Company.zip extract_file # Botman
 wget_download "https://github.com/7days2mod/BadCompanySM/releases/download/v4.2.1/BCManager.zip" BCManager.zip extract_file # Bad Company Manager
