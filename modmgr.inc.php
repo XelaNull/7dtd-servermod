@@ -96,7 +96,7 @@ function SDD_ModMgr()
     <tr>
       <th>&nbsp;</td>
       <th align=left><b>Name</b></th>
-      <th align=left><b>DL / Update</b></th>
+      <th align=left width=120><b>DL / Update</b></th>
       <th align=left><b>Description</b></th>
       <th align=left><b>Author</b></th>
     </tr>
