@@ -57,7 +57,7 @@ switch(@$_GET['do'])
     </style>
   </head> 
   <body onload = \"JavaScript:AutoRefresh(5000);\" BGCOLOR=\"#525252\" TEXT=white>
-  <table cellspacing=0 cellpadding=0><tr><td>
+  <table cellspacing=0 cellpadding=0 width=400><tr><td valign=top>
   <b>Server Status:</b> ";
 
   $currentRequest=file("/data/7DTD/server.expected_status");
@@ -91,7 +91,7 @@ switch(@$_GET['do'])
       $ERR=exec("grep ERR /data/7DTD/7dtd.log | wc -l");
       echo "<br><font color=yellow>warnings</font>: $WRN | <font color=red>errors</b>: $ERR";
     }
-  echo "</td><td>$status_link</tr></table>
+  echo "</td><td align=right>$status_link</tr></table>
   </body></html>"; exit;
   break;
   
@@ -422,7 +422,7 @@ $top="
   <td rowspan=2 width=280><a href=index.php><img src=7dtd_logo.png width=260 border=0></a></td>
 
   <td colspan=4 height=50><b><font size=5>".readConfigValue('ServerName')."</font></b><br>
-  <iframe src=index.php?do=serverstatus width=300 height=45 frameborder=2 scrolling=no></iframe>
+  <iframe src=index.php?do=serverstatus width=300 height=55 frameborder=2 scrolling=no></iframe>
   </td>
 </tr>
 <tr>  
