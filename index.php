@@ -49,7 +49,11 @@ switch(@$_GET['do'])
   echo "
   <html>
   <head>
-    <script type = \"text/JavaScript\"><!-- function AutoRefresh( t ) { setTimeout(\"window.location.replace('http://".$_SERVER['SERVER_NAME'].":".$_SERVER['SERVER_PORT']."/7dtd/index.php?do=serverstatus')\", t); }  //--></script>    
+    <script type = \"text/JavaScript\">
+      <!--
+      function AutoRefresh( t ) { setTimeout(\"window.location.replace('http://".$_SERVER['SERVER_NAME'].":".$_SERVER['SERVER_PORT']."/7dtd/index.php?do=serverstatus')\", t); }  
+      //-->
+    </script>    
     <style type=\"text/css\">
     body, td {
       font: 12px Arial, Sans-serif;
