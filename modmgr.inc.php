@@ -92,7 +92,7 @@ function SDD_ModMgr()
     $rtn="<table cellspacing=0 border=1><tr><td><b>Reset Command output:</b><br><font size=2><i>$command_output</i></font></td></tr></table><br>";
   }
   // Show as a table
-  $rtn.="<form method=post action=index.php?do=modmgr><input type=hidden name=ModIDNum value=$modcnt>
+  $rtn.="<form method=post action=index.php?do=modmgr>
   <table id=\"myDummyTable\" class=\"tablesorter\" border=0 cellpadding=0 cellspacing=1>
   <thead>
     <tr>
@@ -158,7 +158,7 @@ function SDD_ModMgr()
     </tr>";
   }
   
-  $rtn.="</tbody>\n</table></form>";
+  $rtn.="</tbody>\n</table><input type=hidden name=ModIDNum value=$modcnt></form>";
   $rtn.="<A href=?enableall=1>enable all</a> . <a href=?disableall=1>disable all</a>";
   $rtn.="<br>Total Modlets: ".number_format(count($MOD_ARRAY))."<br>";
   $rtn.="<a href=index.php?smmreset=1>Reset & Redownload all Mods</a>";
