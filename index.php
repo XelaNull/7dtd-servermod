@@ -52,7 +52,7 @@ switch(@$_GET['do'])
     <script type = \"text/JavaScript\"><!-- function AutoRefresh( t ) { setTimeout(\"window.location.replace('http://".$_SERVER['SERVER_NAME'].":".$_SERVER['SERVER_PORT']."/7dtd/index.php?do=serverstatus')\", t); }  //--></script>    
     <style type=\"text/css\">
     body {
-      font: 6px Arial, Sans-serif;
+      font: 10px Arial, Sans-serif;
     }
     </style>
   </head> 
