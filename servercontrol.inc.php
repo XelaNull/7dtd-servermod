@@ -11,12 +11,12 @@ function servercontrol() {
         { exec("echo 'force_stop' > /data/7DTD/server.expected_status"); $status="FORCEFUL STOPPING"; }
       if($_GET['control']=='START') 
         { exec("/start_7dtd.sh &"); $status="STARTING"; $status_link="<a href=?do=serverstatus&control=FORCE_STOP>img border=0 width=40 src=force-stop.png></a>"; }
-      $rtn.=$status;
+      $serverStatus=$status;
     }
   else
     {
       if($currentRequest=='stop' && $status=="STARTED") $status='STOPPING';
-      $serverStatus.="$status ";
+      $serverStatus="$status ";
       switch($status)
       {
         case "STARTED":
