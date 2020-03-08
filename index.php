@@ -46,7 +46,8 @@ switch(@$_GET['do'])
   
   // The server status sub-page
   case "serverstatus":
-    $main.=servercontrol();
+    mainscreen(servercontrol());
+    exit;
   break;
   
   case "editConfig":

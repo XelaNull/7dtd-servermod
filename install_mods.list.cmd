@@ -11,7 +11,6 @@ unzip best_mod.zip
 
 wget_download "http://botman.nz/Botman_Mods_A18.zip" Allocs_Bad_Company.zip extract_file # Botman
 wget_download "https://github.com/7days2mod/BadCompanySM/releases/download/v4.2.1/BCManager.zip" BCManager.zip extract_file # Bad Company Manager
-#wget_download "https://github.com/Prisma501/CSMM-Patrons-Mod/archive/13.7.zip" CSMM_Patrons.zip extract_file # CSMM PatronsFor A18.2
 wget_download "https://raw.githubusercontent.com/Prisma501/Allocs-Webmap-for-CPM/master/map.js" map.js && mv $MODCOUNT/map.js $MODS_DIR/2/Mods/Allocs_WebAndMapRendering/webserver/js
 git_clone https://github.com/DelStryker/Delmod.git #Delmod Modlets
 rm -rf $MODCOUNT/Delmod/ModInfo.xml $MODCOUNT/Delmod/Delmod*Combiner $MODCOUNT/Delmod/Delmod_Pack_And_Store $MODCOUNT/Delmod/Delmod_Decorations $MODCOUNT/Delmod/Delmod_Kitchen $MODCOUNT/Delmod/Delmod_Double_Door $MODCOUNT/Delmod/Delmod_Electronics $MODCOUNT/Delmod/Delmod_Tools $MODCOUNT/Delmod/Delmod_Recipes* $MODCOUNT/Delmod/Delmod_Archetypes $MODCOUNT/Delmod/Delmod_Startup*
@@ -29,7 +28,6 @@ git_clone https://github.com/XelaNull/7DTD-ZombieLootbag_Increase.git
 git_clone https://github.com/XelaNull/7DTD-Bag_Bellows_Headshot.git
 git_clone https://github.com/XelaNull/7DTD-Magazine_Plants_Trader.git
 git_clone https://github.com/XelaNull/7DTD-Combiner.git
-#git_clone https://github.com/XelaNull/7DTD-LootableSolar.git
 git_clone https://github.com/XelaNull/7DTD-SalvagedElectronics.git
 git_clone https://github.com/XelaNull/7dtd-FixedModlets.git
 
@@ -37,14 +35,13 @@ git_clone https://github.com/XelaNull/COMPOPACK_Modlet.git
 cp $MODS_DIR/$MODCOUNT/COMPOPACK*/Data/Prefabs/* $INSTALL_DIR/Data/Prefabs/ 
 
 #git_clone "https://github.com/TSBX-7D/Modlets.git"
-#git_clone "https://github.com/doughphunghus/Doughs-PunishingWeather-Core.git"
-#git_clone "https://github.com/doughphunghus/Doughs-PunishingWeather-Effects-Medium"
+git_clone "https://github.com/doughphunghus/Doughs-PunishingWeather-Core.git"
+git_clone "https://github.com/doughphunghus/Doughs-PunishingWeather-Effects-Medium"
 git_clone "https://github.com/doughphunghus/Doughs-PunishingWeather-Survival.git"
 
 #git_clone "https://github.com/Donovan522/donovan-7d2d-modlets.git"
 svn_checkout "https://github.com/Donovan522/donovan-7d2d-modlets/trunk/donovan-pickmeup"
 svn_checkout "https://github.com/Donovan522/donovan-7d2d-modlets/trunk/donovan-lootcleanup"
-#svn_checkout "https://github.com/Donovan522/donovan-7d2d-modlets/trunk/donovan-longerlootbags"
 svn_checkout "https://github.com/Donovan522/donovan-7d2d-modlets/trunk/donovan-craftspikes"
 
 git_clone "https://github.com/andrough/7D2DvA18.git"; rm -rf $MODCOUNT/7D2DvA18/ADV/androughDecoVariants
@@ -72,13 +69,11 @@ git_clone https://github.com/doughphunghus/Doughs-Buff-PipeBombs
 git_clone "https://github.com/stamplesmods/7d2dmodlets"
 # Ghillie Suit
 
-#wget_download "https://github.com/GopherMods/7DTDMods/raw/master/MoreCookedFoods.zip" MoreCookedFoods.zip extract_file
-
 # Get The Herp & Bigger Buck and Doe
 git_clone https://github.com/doughphunghus/7d2dModlets
 rm -rf $MODCOUNT/7d2dModlets/Khelldon*Aww* $MODCOUNT/7d2dModlets/Khelldon*Baby* $MODCOUNT/7d2dModlets/Khelldon*Bad* $MODCOUNT/7d2dModlets/Khelldon*Chicken* $MODCOUNT/7d2dModlets/Khelldon*Complex* $MODCOUNT/7d2dModlets/Khelldon*Custom* $MODCOUNT/7d2dModlets/Khelldon*Framed* $MODCOUNT/7d2dModlets/Khelldon*Herp* $MODCOUNT/7d2dModlets/Khelldon*Greener* $MODCOUNT/7d2dModlets/Khelldon*Horny* $MODCOUNT/7d2dModlets/Khelldon*Nailed* $MODCOUNT/7d2dModlets/Khelldon*Piggy* $MODCOUNT/7d2dModlets/Khelldon*Grenade* $MODCOUNT/7d2dModlets/Khelldon*Rebar* $MODCOUNT/7d2dModlets/Khelldon*Screamer* $MODCOUNT/7d2dModlets/Khelldon*Starter* $MODCOUNT/7d2dModlets/Khelldon*Gullivers* $MODCOUNT/7d2dModlets/Khelldon*Benched* $MODCOUNT/7d2dModlets/zzz*
 
-wget_download "http://cdgroup.org/files/7dtd/TerrainBasedMovementSpeed.zip" TerrainBasedMovementSpeed.zip extract_file
+#wget_download "http://cdgroup.org/files/7dtd/TerrainBasedMovementSpeed.zip" TerrainBasedMovementSpeed.zip extract_file
 
 #gdrive_download 1ZH9YtemlSBsXEAfMUz5F0nKZJ7E2CLQU VanillaPlus.rar extract_file && find . -name modinfo.xml -exec bash -c 'mv "$0" "${0/modinfo/ModInfo}"' {} \;
 #rm -rf $MODCOUNT/*_UIMENU_*
