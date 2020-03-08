@@ -35,6 +35,8 @@ if(strlen($SERVER_PID)>2)
 else $status="STOPPED";
 
 // DEBUG
+$currentRequest=file("/data/7DTD/server.expected_status");
+$currentRequest=trim($currentRequest[0]);
 echo "currentRequest: $currentRequest<br>";
 echo "control: $_GET[control]";
 
@@ -69,13 +71,12 @@ switch(@$_GET['do'])
   <table cellspacing=0 cellpadding=0 width=280><tr><td valign=top>
   <b>Server Status:</b> ";
 
-  $currentRequest=file("/data/7DTD/server.expected_status");
-  $currentRequest=trim($currentRequest[0]);
+
 
   if(@$_GET['control']!='')
     {
       if($_GET['control']=='STOP') { exec("/stop_7dtd.sh &"); $status="STOPPING"; }
-      if($_GET['control']=='FORCE_STOP' && $currentRequest=='stop') 
+      if($_GET['control']=='FORCE_STOP' && ($currentRequest=='stop' || $currentRequest=='')) 
         { exec("echo 'force_stop' > /data/7DTD/server.expected_status"); $status="FORCEFUL STOPPING"; }
       if($_GET['control']=='START') 
         { exec("/start_7dtd.sh &"); $status="STARTING"; $status_link="<a href=?do=serverstatus&control=FORCE_STOP>img border=0 width=40 src=force-stop.png></a>"; }
