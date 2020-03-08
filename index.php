@@ -50,9 +50,14 @@ switch(@$_GET['do'])
   <html>
   <head>
     <script type = \"text/JavaScript\"><!-- function AutoRefresh( t ) { setTimeout(\"window.location.replace('http://".$_SERVER['SERVER_NAME'].":".$_SERVER['SERVER_PORT']."/7dtd/index.php?do=serverstatus')\", t); }  //--></script>    
+    <style type=\"text/css\">
+    body {
+      font: 6px Arial, Sans-serif;
+    }
+    </style>
   </head> 
   <body onload = \"JavaScript:AutoRefresh(5000);\" BGCOLOR=\"#525252\" TEXT=white>
-  <font size=2><b>Server Status:</b> ";
+  <b>Server Status:</b> ";
 
   $currentRequest=file("/data/7DTD/server.expected_status");
   $currentRequest=trim($currentRequest[0]);
