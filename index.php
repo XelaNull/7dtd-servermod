@@ -53,7 +53,7 @@ switch(@$_GET['do'])
     <style type=\"text/css\">
     body, td {
       font: 12px Arial, Sans-serif;
-      margin: 0px;
+      margin: 2px;
     }
     </style>
   </head> 
