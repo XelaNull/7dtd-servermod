@@ -75,11 +75,11 @@ switch(@$_GET['do'])
       switch($status)
       {
         case "STARTED":
-          if($currentRequest!='stop') echo "(<a href=?do=serverstatus&control=STOP>stop</a>)";
+          if($currentRequest!='stop') echo "(<a href=?do=serverstatus&control=STOP><img border=0 src=stop.jpg></a>)";
           else echo "(<a href=?do=serverstatus&control=FORCE_STOP>force stop</a>)";
         break;
         case "STARTING": echo "(<a href=?do=serverstatus&control=FORCE_STOP>force stop</a>)"; break;
-        case "STOPPED": echo "(<a href=?do=serverstatus&control=START>start server</a>)"; break;
+        case "STOPPED": echo "(<a href=?do=serverstatus&control=START><img border=0 src=start.png></a>)"; break;
       }
     }
   echo " ".date("H:i:s")."</font>";
