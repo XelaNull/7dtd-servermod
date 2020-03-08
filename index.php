@@ -83,7 +83,7 @@ switch(@$_GET['do'])
     {
       $WRN=exec("grep WRN /data/7DTD/7dtd.log | wc -l");
       $ERR=exec("grep ERR /data/7DTD/7dtd.log | wc -l");
-      echo "WARNINGS: $WRN | ERRORS: $ERR";
+      echo "<br>WARNINGS: $WRN | ERRORS: $ERR";
       
     }
   
