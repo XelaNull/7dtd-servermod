@@ -155,10 +155,10 @@ function SDD_ModMgr()
     $download_Link
     <td width=auto><font size=2>$modInfo_Array[Description]</font></td>
     <td><font size=2>$Author</td>
-    </form></tr>";
+    </tr>";
   }
   
-  $rtn.="</tbody>\n</table>";
+  $rtn.="</tbody>\n</table></form>";
   $rtn.="<A href=?enableall=1>enable all</a> . <a href=?disableall=1>disable all</a>";
   $rtn.="<br>Total Modlets: ".number_format(count($MOD_ARRAY))."<br>";
   $rtn.="<a href=index.php?smmreset=1>Reset & Redownload all Mods</a>";
