@@ -118,7 +118,7 @@ function SDD_ModMgr()
     $ShortModPath=str_replace($MODS_DIR.'/','',$ModPath); // Strip off the MODS_DIR path prefix
     $modPath_Pieces=explode('/',$ShortModPath);
     $SymLinkString=$MODS_DIR.'/'.dirname($ShortModPath);
-    echo "MOD_OUTPUT: ".is_mod_enabled('/data/7DTD',$SymLinkString)."<br>";
+    echo "MOD_OUTPUT($SymLinkString): ".is_mod_enabled('/data/7DTD',$SymLinkString)."<br>";
     if(is_mod_enabled('/data/7DTD',$SymLinkString)) 
       {
         $checkTXT='checked';
