@@ -122,7 +122,7 @@ function SDD_ModMgr()
     if(is_mod_enabled('/data/7DTD',$SymLinkString)) 
       {
         $checkTXT='checked';
-        if(@$_POST['ModIDNum']==$modcnt && @$_POST["modID$modcnt"]!='on') 
+        if(/*@$_POST['ModIDNum']==$modcnt && */@$_POST["modID$modcnt"]!='on') 
           { disable_mod($INSTALL_DIR,$FullModDir); $checkTXT=''; }
       }
     else 
