@@ -92,7 +92,7 @@ function SDD_ModMgr()
     $rtn="<table cellspacing=0 border=1><tr><td><b>Reset Command output:</b><br><font size=2><i>$command_output</i></font></td></tr></table><br>";
   }
   // Show as a table
-  $rtn.="<form method=post action=index.php?do=modmgr>
+  $rtn.="
   <table id=\"myDummyTable\" class=\"tablesorter\" border=0 cellpadding=0 cellspacing=1>
   <thead>
     <tr>
@@ -122,7 +122,7 @@ function SDD_ModMgr()
     if(is_mod_enabled('/data/7DTD',$SymLinkString)) 
       {
         $checkTXT='checked';
-        if(/*@$_POST['ModIDNum']==$modcnt && */@$_POST["modID$modcnt"]!='on') 
+        if(@$_POST['ModIDNum']==$modcnt && @$_POST["modID$modcnt"]!='on') 
           { disable_mod($INSTALL_DIR,$FullModDir); $checkTXT=''; }
       }
     else 
@@ -150,16 +150,17 @@ function SDD_ModMgr()
     if($URL!='') $download_Link="<td width=90 align=center><a href=\"$URL\" title=\"Download Modlet\" ><img align=top height=28 src=direct-download.png alt=\"Download Modlet\"></a> $update_Link</td>";
     else $download_Link="<td>$update_Link</td>";
     
-    $rtn.="<tr>
-    <td><input $checkTXT name=modID$modcnt type=checkbox onChange=\"this.form.submit();\"></td>    
+    $rtn.="<tr><form method=post action=index.php?do=modmgr>
+    <td><input type=hidden name=ModIDNum value=$modcnt><input $checkTXT name=modID$modcnt type=checkbox onChange=\"this.form.submit();\"></td>    
     <td width=350><b>$modInfo_Array[Name]</b><br>Version: $modInfo_Array[Version]</td>
     $download_Link
     <td width=auto><font size=2>$modInfo_Array[Description]</font></td>
     <td><font size=2>$Author</td>
+    </form>
     </tr>";
   }
   
-  $rtn.="</tbody>\n</table><input type=hidden name=ModIDNum value=$modcnt></form>";
+  $rtn.="</tbody>\n</table>";
   $rtn.="<A href=?enableall=1>enable all</a> . <a href=?disableall=1>disable all</a>";
   $rtn.="<br>Total Modlets: ".number_format(count($MOD_ARRAY))."<br>";
   $rtn.="<a href=index.php?smmreset=1>Reset & Redownload all Mods</a>";
