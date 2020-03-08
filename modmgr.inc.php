@@ -137,10 +137,10 @@ function SDD_ModMgr()
     @$URL=file_get_contents($MODS_DIR.'/'.$modPath_Pieces[0].'/ModURL.txt');
     
     $PkgNum=$modPath_Pieces[0];
-    if(strpos($URL,'github')!==FALSE) $update_Link="<a href=\"index.php?update=$PkgNum\"><img align=top height=28 src=update.png ALT=\"Perform GIT Pull to UPDATE Modlet\"></a>";
+    if(strpos($URL,'github')!==FALSE) $update_Link="<a href=\"index.php?update=$PkgNum\" ALT=\"Perform GIT Pull to UPDATE Modlet\"><img align=top height=28 src=update.png ALT=\"Perform GIT Pull to UPDATE Modlet\"></a>";
     else $update_Link="";
 
-    if($URL!='') $download_Link="<td width=90 align=center><a href=$URL><img align=top height=28 src=direct-download.png alt=\"Download Modlet\"></a> $update_Link</td>";
+    if($URL!='') $download_Link="<td width=90 align=center><a href=\"$URL\" alt=\"Download Modlet\"><img align=top height=28 src=direct-download.png alt=\"Download Modlet\"></a> $update_Link</td>";
     else $download_Link="<td>$update_Link</td>";
     
     $rtn.="<tr>
