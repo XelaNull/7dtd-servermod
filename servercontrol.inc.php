@@ -64,7 +64,7 @@ $rtn="
 </table>
 </body>
 </html>";
-return($rtn);
+echo $rtn;
 }
 
 ?>

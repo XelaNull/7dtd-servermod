@@ -1,6 +1,7 @@
 <?php 
 
 include "modmgr.inc.php";
+include "servercontrol.inc.php";
 
 session_start();
 
@@ -45,10 +46,7 @@ switch(@$_GET['do'])
   break;
   
   // The server status sub-page
-  case "serverstatus":
-    mainscreen(servercontrol());
-    exit;
-  break;
+  case "serverstatus": servercontrol(); exit; break;
   
   case "editConfig":
   $main.="<form method=post><table>";
