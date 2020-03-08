@@ -1,22 +1,32 @@
 <?php 
 function servercontrol() {
-  $currentRequest=file("/data/7DTD/server.expected_status");
-  $currentRequest=trim($currentRequest[0]);  
+  $savedCommand=file("/data/7DTD/server.expected_status");
+  $savedCommand=trim($savedCommand[0]);  
   
   // Determine if the 7DTD Server is STARTED or STOPPED
   $SERVER_PID=exec("ps awwux | grep 7DaysToDieServer | grep -v sudo | grep -v grep");
   if(strlen($SERVER_PID)>2) 
     {
       $server_started=str_replace("\n","",exec("grep 'GameServer.Init successful' /data/7DTD/7dtd.log | wc -l"));
-      if($server_started==1) $status="STARTED";   
+      if($server_started==1) 
+        {
+          $status="STARTED";   
+          // Print how many WRN and ERR there were, if the $status=STARTED
+          $WRN=exec("grep WRN /data/7DTD/7dtd.log | wc -l");
+          $ERR=exec("grep ERR /data/7DTD/7dtd.log | wc -l");
+          $serverWarningsErrors="<br><font color=yellow>warnings</font>: $WRN | <font color=red>errors</b>: $ERR";
+        }
       else $status="STARTING";
     }
   else $status="STOPPED";
   
+  echo "GET-CONTROL: $_GET[control]<br>";
+  echo "savedCommand: $savedCommand<br>";
+  
   if(@$_GET['control']!='')
     {
       if($_GET['control']=='STOP') { exec("/stop_7dtd.sh &"); $status="STOPPING"; }
-      if($_GET['control']=='FORCE_STOP' && ($currentRequest=='stop' || $currentRequest=='')) 
+      if($_GET['control']=='FORCE_STOP' && ($savedCommand=='stop' || $savedCommand=='')) 
         { exec("echo 'force_stop' > /data/7DTD/server.expected_status"); $status="FORCEFUL STOPPING"; }
       if($_GET['control']=='START') 
         { exec("/start_7dtd.sh &"); $status="STARTING"; $status_link="<a href=?do=serverstatus&control=FORCE_STOP>img border=0 width=40 src=force-stop.png></a>"; }
@@ -24,26 +34,19 @@ function servercontrol() {
     }
   else
     {
-      if($currentRequest=='stop' && $status=="STARTED") $status='STOPPING';
+      if($savedCommand=='stop' && $status=="STARTED") $status='STOPPING';
       $serverStatus="$status ";
       switch($status)
       {
         case "STARTED":
-          if($currentRequest!='stop') $status_link="<a href=?do=serverstatus&control=STOP><img border=0 width=40 src=stop.jpg></a>";
+          if($savedCommand!='stop') $status_link="<a href=?do=serverstatus&control=STOP><img border=0 width=40 src=stop.jpg></a>";
           else $status_link="<a href=?do=serverstatus&control=FORCE_STOP><img border=0 width=40 src=force-stop.png></a>";
         break;
         case "STARTING": $status_link="<a href=?do=serverstatus&control=FORCE_STOP><img border=0 width=40 src=force-stop.png></a>"; break;
         case "STOPPED": $status_link="<a href=?do=serverstatus&control=START><img border=0 width=40 src=start.png></a>"; break;
       }
     }
-    
-  // Print how many WRN and ERR there were, if the $status=STARTED
-  if($status=='STARTED')
-    {
-      $WRN=exec("grep WRN /data/7DTD/7dtd.log | wc -l");
-      $ERR=exec("grep ERR /data/7DTD/7dtd.log | wc -l");
-      $serverWarningsErrors="<br><font color=yellow>warnings</font>: $WRN | <font color=red>errors</b>: $ERR";
-    }
+
   
 $rtn="
 <html>
