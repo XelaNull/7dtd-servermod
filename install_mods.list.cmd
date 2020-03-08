@@ -67,7 +67,7 @@ git_clone https://github.com/doughphunghus/Doughs-Buff-PipeBombs
 git_clone "https://github.com/stamplesmods/7d2dmodlets"
 # Ghillie Suit
 
-wget_download "https://github.com/GopherMods/7DTDMods/raw/master/MoreCookedFoods.zip" MoreCookedFoods.zip extract_file
+#wget_download "https://github.com/GopherMods/7DTDMods/raw/master/MoreCookedFoods.zip" MoreCookedFoods.zip extract_file
 
 # Get The Herp & Bigger Buck and Doe
 git_clone https://github.com/doughphunghus/7d2dModlets
