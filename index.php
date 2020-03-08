@@ -7,10 +7,7 @@ session_start();
 // Pull the server's telnet password.
 $server_password=exec("grep -i TelnetPassword /data/7DTD/serverconfig.xml | cut -d= -f3 | cut -d'\"' -f2");
 if($_POST['Password']!='' && $_POST['Submit']!='' && $server_password==$_POST['Password']) 
-  {
-  $_SESSION['password']=$_POST['Password'];   
-  setcookie('password',$_POST['Password']);
-  }
+  { $_SESSION['password']=$_POST['Password']; setcookie('password',$_POST['Password']); }
 // If there is not a PHP session saved with a good password in it to match the telnet password, then we should bomb out to the login page
 if($_COOKIE['password']!=$server_password && $_SESSION['password']!=$server_password)
   {
@@ -52,11 +49,7 @@ switch(@$_GET['do'])
   echo "
   <html>
   <head>
-    <script type = \"text/JavaScript\">
-           <!-- 
-           function AutoRefresh( t ) { setTimeout(\"window.location.replace('http://".$_SERVER['SERVER_NAME'].":".$_SERVER['SERVER_PORT']."/7dtd/index.php?do=serverstatus')\", t); } 
-           //-->
-    </script>    
+    <script type = \"text/JavaScript\"><!-- function AutoRefresh( t ) { setTimeout(\"window.location.replace('http://".$_SERVER['SERVER_NAME'].":".$_SERVER['SERVER_PORT']."/7dtd/index.php?do=serverstatus')\", t); }  //--></script>    
   </head> 
   <body onload = \"JavaScript:AutoRefresh(5000);\">
   <font size=4><b>Server Status:</b> ";
@@ -77,20 +70,24 @@ switch(@$_GET['do'])
       switch($status)
       {
         case "STARTED":
-        if($currentRequest!='stop') echo "(<a href=?do=serverstatus&control=STOP>stop</a>)";
-        else echo "(<a href=?do=serverstatus&control=FORCE_STOP>force stop</a>)";
+          if($currentRequest!='stop') echo "(<a href=?do=serverstatus&control=STOP>stop</a>)";
+          else echo "(<a href=?do=serverstatus&control=FORCE_STOP>force stop</a>)";
         break;
-              
-        case "STARTING":
-        echo "(<a href=?do=serverstatus&control=FORCE_STOP>force stop</a>)";
-        break;
-
-        case "STOPPED":
-        echo "(<a href=?do=serverstatus&control=START>start server</a>)";
-        break;
+        case "STARTING": echo "(<a href=?do=serverstatus&control=FORCE_STOP>force stop</a>)"; break;
+        case "STOPPED": echo "(<a href=?do=serverstatus&control=START>start server</a>)"; break;
       }
     }
-  echo " ".date("H:i:s")."</font></body></html>"; exit;
+  echo " ".date("H:i:s")."</font>";
+  // Print how many WRN and ERR there were, if the $status=STARTED
+  if($status=='STARTED')
+    {
+      $WRN=exec("grep WRN /data/7DTD/7dtd.log | wc -l");
+      $ERR=exec("grep ERR /data/7DTD/7dtd.log | wc -l");
+      echo "WARNINGS: $WRN | ERRORS: $ERR";
+      
+    }
+  
+  echo "</body></html>"; exit;
   break;
   
   case "editConfig":
@@ -128,9 +125,7 @@ switch(@$_GET['do'])
         }
       $Name=''; $Value='';
     }
-  
   $main.="</table></form>";
-  
   break;
 
   case "editFile":
@@ -149,7 +144,6 @@ switch(@$_GET['do'])
   $main.="<b>$_GET[editFile]</b>
   </form>";
   break;
-  
 }
 
 function readConfigValue($SearchName)
@@ -174,7 +168,6 @@ function readConfigValue($SearchName)
         
       if($Name==$SearchName && $Value!='') return($Value);
     }
-  
 }
 
 mainscreen(top_row($status), $main);
