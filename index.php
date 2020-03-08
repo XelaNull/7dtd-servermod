@@ -57,6 +57,7 @@ switch(@$_GET['do'])
     </style>
   </head> 
   <body onload = \"JavaScript:AutoRefresh(5000);\" BGCOLOR=\"#525252\" TEXT=white>
+  <table cellspacing=0 cellpadding=0><tr><td>
   <b>Server Status:</b> ";
 
   $currentRequest=file("/data/7DTD/server.expected_status");
@@ -65,7 +66,7 @@ switch(@$_GET['do'])
     {
       if($_GET['control']=='STOP') { exec("/stop_7dtd.sh &"); $status="STOPPING"; }
       if($_GET['control']=='FORCE_STOP' && $currentRequest=='stop') { exec("echo 'force_stop' > /data/7DTD/server.expected_status"); $status="FORCEFUL STOPPING"; }
-      if($_GET['control']=='START') { exec("/start_7dtd.sh &"); $status="STARTING (<a href=?do=serverstatus&control=FORCE_STOP>FORCE STOP</a>)"; }
+      if($_GET['control']=='START') { exec("/start_7dtd.sh &"); $status="STARTING"; $status_link="<a href=?do=serverstatus&control=FORCE_STOP>img border=0 width=50 src=force-stop.png></a>"; }
       echo $status;
     }
   else
@@ -75,11 +76,11 @@ switch(@$_GET['do'])
       switch($status)
       {
         case "STARTED":
-          if($currentRequest!='stop') echo "(<a href=?do=serverstatus&control=STOP><img border=0 src=stop.jpg></a>)";
-          else echo "(<a href=?do=serverstatus&control=FORCE_STOP>force stop</a>)";
+          if($currentRequest!='stop') $status_link="<a href=?do=serverstatus&control=STOP><img border=0 width=50 src=stop.jpg></a>";
+          else $status_link="<a href=?do=serverstatus&control=FORCE_STOP><img border=0 width=50 src=force-stop.png></a>";
         break;
-        case "STARTING": echo "(<a href=?do=serverstatus&control=FORCE_STOP>force stop</a>)"; break;
-        case "STOPPED": echo "(<a href=?do=serverstatus&control=START><img border=0 src=start.png></a>)"; break;
+        case "STARTING": $status_link="<a href=?do=serverstatus&control=FORCE_STOP><img border=0 width=50 src=force-stop.png></a>"; break;
+        case "STOPPED": $status_link="<a href=?do=serverstatus&control=START><img border=0 width=50 src=start.png></a>"; break;
       }
     }
   echo " ".date("H:i:s")."</font>";
@@ -90,7 +91,8 @@ switch(@$_GET['do'])
       $ERR=exec("grep ERR /data/7DTD/7dtd.log | wc -l");
       echo "<br><font color=yellow>warnings</font>: $WRN | <font color=red>errors</b>: $ERR";
     }
-  echo "</body></html>"; exit;
+  echo "</td><td>$status_link</tr></table>
+  </body></html>"; exit;
   break;
   
   case "editConfig":
