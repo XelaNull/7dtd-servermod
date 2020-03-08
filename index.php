@@ -57,7 +57,7 @@ switch(@$_GET['do'])
     </style>
   </head> 
   <body onload = \"JavaScript:AutoRefresh(5000);\" BGCOLOR=\"#525252\" TEXT=white>
-  <table cellspacing=0 cellpadding=0 width=290><tr><td valign=top>
+  <table cellspacing=0 cellpadding=0 width=280><tr><td valign=top>
   <b>Server Status:</b> ";
 
   $currentRequest=file("/data/7DTD/server.expected_status");
@@ -65,8 +65,10 @@ switch(@$_GET['do'])
   if(@$_GET['control']!='')
     {
       if($_GET['control']=='STOP') { exec("/stop_7dtd.sh &"); $status="STOPPING"; }
-      if($_GET['control']=='FORCE_STOP' && $currentRequest=='stop') { exec("echo 'force_stop' > /data/7DTD/server.expected_status"); $status="FORCEFUL STOPPING"; }
-      if($_GET['control']=='START') { exec("/start_7dtd.sh &"); $status="STARTING"; $status_link="<a href=?do=serverstatus&control=FORCE_STOP>img border=0 width=50 src=force-stop.png></a>"; }
+      if($_GET['control']=='FORCE_STOP' && $currentRequest=='stop') 
+        { exec("echo 'force_stop' > /data/7DTD/server.expected_status"); $status="FORCEFUL STOPPING"; }
+      if($_GET['control']=='START') 
+        { exec("/start_7dtd.sh &"); $status="STARTING"; $status_link="<a href=?do=serverstatus&control=FORCE_STOP>img border=0 width=40 src=force-stop.png></a>"; }
       echo $status;
     }
   else
@@ -76,11 +78,11 @@ switch(@$_GET['do'])
       switch($status)
       {
         case "STARTED":
-          if($currentRequest!='stop') $status_link="<a href=?do=serverstatus&control=STOP><img border=0 width=50 src=stop.jpg></a>";
-          else $status_link="<a href=?do=serverstatus&control=FORCE_STOP><img border=0 width=50 src=force-stop.png></a>";
+          if($currentRequest!='stop') $status_link="<a href=?do=serverstatus&control=STOP><img border=0 width=40 src=stop.jpg></a>";
+          else $status_link="<a href=?do=serverstatus&control=FORCE_STOP><img border=0 width=40 src=force-stop.png></a>";
         break;
-        case "STARTING": $status_link="<a href=?do=serverstatus&control=FORCE_STOP><img border=0 width=50 src=force-stop.png></a>"; break;
-        case "STOPPED": $status_link="<a href=?do=serverstatus&control=START><img border=0 width=50 src=start.png></a>"; break;
+        case "STARTING": $status_link="<a href=?do=serverstatus&control=FORCE_STOP><img border=0 width=40 src=force-stop.png></a>"; break;
+        case "STOPPED": $status_link="<a href=?do=serverstatus&control=START><img border=0 width=40 src=start.png></a>"; break;
       }
     }
   echo " ".date("H:i:s")."</font>";
@@ -422,7 +424,7 @@ $top="
   <td rowspan=2 width=280><a href=index.php><img src=7dtd_logo.png width=260 border=0></a></td>
 
   <td colspan=4 height=50><b><font size=5>".readConfigValue('ServerName')."</font></b><br>
-  <iframe src=index.php?do=serverstatus width=300 height=55 frameborder=2 scrolling=no></iframe>
+  <iframe src=index.php?do=serverstatus width=300 height=60 frameborder=2 scrolling=no></iframe>
   </td>
 </tr>
 <tr>  
