@@ -19,6 +19,7 @@ fi
 [[ -f $INSTALL_DIR/html/GeneratedWorlds ]] || ln -s /data/7DTD/.local/share/7DaysToDie/GeneratedWorlds $INSTALL_DIR/html/GeneratedWorlds
 [[ -f $INSTALL_DIR/html/index.php ]] || ln -s $INSTALL_DIR/7dtd-servermod/index.php $INSTALL_DIR/html/index.php
 [[ -f $INSTALL_DIR/html/modmgr.inc.php ]] || ln -s $INSTALL_DIR/7dtd-servermod/modmgr.inc.php $INSTALL_DIR/html/modmgr.inc.php
+[[ -f $INSTALL_DIR/html/servercontrol.inc.php ]] || ln -s $INSTALL_DIR/7dtd-servermod/servercontrol.inc.php $INSTALL_DIR/html/servercontrol.inc.php
 [[ -f $INSTALL_DIR/html/rwganalyzer.inc.php ]] || ln -s $INSTALL_DIR/7dtd-servermod/rwganalyzer.inc.php $INSTALL_DIR/html/rwganalyzer.inc.php
 [[ -f $INSTALL_DIR/html/7dtd_logo.png ]] || ln -s $INSTALL_DIR/7dtd-servermod/7dtd_logo.png $INSTALL_DIR/html/7dtd_logo.png
 [[ -f $INSTALL_DIR/html/update.png ]] || ln -s $INSTALL_DIR/7dtd-servermod/update.png $INSTALL_DIR/html/update.png
