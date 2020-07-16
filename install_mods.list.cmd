@@ -9,10 +9,10 @@ mv /data/7DTD/7dtd-servermod/best_mod.zip $MODS_DIR/$MODCOUNT
 cd $MODS_DIR/$MODCOUNT
 unzip best_mod.zip
 
-wget_download "http://botman.nz/Botman_Mods_A18.zip" Allocs_Bad_Company.zip extract_file # Botman
+wget_download "http://botman.nz/Botman_Mods_A19.zip" Allocs_Bad_Company.zip extract_file # Botman
 wget_download "https://raw.githubusercontent.com/Prisma501/Allocs-Webmap-for-CPM/master/map.js" map.js && mv $MODCOUNT/map.js $MODS_DIR/3/Mods/Allocs_WebAndMapRendering/webserver/js
 
-wget_download "https://github.com/7days2mod/BadCompanySM/releases/download/v4.2.1/BCManager.zip" BCManager.zip extract_file # Bad Company Manager
+wget_download "https://github.com/7days2mod/BadCompanySM/releases/download/v5.0.0/BCManager.zip" BCManager.zip extract_file # Bad Company Manager
 git_clone https://github.com/DelStryker/Delmod.git #Delmod Modlets
 rm -rf $MODCOUNT/Delmod/ModInfo.xml $MODCOUNT/Delmod/Delmod*Combiner $MODCOUNT/Delmod/Delmod_Pack_And_Store $MODCOUNT/Delmod/Delmod_Decorations $MODCOUNT/Delmod/Delmod_Kitchen $MODCOUNT/Delmod/Delmod_Double_Door $MODCOUNT/Delmod/Delmod_Electronics $MODCOUNT/Delmod/Delmod_Tools $MODCOUNT/Delmod/Delmod_Recipes* $MODCOUNT/Delmod/Delmod_Archetypes $MODCOUNT/Delmod/Delmod_Startup*
 git_clone https://github.com/XelaNull/7dtd-Origin-UI.git # Origin UI
@@ -32,8 +32,8 @@ git_clone https://github.com/XelaNull/7DTD-Combiner.git
 git_clone https://github.com/XelaNull/7DTD-SalvagedElectronics.git
 git_clone https://github.com/XelaNull/7dtd-FixedModlets.git
 
-git_clone https://github.com/XelaNull/COMPOPACK_Modlet.git
-cp $MODS_DIR/$MODCOUNT/COMPOPACK*/Data/Prefabs/* $INSTALL_DIR/Data/Prefabs/ 
+#git_clone https://github.com/XelaNull/COMPOPACK_Modlet.git
+#cp $MODS_DIR/$MODCOUNT/COMPOPACK*/Data/Prefabs/* $INSTALL_DIR/Data/Prefabs/ 
 
 #git_clone "https://github.com/TSBX-7D/Modlets.git"
 git_clone "https://github.com/doughphunghus/Doughs-PunishingWeather-Core.git"
