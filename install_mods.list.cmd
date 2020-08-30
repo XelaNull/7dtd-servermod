@@ -22,7 +22,7 @@ dropbox_download "https://www.dropbox.com/s/v1eyx3qnrmr7f2p/Red%20Eagle%20LXIX%2
 rm -rf $MODCOUNT/*_UIMENU_* $MODCOUNT/*UI_SkillP* $MODCOUNT/RELXIX_Blocks_PickThisUp $MODCOUNT/RELXIX_UI_ToolbeltSlotNumbers $MODCOUNT/RELXIX_UI_PlayerStats $MODCOUNT/RELXIX_UI_MenuStats $MODCOUNT/RELXIX_UI_CompassStats $MODCOUNT/RELXIX_UI_ZDP1_ZombieKills $MODCOUNT/RELXIX_UI_ZDP2_ZombieKillsDeaths $MODCOUNT/RELXIX_UI_ZeeNoPlayerStatNumbers $MODCOUNT/RELXIX_UI_ZeeNoPlayerXPBar
 cd $MODCOUNT; grep Successfully -ri * | awk '{print $1}' | cut -d: -f1 > ToModify; while IFS= read -r line; do sed -i '/Successfully_Loaded/d' $line; done < ToModify; cd ..
 
-wget_download "https://github.com/dmustanger/7dtd-ServerTools/releases/download/19.0.4/7dtd-ServerTools-19.0.4.ziphttps://github.com/dmustanger/7dtd-ServerTools/releases/download/19.0.4/7dtd-ServerTools-19.0.4.zip" ServerTools.zip extract_file # ServerTools
+wget_download "https://github.com/dmustanger/7dtd-ServerTools/releases/download/19.0.8/7dtd-ServerTools-19.0.8.zip" ServerTools.zip extract_file # ServerTools
 cd $MODCOUNT && cp -r 7DaysToDieServer_Data $INSTALL_DIR/ && tar zxvf ServerTools-Linux-SQLite-Fix.tgz > /dev/null 2>&1 && cp ServerTools-Linux-SQLite-Fix/centos7/libSQLite.Interop.so ../../7DaysToDieServer_Data/Mono/x86_64/ && cd ..
 git_clone https://github.com/XelaNull/7DTD-WhiteRiver_ToC.git # WhiteRiver Tools of Citizenship
 git_clone https://github.com/XelaNull/7DTD-ZombieLootbag_Increase.git
