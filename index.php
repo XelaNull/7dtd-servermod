@@ -377,30 +377,6 @@ $top="
 </table>
 ";
 
-// Display clickable links to serverconfig.xml and 7dtd.log
-/*
-$left.="<hr><h3><b>EDIT CONFIGS & VIEW LOG</b></h3>
-<b>serverconfig.xml & 7dtd.log:</b><br>
-<form method=post><select size=3 onChange=\"this.form.submit();\" name=editFile style=\"font-size: 12pt;\">
-<option value=\"../serverconfig.xml\">serverconfig.xml</option>
-<option value=\"../7dtd.log\">7dtd.log</option>
-<option value=\"../7dtd-servermod/install_mods.list.cmd\">install_mods.list.cmd</option>
-</select>
-</form>
-<br>";
-// Display all XML files to edit
-$it = new RecursiveDirectoryIterator('../Data/Config');
-foreach(new RecursiveIteratorIterator($it) as $file) if(basename($file)!='.' && basename($file)!='..') $XML_ARRAY[]=$file;
-$left.="<b>Data/Config XML Files:</b> <br><form method=post><select size=10 onChange=\"this.form.submit();\" name=editFile style=\"font-size: 12pt;\">";
-foreach($XML_ARRAY as $file) $left.="<option value=".str_replace('../Data/Config/','',$file).">".str_replace('../Data/Config/','',$file)."</option>\n";
-$left.="</select></form>";
-
-$left.="<hr>
-<a href=index.php?smmupdate=1>Update ServerMod Manager</a><br>
-<a href=index.php?smmreset=1>Reset ServerMod Manager Mods</a><br>
-<br>
-<a href=index.php>refresh page</a>
-</center>";*/
 return $top;
 }
 
